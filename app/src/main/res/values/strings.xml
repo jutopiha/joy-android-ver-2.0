@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Joy</string>
+    <!--<string name="title_home">홈</string>-->
+    <string name="title_income">수입 입력하기</string>
+    <string name="title_expense">지출 입력하기</string>
+    <string name="title_daily">일별 통계</string>
+    <string name="title_monthly">월별 통계</string>
+    <string name="title_quest">퀘스트</string>
+    </resources>
