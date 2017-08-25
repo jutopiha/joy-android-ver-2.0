@@ -17,6 +17,7 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+        useLibrary 'org.apache.http.legacy' // To use httpClient. 2017-05-18 by Juha. 0825 서버연결 이사
     }
 }
 
@@ -29,5 +30,5 @@ dependencies {
     compile 'com.android.support:design:25.3.1'
     compile 'com.android.support:support-vector-drawable:25.3.1'
     testCompile 'junit:junit:4.12'
-    compile 'com.github.PhilJay:MPAndroidChart:v3.0.0-beta1'    //chart
+    compile 'com.github.PhilJay:MPAndroidChart:v3.0.0-beta1'    //chart 사용
 }
