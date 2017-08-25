@@ -11,12 +11,16 @@
         android:theme="@style/AppTheme"
         android:logo="@drawable/icon_logo">
         <activity
-            android:name=".MainActivity"
+            android:name=".Activity.MainActivity"
             android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name=".Activity.SettingActivity"
+            android:label="@string/app_name">
         </activity>
     </application>
 

@@ -2,8 +2,13 @@
 <resources>
     <color name="colorPrimary">#FFFFFF</color>
     <color name="colorPrimaryDark">#000000</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="colorAccent">#E64C3D</color>
 
     <item name = "violet" type="color">#d2bfca</item>
     <item name = "coral" type="color">#f24455</item>
+    <item name = "light_gray" type="color">#f2f2f2</item>
+    <item name = "middle_gray" type="color">#8c8c8c</item>
+    <item name = "heavy_gray" type="color">#0f0f0f</item>
+    <item name = "transparent" type="color">#00000000</item>
+
 </resources>

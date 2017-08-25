@@ -6,8 +6,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.joy.tiggle.joy.MainActivity"
-    android:background="#F2F2F2">
+    tools:context="com.joy.tiggle.joy.Activity.MainActivity"
+    android:background="@color/light_gray">
 
     <FrameLayout
         android:id="@+id/content"

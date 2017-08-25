@@ -1,6 +1,7 @@
-package com.joy.tiggle.joy;
+package com.joy.tiggle.joy.Activity;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -12,6 +13,10 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
+
+import com.joy.tiggle.joy.Fragment.ItemOneFragment;
+import com.joy.tiggle.joy.Fragment.ItemThreeFragment;
+import com.joy.tiggle.joy.R;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -104,7 +109,9 @@ public class MainActivity extends AppCompatActivity {
                 mTextMessage.setText("info startActivity");
                 return true;
             case R.id.menu_setting:
-                mTextMessage.setText("setting startActivity");
+                Intent intent = new Intent(this, SettingActivity.class);
+                startActivity(intent);
+
                 return true;
         }
 

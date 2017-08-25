@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:background="@color/colorAccent"
+        android:id="@+id/relativeSettingActionbar">
+        <Button
+            android:id="@+id/btnBack"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_margin="18dp"
+            android:background="@drawable/button_back"
+            android:onClick="onClick" />
+        <TextView
+            android:id="@+id/tvSetting"
+            android:text="설정"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="17sp"
+            android:textColor="#ffffff"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@id/btnBack"
+            android:layout_toEndOf="@id/btnBack" />
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/relativeSettingWhole"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/relativeSettingActionbar">
+
+
+        <RelativeLayout
+            android:id="@+id/relativeNotiSetting"
+            android:layout_width="match_parent"
+            android:layout_height="36dp"
+            android:background="@color/light_gray"
+            android:gravity="center_vertical">
+            <TextView
+                android:id="@+id/tvNotiSetting"
+                android:text="알림 설정"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:textSize="14sp"
+                android:textColor="@color/middle_gray" />
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            style="@style/HomeDivider"
+            android:layout_below="@id/relativeNotiSetting"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:id="@+id/view1" />
+
+        <RelativeLayout
+            android:id="@+id/relativeAutoParsing"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_centerVertical="true"
+            android:layout_below="@id/view1"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp">
+            <TextView
+                android:id="@+id/tvAutoParse"
+                android:text="카드 결제 SMS 자동 입력"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:textColor="@color/heavy_gray"
+                android:layout_centerVertical="true" />
+            <Switch
+                android:id="@+id/switchAutoParse"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"/>
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            style="@style/HomeDivider"
+            android:layout_below="@id/relativeAutoParsing"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:id="@+id/view2" />
+
+        <RelativeLayout
+            android:id="@+id/relativeParseComplete"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_below="@id/relativeAutoParsing">
+            <TextView
+                android:id="@+id/tvParseComplete"
+                android:text="자동 입력 시 알림 받기"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:textColor="@color/heavy_gray"
+                android:layout_centerVertical="true" />
+            <Switch
+                android:id="@+id/switchParseComplete"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:switchMinWidth="32dp"
+                android:checked="true"/>
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            style="@style/HomeDivider"
+            android:layout_below="@id/relativeParseComplete"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:id="@+id/view3" />
+
+        <RelativeLayout
+            android:id="@+id/relativeBankInfo"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_below="@id/relativeParseComplete">
+            <TextView
+                android:id="@+id/tvBankInfo"
+                android:text="주거래 은행"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:textColor="@color/heavy_gray"
+                android:layout_centerVertical="true" />
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:id="@+id/relativeMemberSetting"
+            android:layout_width="match_parent"
+            android:layout_height="36dp"
+            android:background="@color/light_gray"
+            android:gravity="center_vertical"
+            android:layout_below="@id/relativeBankInfo">
+            <TextView
+                android:id="@+id/tvMemberSetting"
+                android:text="계정 설정"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:textSize="14sp"
+                android:textColor="@color/middle_gray" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/btnSignOut"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_below="@id/relativeMemberSetting"
+            android:onClick="onClick">
+            <TextView
+                android:id="@+id/tvSignOut"
+                android:text="로그아웃"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:textColor="@color/heavy_gray"
+                android:layout_centerVertical="true"/>
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:id="@+id/relativeAboutSetting"
+            android:layout_width="match_parent"
+            android:layout_height="36dp"
+            android:background="@color/light_gray"
+            android:gravity="center_vertical"
+            android:layout_below="@id/btnSignOut">
+            <TextView
+                android:id="@+id/tvAboutSetting"
+                android:text="정보"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:textSize="14sp"
+                android:textColor="@color/middle_gray" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/btnAsk"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_below="@id/relativeAboutSetting"
+            android:onClick="onClick">
+            <TextView
+                android:id="@+id/tvAsk"
+                android:text="문의하기"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:textColor="@color/heavy_gray"
+                android:layout_centerVertical="true"/>
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            style="@style/HomeDivider"
+            android:layout_below="@id/btnAsk"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:id="@+id/view4" />
+
+        <RelativeLayout
+            android:id="@+id/btnAbout"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_below="@id/btnAsk"
+            android:onClick="onClick">
+            <TextView
+                android:id="@+id/tvAbout"
+                android:text="만든 사람들"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:textColor="@color/heavy_gray"
+                android:layout_centerVertical="true"/>
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+
+
+    <RelativeLayout
+        android:id="@+id/relativeAppInfo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/light_gray"
+        android:layout_below="@id/relativeSettingWhole"
+        android:gravity="center"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp">
+
+        <ImageButton
+            android:id="@+id/btnAppLogo"
+            android:layout_height="70dp"
+            android:layout_width="70dp"
+            android:background="@color/light_gray"
+            android:scaleType="centerInside"
+            android:src="@drawable/icon_logo"
+            android:paddingTop="6dp" />
+        <TextView
+            android:id="@+id/tvVersion"
+            android:text="ver 2.0.0"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:textColor="@color/middle_gray"
+            android:layout_centerVertical="true"
+            android:layout_below="@id/btnAppLogo"/>
+    </RelativeLayout>
+
+</RelativeLayout>

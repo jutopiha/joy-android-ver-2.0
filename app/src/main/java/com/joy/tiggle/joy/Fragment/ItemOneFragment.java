@@ -1,4 +1,4 @@
-package com.joy.tiggle.joy;
+package com.joy.tiggle.joy.Fragment;
 
 
 import android.support.v4.app.Fragment;
@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.joy.tiggle.joy.R;
 
 /**
  * Created by 조현정 on 2017-08-25.
