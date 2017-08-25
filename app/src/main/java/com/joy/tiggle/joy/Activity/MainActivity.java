@@ -14,6 +14,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
+import com.facebook.AccessToken;
 import com.joy.tiggle.joy.Fragment.ItemOneFragment;
 import com.joy.tiggle.joy.Fragment.ItemThreeFragment;
 import com.joy.tiggle.joy.R;
@@ -43,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
                     selectedFragment = ItemOneFragment.newInstance();
                     break;
                 case R.id.navigation_expense:
-                    mTextMessage.setText("지출 입력하기 startActivity");
+                    mTextMessage.setText("지출 입력하기 startActivity" + currentUserId.toString());
                     break;
                 case R.id.navigation_daily:
                     selectedFragment = ItemThreeFragment.newInstance();
@@ -77,6 +78,17 @@ public class MainActivity extends AppCompatActivity {
 
         // 임시
         mTextMessage = (TextView) findViewById(R.id.message);
+
+        // 로그인 여부 확인
+        if(AccessToken.getCurrentAccessToken() == null) {
+            // 로그인이 되어 있지 않은 경우, SigninActivity로 간다
+            startActivity(new Intent(this, SigninActivity.class));
+            finish();
+            return;
+        }
+        else {
+            currentUserId = AccessToken.getCurrentAccessToken().getUserId();
+        }
 
         // 상단 액션바
         ActionBar actionBar = getSupportActionBar();
@@ -114,6 +126,7 @@ public class MainActivity extends AppCompatActivity {
             case R.id.menu_setting:
                 Intent intent = new Intent(this, SettingActivity.class);
                 startActivity(intent);
+                finish();
 
                 return true;
         }

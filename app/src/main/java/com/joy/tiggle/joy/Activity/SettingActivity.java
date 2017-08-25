@@ -1,5 +1,6 @@
 package com.joy.tiggle.joy.Activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -42,9 +43,13 @@ public class SettingActivity extends AppCompatActivity implements View.OnClickLi
     public void onClick(View v){
         switch(v.getId()){
             case R.id.btnBack:
+                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(intent);
                 finish();
                 break;
             case R.id.btnSignOut:
+                intent = new Intent(getApplicationContext(), SigninActivity.class);
+                startActivity(intent);
                 finish();
                 break;
             case R.id.btnAsk:
