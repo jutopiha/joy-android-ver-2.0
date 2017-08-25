@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.joy.tiggle.joy">
 
+    <uses-permission android:name="android.permission.INTERNET"/><!--0825 서버연결 이사-->
+
     <application
         android:allowBackup="true"
         android:icon="@drawable/icon_logo"

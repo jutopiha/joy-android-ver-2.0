@@ -20,6 +20,9 @@ import com.joy.tiggle.joy.R;
 
 public class MainActivity extends AppCompatActivity {
 
+    public static final String urlString = "http://18.220.36.184:9000";
+    public static String currentUserId;
+
     private TextView mTextMessage;
 
 
