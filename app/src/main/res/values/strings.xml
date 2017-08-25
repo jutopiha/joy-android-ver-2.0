@@ -6,4 +6,9 @@
     <string name="title_daily">일별 통계</string>
     <string name="title_monthly">월별 통계</string>
     <string name="title_quest">퀘스트</string>
+
+    <string name="facebook_app_id">1892044964380913</string>
+    <string name="fb_login_protocol_scheme">fb1892044964380913</string>
+
+    <string name="authentication_fail">Authentication failed.</string>
     </resources>
