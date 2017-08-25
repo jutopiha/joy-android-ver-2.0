@@ -1,6 +1,140 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <RelativeLayout
+            android:id="@+id/relative1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop = "50dp">
 
-</LinearLayout>
+            <TextView
+                android:id="@+id/fakeView1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"/>
+
+            <!--캐릭터-->
+            <ImageView
+                android:id="@+id/userCharacter"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:src="@drawable/icon_info"
+                android:layout_toLeftOf="@id/fakeView1"
+                />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/userCharacter"
+                android:layout_marginRight="50dp"
+                android:layout_marginLeft="50dp"
+                android:layout_alignTop="@id/userCharacter"
+                android:layout_alignParentTop="true">
+
+                <TextView
+                    android:id="@+id/userName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="name"
+                    android:textSize="20dp"
+                    android:paddingBottom="20dp"/>
+                <TextView
+                    android:id="@+id/userPoint"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Point"
+                    android:textSize="20dp"
+                    android:layout_below="@id/userName"/>
+            </RelativeLayout>
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:id="@+id/relative2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/relative1"
+            android:layout_marginTop="25dp">
+
+            <RelativeLayout
+                android:id="@+id/expense2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_marginLeft="50dp"
+                android:layout_marginRight="50dp">
+                <TextView
+                    android:id="@+id/todayExpenseTv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="오늘 지출 금액 "/>
+                <TextView
+                    android:id="@+id/todayExpenseContent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/todayExpenseTv"
+                    android:text="10000"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/expense1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toLeftOf="@id/expense2">
+
+                <TextView
+                    android:id="@+id/recentExpenseTv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="최근 지출 금액"/>
+                <TextView
+                    android:id="@+id/recentExpenseContent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/recentExpenseTv"
+                    android:text="10000"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/expense3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/expense2">
+                <TextView
+                    android:id="@+id/weekExpenseTv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="주간 지출 금액"/>
+                <TextView
+                    android:id="@+id/weekExpenseContent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/weekExpenseTv"
+                    android:text="10000"/>
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/relative3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:layout_below="@id/relative2">
+
+
+            <com.github.mikephil.charting.charts.PieChart
+                android:id="@+id/idPieChart"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:layout_centerInParent="true">
+            </com.github.mikephil.charting.charts.PieChart>
+        </RelativeLayout>
+    </RelativeLayout>
+</ScrollView>
