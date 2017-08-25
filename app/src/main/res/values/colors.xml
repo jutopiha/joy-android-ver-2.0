@@ -3,4 +3,7 @@
     <color name="colorPrimary">#FFFFFF</color>
     <color name="colorPrimaryDark">#000000</color>
     <color name="colorAccent">#FF4081</color>
+
+    <item name = "violet" type="color">#d2bfca</item>
+    <item name = "coral" type="color">#f24455</item>
 </resources>

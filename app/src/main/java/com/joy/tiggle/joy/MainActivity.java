@@ -1,8 +1,11 @@
 package com.joy.tiggle.joy;
 
+
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
@@ -14,11 +17,13 @@ public class MainActivity extends AppCompatActivity {
 
     private TextView mTextMessage;
 
+
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
 
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+            Fragment selectedFragment = null;
             switch (item.getItemId()) {
                 /*
                 case R.id.navigation_home:
@@ -26,25 +31,36 @@ public class MainActivity extends AppCompatActivity {
                     return true;
                 */
                 case R.id.navigation_income:
-                    mTextMessage.setText("수입 입력하기 startActivity");
-                    return true;
+                    //ItemOneFragment.java를 불러온다
+                    selectedFragment = ItemOneFragment.newInstance();
+                    break;
                 case R.id.navigation_expense:
                     mTextMessage.setText("지출 입력하기 startActivity");
-                    return true;
+                    break;
                 case R.id.navigation_daily:
-                    mTextMessage.setText("일별 통계 startActivity");
-                    return true;
+                    selectedFragment = ItemThreeFragment.newInstance();
+                    break;
                 case R.id.navigation_monthly:
                     mTextMessage.setText("월별 통계 startActivity");
-                    return true;
+                    break;
                 case R.id.navigation_quest:
                     mTextMessage.setText("퀘스트 startActivity");
-                    return true;
+                    break;
             }
-            return false;
+            if(selectedFragment==null)
+            {
+                //nullPointer방지
+                selectedFragment = ItemOneFragment.newInstance();
+            }
+            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+            transaction.replace(R.id.content, selectedFragment);
+            transaction.commit();
+            return true;
         }
 
     };
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
