@@ -34,17 +34,13 @@ public class MainActivity extends AppCompatActivity {
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             Fragment selectedFragment = null;
             switch (item.getItemId()) {
-                /*
+
                 case R.id.navigation_home:
                     mTextMessage.setText("메인 화면");
                     return true;
-                */
-                case R.id.navigation_income:
+                case R.id.navigation_save_new:
                     //ItemOneFragment.java를 불러온다
                     selectedFragment = ItemOneFragment.newInstance();
-                    break;
-                case R.id.navigation_expense:
-                    mTextMessage.setText("지출 입력하기 startActivity" + currentUserId.toString());
                     break;
                 case R.id.navigation_daily:
                     selectedFragment = ItemThreeFragment.newInstance();

@@ -7,6 +7,13 @@
     <string name="title_monthly">월별 통계</string>
     <string name="title_quest">퀘스트</string>
 
+    <string name="title_navigation1">수입/지출 입력</string>
+    <string name="title_navigation2">일별 조회</string>
+    <string name="title_navigation3">홈</string>
+    <string name="title_navigation4">월별 통계</string>
+    <string name="title_navigation5">퀘스트</string>
+
+
     <string name="facebook_app_id">1892044964380913</string>
     <string name="fb_login_protocol_scheme">fb1892044964380913</string>
 
