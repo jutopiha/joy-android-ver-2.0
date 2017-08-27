@@ -80,7 +80,7 @@
                     android:layout_height="wrap_content"
                     android:paddingLeft="18dp"/>
                 <Spinner
-                    android:id="@+id/jsonIncomeCategorySp"
+                    android:id="@+id/incomeCategorySp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/incomeCategoryTv"
@@ -105,7 +105,7 @@
                     android:layout_height="wrap_content"
                     android:paddingLeft= "18dp"/>
                 <EditText
-                    android:id = "@+id/jsonIncomeMoneyEt"
+                    android:id = "@+id/incomeMoneyEt"
                     android:hint="10,000"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -131,7 +131,7 @@
                 android:layout_height="wrap_content"
                 android:paddingLeft="18dp"/>
             <EditText
-                android:id="@+id/jsonIncomeMemoEt"
+                android:id="@+id/incomeMemoEt"
                 android:hint="메모"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

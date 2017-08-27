@@ -27,6 +27,8 @@ public class MainActivity extends AppCompatActivity {
 
     private TextView mTextMessage;
 
+    HomeFragment fragment_home = (HomeFragment)getSupportFragmentManager().findFragmentById(R.id.navigation_home);
+
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -128,4 +130,14 @@ public class MainActivity extends AppCompatActivity {
 
        return super.onOptionsItemSelected(item);
     }
+
+    public void onFragmentChagned(int index){
+        if(index ==0 )
+        {
+            BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
+            navigation.setSelectedItemId(R.id.navigation_home);    // 홈 화면 불러옴
+
+        }
+    }
+
 }
