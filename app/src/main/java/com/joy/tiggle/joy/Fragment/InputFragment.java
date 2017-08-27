@@ -14,16 +14,18 @@ import com.joy.tiggle.joy.R;
 
 /**
  * Created by 조현정 on 2017-08-25.
+ *
+ * 수입/지출 Fragment를 갖고 있는 부모Fragment
  */
 
-public class ItemOneFragment extends Fragment {
+public class InputFragment extends Fragment {
 
 
     ViewPager viewPager;
     ViewPagerAdapter viewPagerAdapter;
 
     public static android.support.v4.app.Fragment newInstance(){
-        ItemOneFragment fragment = new ItemOneFragment();
+        InputFragment fragment = new InputFragment();
         return fragment;
     }
 

@@ -21,7 +21,7 @@ import com.joy.tiggle.joy.R;
  * Created by 조현정 on 2017-08-25.
  */
 
-public class ItemThreeFragment extends Fragment {
+public class HomeFragment extends Fragment {
 
     /*파이차트 관련*/
     private PieChart mChart;
@@ -44,7 +44,7 @@ public class ItemThreeFragment extends Fragment {
 
     /*기본*/
     public static android.support.v4.app.Fragment newInstance(){
-        ItemThreeFragment fragment = new ItemThreeFragment();
+        HomeFragment fragment = new HomeFragment();
         return fragment;
     }
 

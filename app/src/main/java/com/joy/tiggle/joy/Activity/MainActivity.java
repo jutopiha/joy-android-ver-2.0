@@ -15,8 +15,8 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.facebook.AccessToken;
-import com.joy.tiggle.joy.Fragment.ItemOneFragment;
-import com.joy.tiggle.joy.Fragment.ItemThreeFragment;
+import com.joy.tiggle.joy.Fragment.InputFragment;
+import com.joy.tiggle.joy.Fragment.HomeFragment;
 import com.joy.tiggle.joy.Fragment.DailyFragment;
 import com.joy.tiggle.joy.R;
 
@@ -36,14 +36,14 @@ public class MainActivity extends AppCompatActivity {
             Fragment selectedFragment = null;
             switch (item.getItemId()) {
                 case R.id.navigation_save_new:
-                    //ItemOneFragment.java를 불러온다
-                    selectedFragment = ItemOneFragment.newInstance();
+                    //InputFragment.java를 불러온다
+                    selectedFragment = InputFragment.newInstance();
                     break;
                 case R.id.navigation_daily:
                     selectedFragment = DailyFragment.newInstance();
                     break;
                 case R.id.navigation_home:
-                    selectedFragment = ItemThreeFragment.newInstance();
+                    selectedFragment = HomeFragment.newInstance();
                     break;
                 case R.id.navigation_monthly:
                     mTextMessage.setText("월별 통계 startActivity");
@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
             if(selectedFragment==null)
             {
                 //nullPointer방지
-                selectedFragment = ItemOneFragment.newInstance();
+                selectedFragment = InputFragment.newInstance();
             }
             FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
             transaction.replace(R.id.content, selectedFragment);
@@ -99,7 +99,6 @@ public class MainActivity extends AppCompatActivity {
         navigation.setItemIconTintList(null);                     // 아이콘 색상 살리기
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
         navigation.setSelectedItemId(R.id.navigation_home);    // 홈 화면으로 시작
-
     }
 
 
