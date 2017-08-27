@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff">
+
+    <RelativeLayout
+        android:id="@+id/relativeCharacterActionbar"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:background="@color/colorAccent">
+        <Button
+            android:id="@+id/btnBack"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_margin="18dp"
+            android:background="@drawable/button_back"
+            android:onClick="onClick" />
+        <TextView
+            android:id="@+id/tvCharacter"
+            android:text="캐릭터"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="17sp"
+            android:textColor="#ffffff"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@id/btnBack"
+            android:layout_toEndOf="@id/btnBack" />
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/relativCharacterWhole"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/relativeCharacterActionbar"
+        android:background="@color/middle_gray">
+
+        <RelativeLayout
+            android:id="@+id/relativeMainCharacter"
+            android:layout_width="400dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="7dp"
+            android:padding="7dp"
+            android:layout_centerHorizontal="true"
+            android:background="@color/light_gray">
+
+
+            <!--캐릭터-->
+            <ImageView
+                android:id="@+id/imageMainCharacter"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_marginLeft="50dp"
+                android:layout_marginRight="10dp"
+                android:src="@drawable/image_americano"/>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/imageMainCharacter"
+                android:layout_centerVertical="true">
+
+                <TextView
+                    android:id="@+id/tvCharacterName"
+                    android:text="아메리카노"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp"
+                    android:textColor="@color/heavy_gray"
+                    android:layout_marginLeft="5dp"
+                    android:layout_alignParentLeft="true"/>
+
+                <!--포인트 -->
+                <RelativeLayout
+                    android:id="@+id/relativePoint"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tvCharacterName"
+                    android:layout_alignParentLeft="true">
+
+                    <ImageView
+                        android:id="@+id/imagePoint"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:src="@drawable/image_coins"/>
+
+                    <TextView
+                        android:id="@+id/tvAutoParse"
+                        android:text="100P"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="16sp"
+                        android:textColor="@color/heavy_gray"
+                        android:layout_toRightOf="@id/imagePoint"
+                        android:layout_marginLeft="5dp"/>
+                </RelativeLayout>
+
+                <!-- 상점 -->
+                <RelativeLayout
+                    android:id="@+id/relativeShop"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/relativePoint"
+                    android:layout_alignParentLeft="true"
+                    android:onClick="onClick">
+
+                    <ImageView
+                        android:id="@+id/imageShop"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:src="@drawable/image_shop"/>
+
+                    <TextView
+                        android:id="@+id/tvvv"
+                        android:text="Shop"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="16sp"
+                        android:textColor="@color/heavy_gray"
+                        android:layout_toRightOf="@id/imageShop"
+                        android:layout_marginLeft="5dp"/>
+                </RelativeLayout>
+
+            </RelativeLayout>
+
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/relativeOtherCharacter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/relativeMainCharacter"
+            android:background="@color/cardview_dark_background">
+
+            <RelativeLayout
+                android:id="@+id/relativeCharacter1"
+                android:layout_width="160dp"
+                android:layout_height="100dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentLeft="true"
+                android:layout_margin="10dp"
+                android:background="@color/colorAccent">
+                <ImageView
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_centerVertical="true"
+                    android:layout_centerHorizontal="true"
+                    android:src="@drawable/image_americano"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/relativeCharacter2"
+                android:layout_width="160dp"
+                android:layout_height="100dp"
+                android:layout_toRightOf="@id/relativeCharacter1"
+                android:layout_margin="10dp"
+                android:background="@color/colorAccent">
+                <ImageView
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_centerVertical="true"
+                    android:layout_centerHorizontal="true"
+                    android:src="@drawable/image_americano"/>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/relativeCharacter3"
+                android:layout_width="160dp"
+                android:layout_height="100dp"
+                android:layout_below="@id/relativeCharacter1"
+                android:layout_margin="10dp"
+                android:background="@color/colorAccent">
+
+                <ImageView
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_centerVertical="true"
+                    android:layout_centerHorizontal="true"
+                    android:src="@drawable/image_americano"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/relativeCharacter4"
+                android:layout_width="160dp"
+                android:layout_height="100dp"
+                android:layout_below="@id/relativeCharacter2"
+                android:layout_toRightOf="@id/relativeCharacter3"
+                android:layout_margin="10dp"
+                android:background="@color/colorAccent">
+
+                <ImageView
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_centerVertical="true"
+                    android:layout_centerHorizontal="true"
+                    android:src="@drawable/image_americano"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/relativeCharacter5"
+                android:layout_width="160dp"
+                android:layout_height="100dp"
+                android:layout_below="@id/relativeCharacter3"
+                android:layout_margin="10dp"
+                android:background="@color/colorAccent">
+
+                <ImageView
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_centerVertical="true"
+                    android:layout_centerHorizontal="true"
+                    android:src="@drawable/image_americano"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/relativeCharacter6"
+                android:layout_width="160dp"
+                android:layout_height="100dp"
+                android:layout_below="@id/relativeCharacter4"
+                android:layout_toRightOf="@id/relativeCharacter3"
+                android:layout_margin="10dp"
+                android:background="@color/colorAccent">
+
+                <ImageView
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_centerVertical="true"
+                    android:layout_centerHorizontal="true"
+                    android:src="@drawable/image_americano"/>
+            </RelativeLayout>
+
+
+
+
+
+
+
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+
+
+</RelativeLayout>
