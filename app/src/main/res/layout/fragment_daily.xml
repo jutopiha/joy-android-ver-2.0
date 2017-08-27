@@ -7,14 +7,16 @@
     <RelativeLayout
         android:id="@+id/relativeTitle"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="56dp"
+        android:background="@color/colorAccent">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="오늘의 저축과 소비"
-            android:textSize="30dp"
-            android:textColor="@color/coral"
+            android:text="Daily Statistic"
+            android:textSize="17sp"
+            android:textColor="@color/light_gray"
+            android:layout_margin="10dp"
             android:layout_centerVertical="true"
             android:layout_centerHorizontal="true"/>
     </RelativeLayout>
@@ -29,14 +31,16 @@
         android:layout_centerHorizontal="true"
         android:layout_below="@id/relativeTitle">
 
+        <!-- 임시 minDate maxDate-->
         <CalendarView
             android:id="@+id/calendar"
             android:layout_width="500dp"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
+            android:layout_centerHorizontal="true"
 
             android:focusedMonthDateColor="#ff0000"
-            android:minDate="01/01/2017"
+            android:minDate="08/01/2017"
+            android:maxDate="08/26/2017"
             android:selectedWeekBackgroundColor="#ffff00"
             android:showWeekNumber="false"
             android:unfocusedMonthDateColor="#0000ff"
@@ -46,11 +50,12 @@
         <Button
            android:id="@+id/objectBtn"
             android:text="Okay"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="100dp"
+            android:layout_height="35dp"
             android:theme = "@style/MyButton"
             android:layout_below="@id/calendar"
-            android:layout_centerHorizontal="true"/>
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="-30dp"/>
     </RelativeLayout>
 
     <RelativeLayout

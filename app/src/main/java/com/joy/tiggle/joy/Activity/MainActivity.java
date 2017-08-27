@@ -17,6 +17,7 @@ import android.widget.TextView;
 import com.facebook.AccessToken;
 import com.joy.tiggle.joy.Fragment.ItemOneFragment;
 import com.joy.tiggle.joy.Fragment.ItemThreeFragment;
+import com.joy.tiggle.joy.Fragment.DailyFragment;
 import com.joy.tiggle.joy.R;
 
 public class MainActivity extends AppCompatActivity {
@@ -34,15 +35,14 @@ public class MainActivity extends AppCompatActivity {
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             Fragment selectedFragment = null;
             switch (item.getItemId()) {
-
-                case R.id.navigation_home:
-                    mTextMessage.setText("메인 화면");
-                    return true;
                 case R.id.navigation_save_new:
                     //ItemOneFragment.java를 불러온다
                     selectedFragment = ItemOneFragment.newInstance();
                     break;
                 case R.id.navigation_daily:
+                    selectedFragment = DailyFragment.newInstance();
+                    break;
+                case R.id.navigation_home:
                     selectedFragment = ItemThreeFragment.newInstance();
                     break;
                 case R.id.navigation_monthly:
@@ -98,7 +98,7 @@ public class MainActivity extends AppCompatActivity {
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setItemIconTintList(null);                     // 아이콘 색상 살리기
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
-        navigation.setSelectedItemId(R.id.navigation_daily);    // 기본 선택
+        navigation.setSelectedItemId(R.id.navigation_home);    // 홈 화면으로 시작
 
     }
 
