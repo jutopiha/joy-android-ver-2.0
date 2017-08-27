@@ -117,7 +117,7 @@ public class MainActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.menu_info:
                 mTextMessage.setText("info startActivity");
-                Intent intent = new Intent(this, CharacterAvtivity.class);
+                Intent intent = new Intent(this, CharacterActivity.class);
                 startActivity(intent);
                 finish();
 
