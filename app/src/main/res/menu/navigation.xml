@@ -3,7 +3,7 @@
 
     <item
         android:id="@+id/navigation_save_new"
-        android:icon="@drawable/icon_expense"
+        android:icon="@drawable/icon_hand"
         android:title="@string/title_navigation1" />
 
     <item
@@ -13,12 +13,12 @@
 
     <item
         android:id="@+id/navigation_home"
-        android:icon="@drawable/icon_home"
+        android:icon="@drawable/icon_pig"
         android:title="@string/title_navigation3" />
 
     <item
         android:id="@+id/navigation_monthly"
-        android:icon="@drawable/icon_chart"
+        android:icon="@drawable/icon_chart_linear"
         android:title="@string/title_monthly" />
 
     <item
