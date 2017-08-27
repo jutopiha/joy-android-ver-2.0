@@ -5,6 +5,13 @@
     <!-- To connect with Server. 2017-05-18 by Juha. -->
     <uses-permission android:name="android.permission.INTERNET"/>
 
+    <!-- To use BrodacastReceiver for SMS. 2017-08-08 by Juha. -->
+    <uses-permission android:name="android.permission.RECEIVE_SMS" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.READ_SMS"/>
+    <uses-permission android:name="android.permission.SEND_SMS"/>
+
     <application
         android:allowBackup="true"
         android:icon="@drawable/icon_logo"
@@ -42,6 +49,19 @@
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/facebook_app_id"/>
+
+
+        <!-- To use BrodacastReceiver for SMS. 2017-08-08 by Juha. -->
+        <receiver
+            android:name ="com.joy.tiggle.joy.Receiver.SmsReceiver"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter android:priority="10000">
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+                <action android:name="android.provider.Telephony.SMS_RECEIVED" />
+            </intent-filter>
+        </receiver>
+
 
 
     </application>
