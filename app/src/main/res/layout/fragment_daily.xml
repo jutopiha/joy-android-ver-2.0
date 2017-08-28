@@ -54,8 +54,7 @@
             android:layout_height="35dp"
             android:theme = "@style/MyButton"
             android:layout_below="@id/calendar"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="-30dp"/>
+            android:layout_centerHorizontal="true"/>
     </RelativeLayout>
 
     <RelativeLayout

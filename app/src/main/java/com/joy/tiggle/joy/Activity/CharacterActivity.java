@@ -5,16 +5,14 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.Button;
 
-import com.joy.tiggle.joy.CustomDialog;
 import com.joy.tiggle.joy.R;
 
 /**
  * Created by Lee Juha on 2017-08-27.
  */
 
-public class CharacterAvtivity extends AppCompatActivity implements View.OnClickListener {
+public class CharacterActivity extends AppCompatActivity implements View.OnClickListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,6 +20,7 @@ public class CharacterAvtivity extends AppCompatActivity implements View.OnClick
         setContentView(R.layout.activity_character);
 
         setCustomActionBar();
+
 
     }
 
@@ -32,9 +31,12 @@ public class CharacterAvtivity extends AppCompatActivity implements View.OnClick
                 startActivity(intent);
                 finish();
                 break;
-
+            case R.id.relativeShop:
+                intent = new Intent(getApplicationContext(), ShopActivity.class);
+                startActivity(intent);
+                finish();
+                break;
         }
-
     }
     private boolean setCustomActionBar(){
         ActionBar actionBar = getSupportActionBar();
@@ -44,5 +46,9 @@ public class CharacterAvtivity extends AppCompatActivity implements View.OnClick
     }
 
 
-
+    public void onClickShop(View v){
+        Intent intent = new Intent(getApplicationContext(), ShopActivity.class);
+        startActivity(intent);
+        finish();
+    }
 }
