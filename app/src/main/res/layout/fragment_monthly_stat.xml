@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:id="@+id/relativeTitle"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:background="@color/colorAccent">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="월별 통계"
+                android:textSize="17sp"
+                android:textColor="@color/light_gray"
+                android:layout_margin="10dp"
+                android:layout_centerVertical="true"
+                android:layout_centerHorizontal="true"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/relativeMonthlyStat1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/relativeTitle"
+            android:layout_marginTop = "30dp">
+
+            <TextView
+                android:id="@+id/fakeView1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:padding="20dp"/>
+
+            <NumberPicker
+                android:id="@+id/selectYear"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toLeftOf="@id/fakeView1" />
+
+            <NumberPicker
+                android:id="@+id/selectMonth"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/fakeView1" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/relativeMonthlyStat2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/relativeMonthlyStat1"
+            android:layout_marginTop = "30dp">
+
+            <Button
+                android:id="@+id/chartBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="그래프"
+                android:layout_centerHorizontal="true"/>
+        </RelativeLayout>
+
+        <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:id = "@+id/chart1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/relativeMonthlyStat2"
+            android:layout_marginTop = "30dp"
+            >
+
+            <com.github.mikephil.charting.charts.PieChart
+                android:id="@+id/idPieChart"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"></com.github.mikephil.charting.charts.PieChart>
+        </RelativeLayout>
+    </RelativeLayout>
+</ScrollView>
