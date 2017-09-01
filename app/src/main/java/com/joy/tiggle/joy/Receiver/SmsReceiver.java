@@ -134,7 +134,7 @@ public class SmsReceiver extends BroadcastReceiver {
                         // 서버와 전송도 아직 확인하지 못함.
 
                         /* server에 전송하는 코드 추가 */
-                        //sendObject();
+                        sendObject();
 
                     }
                     this.abortBroadcast();

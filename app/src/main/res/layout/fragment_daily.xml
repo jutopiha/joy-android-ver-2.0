@@ -40,7 +40,7 @@
 
             android:focusedMonthDateColor="#ff0000"
             android:minDate="08/01/2017"
-            android:maxDate="08/26/2017"
+            android:maxDate="09/01/2017"
             android:selectedWeekBackgroundColor="#ffff00"
             android:showWeekNumber="false"
             android:unfocusedMonthDateColor="#0000ff"
