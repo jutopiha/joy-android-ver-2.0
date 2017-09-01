@@ -50,7 +50,7 @@
 
             <!-- btnDaily로 이름 바꾸는게 좋을 듯-->
             <Button
-               android:id="@+id/objectBtn"
+                android:id="@+id/objectBtn"
                 android:text="Okay"
                 android:layout_width="100dp"
                 android:layout_height="35dp"
