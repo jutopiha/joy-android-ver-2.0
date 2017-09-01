@@ -58,7 +58,7 @@ public class HomeFragment extends Fragment {
     /*기본*/
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstancesState){
-        return inflater.inflate(R.layout.fragment_item_three, container, false);
+        return inflater.inflate(R.layout.fragment_home, container, false);
     }
 
 /*

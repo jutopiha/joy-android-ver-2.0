@@ -32,6 +32,10 @@
         <activity android:name=".Activity.SettingActivity"></activity>
         <activity android:name=".Activity.CharacterActivity"></activity>
         <activity android:name=".Activity.ShopActivity"></activity>
+        <activity android:name=".Activity.ShowIncomeDetailActivity"></activity>
+        <activity android:name=".Activity.ShowExpenseDetailActivity"></activity>
+        <activity android:name=".Activity.ModifyIncomeActivity"></activity>
+        <activity android:name=".Activity.ModifyExpenseActivity"></activity>
 
         <!-- To use facebook. 2017-05-18 by Juha. -->
         <activity android:name="com.facebook.FacebookActivity"
