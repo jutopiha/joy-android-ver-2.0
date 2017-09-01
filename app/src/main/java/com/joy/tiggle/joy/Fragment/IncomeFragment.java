@@ -2,6 +2,8 @@ package com.joy.tiggle.joy.Fragment;
 
 
 import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.StrictMode;
@@ -14,6 +16,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.NumberPicker;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TimePicker;
@@ -36,6 +39,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -101,6 +105,11 @@ public class IncomeFragment extends Fragment {
         mIncomeCategorySp = (Spinner) view.findViewById(R.id.incomeCategorySp);
         mObjectBtn = (Button) view.findViewById(R.id.objectBtn);
         mR = (RelativeLayout)view.findViewById(R.id.relativeIncome);
+
+
+        //spinner divider색깔 조정
+        colorizeDatePicker(mDate);
+        applyStyLing(mTime);
 
 
         //현재 날짜로 picker 초기설정
@@ -271,5 +280,57 @@ public class IncomeFragment extends Fragment {
         }
 
     }
+
+    //date spinner divider색깔 조정
+    public static void colorizeDatePicker(DatePicker datePicker) {
+        Resources system = Resources.getSystem();
+        int dayId = system.getIdentifier("day", "id", "android");
+        int monthId = system.getIdentifier("month", "id", "android");
+        int yearId = system.getIdentifier("year", "id", "android");
+
+        NumberPicker dayPicker = (NumberPicker) datePicker.findViewById(dayId);
+        NumberPicker monthPicker = (NumberPicker) datePicker.findViewById(monthId);
+        NumberPicker yearPicker = (NumberPicker) datePicker.findViewById(yearId);
+
+        setDividerColor(dayPicker);
+        setDividerColor(monthPicker);
+        setDividerColor(yearPicker);
+    }
+
+    private static void setDividerColor(NumberPicker picker) {
+        if (picker == null)
+            return;
+
+        final int count = picker.getChildCount();
+        for (int i = 0; i < count; i++) {
+            try {
+                Field dividerField = picker.getClass().getDeclaredField("mSelectionDivider");
+                dividerField.setAccessible(true);
+                ColorDrawable colorDrawable = new ColorDrawable(picker.getResources().getColor(R.color.colorAccent));
+                dividerField.set(picker, colorDrawable);
+                picker.invalidate();
+            } catch (Exception e) {
+                Log.w("setDividerColor", e);
+            }
+        }
+    }
+
+    //time spinner color 조정
+    private void applyStyLing(TimePicker timePickerDialog){
+        Resources system = Resources.getSystem();
+        int hourNumberPickerId = system.getIdentifier("hour", "id", "android");
+        int minuteNumberPickerId = system.getIdentifier("minute", "id", "android");
+        int ampmNumberPickerId = system.getIdentifier("amPm", "id", "android");
+
+        NumberPicker hourNumberPicker = (NumberPicker) timePickerDialog.findViewById(hourNumberPickerId);
+        NumberPicker minuteNumberPicker = (NumberPicker) timePickerDialog.findViewById(minuteNumberPickerId);
+        NumberPicker ampmNumberPicker = (NumberPicker) timePickerDialog.findViewById(ampmNumberPickerId);
+
+        setDividerColor(hourNumberPicker);
+        setDividerColor(minuteNumberPicker);
+        setDividerColor(ampmNumberPicker);
+    }
+
+
 
 }

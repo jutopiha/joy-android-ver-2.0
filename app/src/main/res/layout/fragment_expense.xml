@@ -7,23 +7,23 @@
         android:id="@+id/relativeExpense"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:onClick = "linearOnClick"
-        android:layout_marginLeft="50dp"
-        android:layout_marginRight="50dp">
+        android:onClick = "linearOnClick">
 
+
+        <!--날짜 입력받기-->
         <RelativeLayout
             android:id="@+id/relativeExpenseDate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true">
 
-            <!--spinner로 날짜 입력받기-->
             <DatePicker
                 android:id="@+id/expenseDatePicker"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:datePickerMode="spinner"
                 android:calendarViewShown="false"/>
+
             <EditText
                 android:id="@+id/expenseDayEt"
                 android:layout_width="wrap_content"
@@ -34,6 +34,7 @@
                 android:layout_centerInParent="true" />
         </RelativeLayout>
 
+        <!--시간 입력받기-->
         <RelativeLayout
             android:id="@+id/relativeExpenseTime"
             android:layout_width="wrap_content"
@@ -41,13 +42,16 @@
             android:layout_below="@id/relativeExpenseDate"
             android:layout_centerHorizontal="true">
 
-            <!--spinner로 시간 입력받기-->
             <TimePicker
                 android:id="@+id/expenseTimePicker"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:timePickerMode="spinner"
-                android:calendarViewShown="false"/>
+                android:calendarViewShown="false"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"/>
+
             <EditText
                 android:id="@+id/expenseTimeEt"
                 android:layout_width="wrap_content"
@@ -58,120 +62,116 @@
                 android:layout_centerInParent="true"/>
         </RelativeLayout>
 
-        <!--분야, 금액 입력받는 LinearLayout-->
+        <!--분야, 결제수단, 금액 입력받기-->
         <RelativeLayout
-            android:id="@+id/relativeCategoryAndMoney"
+            android:id="@+id/relativeCategoryPayMethodMoney"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/relativeExpenseTime"
             android:layout_centerHorizontal="true"
-            android:gravity="center">
-            <!--분야 입력받는 RelativeLayout-->
+            android:layout_marginTop = "50dp">
+
+            <!--결제 수단 입력받기 -->
+            <RelativeLayout
+                android:id="@+id/relativePayMethod"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:paddingLeft="50dp"
+                android:paddingRight="50dp"
+                android:layout_alignParentTop="true">
+
+                <TextView
+                    android:id="@+id/expensePayMethodTv"
+                    android:text="결제수단"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <Spinner
+                    android:id="@+id/expensePayMethodSp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/expensePayMethodTv"
+                    android:entries="@array/expensePayMethod"/>
+            </RelativeLayout>
+
+            <!--분야 입력받기-->
             <RelativeLayout
                 android:id="@+id/relativeExpenseCategory"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:paddingLeft="50dp">
+                android:layout_toLeftOf="@id/relativePayMethod"
+                android:layout_alignParentTop="true">
+
                 <TextView
                     android:id="@+id/expenseCategoryTv"
                     android:text="분야"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingLeft="18dp"/>
+                    android:layout_height="wrap_content" />
                 <Spinner
                     android:id="@+id/expenseCategorySp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/expenseCategoryTv"
                     android:entries="@array/expenseCategory"
-                    android:paddingLeft="18dp"
-                    android:paddingTop="18dp"/>
+                    android:layout_below="@id/expenseCategoryTv"/>
             </RelativeLayout>
 
             <!--금액 입력받는 RelativeLayout-->
             <RelativeLayout
                 android:id="@+id/relativeExpenseMoney"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:paddingLeft="50dp"
-                android:layout_alignLeft="@id/relativeExpenseCategory"
-                android:layout_below="@id/relativeExpenseCategory">
+                android:layout_toRightOf="@id/relativePayMethod"
+                android:layout_alignParentTop="true">
 
                 <TextView
                     android:id="@+id/expenseMoneyTv"
                     android:text="금액"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingLeft= "18dp"/>
+                    android:layout_height="wrap_content" />
                 <EditText
                     android:id = "@+id/expenseMoneyEt"
                     android:hint="10,000"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/expenseMoneyTv"
-                    android:paddingLeft="12dp"
                     android:inputType="number"/>
             </RelativeLayout>
 
-            <!--결제수단 입력받는 RelativeLayout-->
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:paddingLeft="50dp"
-                android:layout_alignLeft="@id/relativeExpenseMoney"
-                android:layout_below="@id/relativeExpenseMoney">
-
-                <TextView
-                    android:id="@+id/expensePayMethodTv"
-                    android:text="결제수단"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingLeft= "18dp"/>
-                <Spinner
-                    android:id="@+id/expensePayMethodSp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/expensePayMethodTv"
-                    android:entries="@array/expensePayMethod"
-                    android:paddingLeft="18dp"
-                    android:paddingTop="18dp"/>
-            </RelativeLayout>
         </RelativeLayout>
 
         <!--메모 입력받는 RelativeLayout-->
         <RelativeLayout
             android:id="@+id/relativeExpenseMemo"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
-            android:layout_marginLeft="50dp"
-            android:layout_marginRight="50dp"
-            android:layout_below="@id/relativeCategoryAndMoney">
+            android:layout_below="@id/relativeCategoryPayMethodMoney"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="100dp"
+            android:layout_marginRight="100dp"
+            android:layout_marginTop = "50dp">
+
             <TextView
                 android:id="@+id/expenseMemoTv"
                 android:text="메모"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingLeft="18dp"/>
+                android:layout_height="wrap_content" />
+
             <EditText
                 android:id="@+id/expenseMemoEt"
                 android:hint="메모"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/expenseMemoTv"
-                android:paddingLeft = "12dp"/>
+                android:layout_below="@id/expenseMemoTv" />
         </RelativeLayout>
 
         <!--Button출력하는 LinearLayout-->
         <RelativeLayout
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center"
-            android:layout_below="@id/relativeExpenseMemo">
+            android:layout_below="@id/relativeExpenseMemo"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop = "50dp">
             <Button
                 android:id="@+id/objectBtn"
                 android:text="확인"
