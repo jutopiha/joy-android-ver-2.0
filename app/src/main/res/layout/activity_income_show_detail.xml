@@ -1,46 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <!--액션바-->
     <RelativeLayout
+        android:id="@+id/relativeShowIncomeDetailActionbar"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="56dp"
+        android:background="@color/colorAccent">
+        <Button
+            android:id="@+id/backButton"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_margin="18dp"
+            android:background="@drawable/button_back"
+            android:onClick="onBackButtonClicked" />
 
-        <!--액션바-->
-        <RelativeLayout
-            android:id="@+id/relativeShowIncomeDetailActionbar"
+        <TextView
+            android:id="@+id/tvCharacter"
+            android:text="수입 상세 조회"
             android:layout_width="match_parent"
-            android:layout_height="56dp"
-            android:background="@color/colorAccent">
-            <Button
-                android:id="@+id/backButton"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:layout_margin="18dp"
-                android:background="@drawable/button_back"
-                android:onClick="onBackButtonClicked" />
+            android:layout_height="wrap_content"
+            android:textSize="17sp"
+            android:textColor="#ffffff"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@id/backButton"
+            android:layout_toEndOf="@id/backButton" />
+    </RelativeLayout>
 
-            <TextView
-                android:id="@+id/tvCharacter"
-                android:text="수입 상세 조회"
-               android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="17sp"
-                android:textColor="#ffffff"
-                android:layout_centerVertical="true"
-                android:layout_toRightOf="@id/backButton"
-                android:layout_toEndOf="@id/backButton" />
-        </RelativeLayout>
+    <!--내용-->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/relativeShowIncomeDetailActionbar">
 
-        <!--내용-->
         <RelativeLayout
             android:id="@+id/relativeShowIncomeDetail"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/relativeShowIncomeDetailActionbar">
-
+            android:layout_height="match_parent">
 
             <!--날짜-->
             <RelativeLayout
@@ -221,6 +220,7 @@
                     android:textSize="18dp"/>
             </RelativeLayout>
 
+            <!--버튼-->
             <RelativeLayout
                 android:id="@+id/incomeDetailButton"
                 android:layout_width="match_parent"
@@ -257,6 +257,5 @@
 
             </RelativeLayout>
         </RelativeLayout>
-    </RelativeLayout>
-
-</ScrollView>
+    </ScrollView>
+</RelativeLayout>

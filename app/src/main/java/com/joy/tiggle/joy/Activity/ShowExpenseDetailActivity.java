@@ -66,14 +66,13 @@ public class ShowExpenseDetailActivity extends AppCompatActivity {
     }
 
     public void onBackButtonClicked(View v) {
-        Toast.makeText(getApplicationContext(), "돌아가기 버튼이 눌렸어요", Toast.LENGTH_LONG).show();
         Intent intent = new Intent();
         setResult(RESULT_CANCELED);
         finish();
     }
 
     public void onDeleteButtonClicked(View v){
-        Toast.makeText(getApplicationContext(), "삭제버튼 눌림", Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(), "삭제완료", Toast.LENGTH_LONG).show();
         deleteExpenseObject();
 
         Intent intent = new Intent();

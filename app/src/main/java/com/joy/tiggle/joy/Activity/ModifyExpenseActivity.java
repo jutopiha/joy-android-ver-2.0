@@ -1,8 +1,11 @@
 package com.joy.tiggle.joy.Activity;
 
 import android.content.Intent;
+import android.content.res.Resources;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.os.StrictMode;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -10,9 +13,9 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.NumberPicker;
 import android.widget.Spinner;
 import android.widget.TimePicker;
-import android.widget.Toast;
 
 import com.joy.tiggle.joy.Object.Expense;
 import com.joy.tiggle.joy.R;
@@ -32,6 +35,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -64,6 +68,8 @@ public class ModifyExpenseActivity extends AppCompatActivity implements View.OnC
         super.onCreate(saveInstanceState);
         setContentView(R.layout.activity_modify_expense);
 
+        setCustomActionBar();
+
         mDate = (DatePicker)findViewById(R.id.expenseDatePicker);
         mTime = (TimePicker)findViewById(R.id.expenseTimePicker);
         mExpenseDay = (EditText)findViewById(R.id.expenseDayEt);
@@ -77,7 +83,13 @@ public class ModifyExpenseActivity extends AppCompatActivity implements View.OnC
         Intent intet = getIntent();
         selectExpense = (Expense) getIntent().getSerializableExtra("selectExpense");
 
-        mExpenseDay.setText(String.valueOf(makeDateForm(selectExpense.getmDate())));
+        //숫자를 년,월,일로 분리하는 코드
+        year = selectExpense.getmDate()/10000;
+        month = (selectExpense.getmDate()-year*10000)/100;
+        day = selectExpense.getmDate()-year*10000-month*100;
+
+        mExpenseDay.setText(String.valueOf(year)+"-"+String.valueOf(month)+"-"+String.valueOf(day));
+        //mExpenseDay.setText(String.valueOf(makeDateForm(selectExpense.getmDate())));
         mExpenseTime.setText(String.valueOf(makeTimeForm(selectExpense.getmTime())));
 
         Log.d("*************요기요기",selectExpense.getmCategory());
@@ -119,6 +131,9 @@ public class ModifyExpenseActivity extends AppCompatActivity implements View.OnC
 
         mExpenseMemo.setText(selectExpense.getmMemo());
 
+        //spinner divider색깔 조정
+        colorizeDatePicker(mDate);
+        applyStyLing(mTime);
         //여기까지 기존의 사용자가 입력했던 값을 불러와 editText로 띄워준다.
 
         //datePicker가 변할 때 editText의 값을 바꿔주기 위한 코드들
@@ -159,7 +174,6 @@ public class ModifyExpenseActivity extends AppCompatActivity implements View.OnC
     }
 
     public void onBackButtonClicked(View v) {
-        Toast.makeText(getApplicationContext(), "돌아가기 버튼이 눌렸어요", Toast.LENGTH_LONG).show();
         finish();
     }
 
@@ -279,5 +293,62 @@ public class ModifyExpenseActivity extends AppCompatActivity implements View.OnC
         } else {
             return null;
         }
+    }
+
+    private boolean setCustomActionBar(){
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.hide();       // 기본 액션바 숨기기
+
+        return true;
+    }
+
+    //date spinner divider색깔 조정
+    public static void colorizeDatePicker(DatePicker datePicker) {
+        Resources system = Resources.getSystem();
+        int dayId = system.getIdentifier("day", "id", "android");
+        int monthId = system.getIdentifier("month", "id", "android");
+        int yearId = system.getIdentifier("year", "id", "android");
+
+        NumberPicker dayPicker = (NumberPicker) datePicker.findViewById(dayId);
+        NumberPicker monthPicker = (NumberPicker) datePicker.findViewById(monthId);
+        NumberPicker yearPicker = (NumberPicker) datePicker.findViewById(yearId);
+
+        setDividerColor(dayPicker);
+        setDividerColor(monthPicker);
+        setDividerColor(yearPicker);
+    }
+
+    private static void setDividerColor(NumberPicker picker) {
+        if (picker == null)
+            return;
+
+        final int count = picker.getChildCount();
+        for (int i = 0; i < count; i++) {
+            try {
+                Field dividerField = picker.getClass().getDeclaredField("mSelectionDivider");
+                dividerField.setAccessible(true);
+                ColorDrawable colorDrawable = new ColorDrawable(picker.getResources().getColor(R.color.colorAccent));
+                dividerField.set(picker, colorDrawable);
+                picker.invalidate();
+            } catch (Exception e) {
+                Log.w("setDividerColor", e);
+            }
+        }
+    }
+
+    //time spinner color 조정
+    private void applyStyLing(TimePicker timePickerDialog){
+        Resources system = Resources.getSystem();
+        int hourNumberPickerId = system.getIdentifier("hour", "id", "android");
+        int minuteNumberPickerId = system.getIdentifier("minute", "id", "android");
+        int ampmNumberPickerId = system.getIdentifier("amPm", "id", "android");
+
+        NumberPicker hourNumberPicker = (NumberPicker) timePickerDialog.findViewById(hourNumberPickerId);
+        NumberPicker minuteNumberPicker = (NumberPicker) timePickerDialog.findViewById(minuteNumberPickerId);
+        NumberPicker ampmNumberPicker = (NumberPicker) timePickerDialog.findViewById(ampmNumberPickerId);
+
+        setDividerColor(hourNumberPicker);
+        setDividerColor(minuteNumberPicker);
+        setDividerColor(ampmNumberPicker);
     }
 }
