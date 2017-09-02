@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.StrictMode;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -41,6 +42,8 @@ public class ShowExpenseDetailActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_expense_show_detail);
+        setCustomActionBar();
+
 
         mExpenseDay = (TextView)findViewById(R.id.expenseDayValue);
         mExpenseTime = (TextView)findViewById(R.id.expenseTimeValue);
@@ -189,5 +192,12 @@ public class ShowExpenseDetailActivity extends AppCompatActivity {
 
         String result = timeOfHour+":"+timeOfMinute;
         return result;
+    }
+
+    private boolean setCustomActionBar(){
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.hide();       // 기본 액션바 숨기기
+
+        return true;
     }
 }

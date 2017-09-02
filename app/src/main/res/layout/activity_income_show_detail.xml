@@ -2,228 +2,261 @@
 <ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    >
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:orientation="vertical"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        >
+        android:layout_height="match_parent">
 
-        <LinearLayout
-            android:orientation="horizontal"
+        <!--액션바-->
+        <RelativeLayout
+            android:id="@+id/relativeShowIncomeDetailActionbar"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center">
-
-            <ImageButton
-                android:id = "@+id/backButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding = "0dp"
-                android:layout_margin="50dp"
-                android:src = "@drawable/re_btn"
-                android:onClick="onBackButtonClicked"
-                android:background="#00ff0000"/>
+            android:layout_height="56dp"
+            android:background="@color/colorAccent">
+            <Button
+                android:id="@+id/backButton"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_margin="18dp"
+                android:background="@drawable/button_back"
+                android:onClick="onBackButtonClicked" />
 
             <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="30dp"
+                android:id="@+id/tvCharacter"
                 android:text="수입 상세 조회"
-                android:textSize="30dp"
-                android:textColor="@color/coral"/>
-        </LinearLayout>
+               android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="17sp"
+                android:textColor="#ffffff"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@id/backButton"
+                android:layout_toEndOf="@id/backButton" />
+        </RelativeLayout>
 
-        <LinearLayout
+        <!--내용-->
+        <RelativeLayout
+            android:id="@+id/relativeShowIncomeDetail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_below="@id/relativeShowIncomeDetailActionbar">
+
 
             <!--날짜-->
             <RelativeLayout
+                android:id="@+id/incomeDay"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:paddingBottom="50dp"
-                android:layout_marginLeft="100dp"
-                android:layout_marginRight="100dp"
-                >
+                android:layout_centerHorizontal="true"
+                android:paddingTop = "50dp">
+
+                <TextView
+                    android:id="@+id/fakeView1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:paddingLeft="50dp"
+                    android:paddingRight="50dp"
+                    android:paddingBottom="25dp"/>
 
                 <TextView
                     android:id="@+id/incomeDayTv"
-                    android:text="날짜"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:paddingLeft= "18dp"
                     android:textColor="#000000"
                     android:textSize="24dp"
-                    android:layout_marginBottom="20dp"/>
+                    android:text="날짜"
+                    android:layout_toLeftOf="@id/fakeView1"/>
+
                 <TextView
-                    android:id = "@+id/incomeDayValue"
-                    android:layout_width="match_parent"
+                    android:id="@+id/incomeDayValue"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft = "16dp"
-                    android:layout_marginRight="16dp"
-                    android:layout_below="@id/incomeDayTv"
-                    android:paddingLeft="12dp"
-                    android:text = "test"
-                    android:textColor="#666666"
-                    android:textSize="16dp"/>
+                    android:layout_below="@id/fakeView1"
+                    android:layout_alignLeft="@id/fakeView1"
+                    android:textSize="18dp"/>
             </RelativeLayout>
 
             <!--시간-->
             <RelativeLayout
+                android:id="@+id/incomeTime"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:paddingBottom="50dp"
-                android:layout_marginLeft="100dp"
-                android:layout_marginRight="100dp"
-                >
+                android:layout_centerHorizontal="true"
+                android:layout_below="@id/incomeDay"
+                android:paddingTop = "50dp">
+
+                <TextView
+                    android:id="@+id/fakeView2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:paddingLeft="50dp"
+                    android:paddingRight="50dp"
+                    android:paddingBottom="25dp"/>
 
                 <TextView
                     android:id="@+id/incomeTimeTv"
-                    android:text="시간"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:paddingLeft= "18dp"
                     android:textColor="#000000"
                     android:textSize="24dp"
-                    android:layout_marginBottom="20dp"/>
-                <TextView
-                    android:id = "@+id/incomeTimeValue"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft = "16dp"
-                    android:layout_marginRight="16dp"
-                    android:layout_below="@id/incomeTimeTv"
-                    android:paddingLeft="12dp"
-                    android:text = "test"
-                    android:textColor="#666666"
-                    android:textSize="16dp" />
-            </RelativeLayout>
+                    android:text="시간"
+                    android:layout_toLeftOf="@id/fakeView2"/>
 
+                <TextView
+                    android:id="@+id/incomeTimeValue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/fakeView2"
+                    android:layout_alignLeft="@id/fakeView2"
+                    android:textSize="18dp"/>
+            </RelativeLayout>
 
             <!--분야-->
             <RelativeLayout
+                android:id="@+id/incomeCategory"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:paddingBottom="50dp"
-                android:layout_marginLeft="100dp"
-                android:layout_marginRight="100dp"
-                >
+                android:layout_centerHorizontal="true"
+                android:layout_below="@id/incomeTime"
+                android:paddingTop = "50dp">
+
+                <TextView
+                    android:id="@+id/fakeView3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:paddingLeft="50dp"
+                    android:paddingRight="50dp"
+                    android:paddingBottom="25dp"/>
 
                 <TextView
                     android:id="@+id/incomeCategoryTv"
-                    android:text="분야"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:paddingLeft= "18dp"
                     android:textColor="#000000"
                     android:textSize="24dp"
-                    android:layout_marginBottom="20dp"/>
+                    android:text="분야"
+                    android:layout_toLeftOf="@id/fakeView3"/>
+
                 <TextView
-                    android:id = "@+id/incomeCategoryValue"
-                    android:layout_width="match_parent"
+                    android:id="@+id/incomeCategoryValue"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft = "16dp"
-                    android:layout_marginRight="16dp"
-                    android:layout_below="@id/incomeCategoryTv"
-                    android:paddingLeft="12dp"
-                    android:text = "test"
-                    android:textColor="#666666"
-                    android:textSize="16dp"/>
+                    android:layout_below="@id/fakeView3"
+                    android:layout_alignLeft="@id/fakeView3"
+                    android:textSize="18dp"/>
             </RelativeLayout>
 
             <!--금액-->
             <RelativeLayout
+                android:id="@+id/incomeMoney"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:paddingBottom="50dp"
-                android:layout_marginLeft="100dp"
-                android:layout_marginRight="100dp"
-                >
+                android:layout_centerHorizontal="true"
+                android:layout_below="@id/incomeCategory"
+                android:paddingTop = "50dp">
+
+                <TextView
+                    android:id="@+id/fakeView4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:paddingLeft="50dp"
+                    android:paddingRight="50dp"
+                    android:paddingBottom="25dp"/>
 
                 <TextView
                     android:id="@+id/incomeMoneyTv"
-                    android:text="금액"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:paddingLeft= "18dp"
                     android:textColor="#000000"
                     android:textSize="24dp"
-                    android:layout_marginBottom="20dp"/>
+                    android:text="금액"
+                    android:layout_toLeftOf="@id/fakeView4"/>
+
                 <TextView
-                    android:id = "@+id/incomeMoneyValue"
-                    android:layout_width="match_parent"
+                    android:id="@+id/incomeMoneyValue"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft = "16dp"
-                    android:layout_marginRight="16dp"
-                    android:layout_below="@id/incomeMoneyTv"
-                    android:paddingLeft="12dp"
-                    android:text = "text"
-                    android:textColor="#666666"
-                    android:textSize="16dp"/>
+                    android:layout_below="@id/fakeView4"
+                    android:layout_alignLeft="@id/fakeView4"
+                    android:textSize="18dp"/>
             </RelativeLayout>
 
             <!--메모-->
             <RelativeLayout
+                android:id="@+id/incomeMemo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:paddingBottom="50dp"
-                android:layout_marginLeft="100dp"
-                android:layout_marginRight="100dp"
-                >
+                android:layout_centerHorizontal="true"
+                android:layout_below="@id/incomeMoney"
+                android:paddingTop="50dp">
+
+                <TextView
+                    android:id="@+id/fakeView5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:paddingLeft="50dp"
+                    android:paddingRight="50dp"
+                    android:paddingBottom="25dp"/>
 
                 <TextView
                     android:id="@+id/incomeMemoTv"
-                    android:text="메모"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:paddingLeft= "18dp"
                     android:textColor="#000000"
                     android:textSize="24dp"
-                    android:layout_marginBottom="20dp"/>
+                    android:text="메모"
+                    android:layout_toLeftOf="@id/fakeView5"/>
+
                 <TextView
-                    android:id = "@+id/incomeMemoValue"
-                    android:layout_width="match_parent"
+                    android:id="@+id/incomeMemoValue"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft = "16dp"
-                    android:layout_marginRight="16dp"
-                    android:layout_below="@id/incomeMemoTv"
-                    android:paddingLeft="12dp"
-                    android:textColor="#666666"
-                    android:textSize="16dp"/>
+                    android:layout_below="@id/fakeView5"
+                    android:layout_alignLeft="@id/fakeView5"
+                    android:textSize="18dp"/>
             </RelativeLayout>
-        </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal"
-            android:gravity="center"
-            android:layout_marginBottom="10dp">
-            <Button
-                android:id="@+id/modifyBtn"
-                android:text="수정"
-                android:layout_width="wrap_content"
+            <RelativeLayout
+                android:id="@+id/incomeDetailButton"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="20dp"
-                android:theme="@style/MyButton"
-                android:onClick = "onModifyButtonClicked"/>
+                android:layout_centerHorizontal="true"
+                android:layout_below="@id/incomeMemo"
+                android:paddingTop="50dp"
+                android:paddingBottom="50dp">
 
-            <Button
-                android:id="@+id/deleteBtn"
-                android:text="삭제"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="20dp"
-                android:theme="@style/MyButton"
-                android:onClick="onDeleteButtonClicked"/>
-        </LinearLayout>
-    </LinearLayout>
+                <TextView
+                    android:id="@+id/fakeView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingRight="30dp"
+                    android:paddingLeft="30dp"
+                    android:layout_centerInParent="true"/>
+
+                <Button
+                    android:id="@+id/modifyBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="수정"
+                    android:onClick="onModifyButtonClicked"
+                    android:layout_toLeftOf="@id/fakeView"/>
+
+                <Button
+                    android:id="@+id/deleteBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="삭제"
+                    android:onClick="onDeleteButtonClicked"
+                    android:layout_toRightOf="@id/fakeView"/>
+
+
+            </RelativeLayout>
+        </RelativeLayout>
+    </RelativeLayout>
+
 </ScrollView>

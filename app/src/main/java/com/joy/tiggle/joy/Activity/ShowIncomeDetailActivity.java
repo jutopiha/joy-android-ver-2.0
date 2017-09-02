@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.StrictMode;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -42,6 +43,8 @@ public class ShowIncomeDetailActivity extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_income_show_detail);
+
+        setCustomActionBar();
 
         mIncomeDay = (TextView)findViewById(R.id.incomeDayValue);
         mIncomeTime = (TextView)findViewById(R.id.incomeTimeValue);
@@ -191,4 +194,10 @@ public class ShowIncomeDetailActivity extends AppCompatActivity{
         return result;
     }
 
+    private boolean setCustomActionBar(){
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.hide();       // 기본 액션바 숨기기
+
+        return true;
+    }
 }
