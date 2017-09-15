@@ -11,11 +11,21 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.NumberPicker;
 
+import com.github.mikephil.charting.animation.Easing;
 import com.github.mikephil.charting.charts.PieChart;
+import com.github.mikephil.charting.charts.RadarChart;
+import com.github.mikephil.charting.components.AxisBase;
 import com.github.mikephil.charting.components.Legend;
+import com.github.mikephil.charting.components.XAxis;
+import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.data.PieEntry;
+import com.github.mikephil.charting.data.RadarData;
+import com.github.mikephil.charting.data.RadarDataSet;
+import com.github.mikephil.charting.data.RadarEntry;
+import com.github.mikephil.charting.formatter.IAxisValueFormatter;
+import com.github.mikephil.charting.interfaces.datasets.IRadarDataSet;
 import com.joy.tiggle.joy.Activity.MainActivity;
 import com.joy.tiggle.joy.R;
 
@@ -45,6 +55,7 @@ import java.util.List;
 
 public class MonthlyStatFragment extends Fragment {
 
+    int test = 0;
     private NumberPicker yearPicker;
     private NumberPicker monthPicker;
     private int selectDay;
@@ -55,6 +66,11 @@ public class MonthlyStatFragment extends Fragment {
     private ArrayList<String> incomeExpenseLabel = new ArrayList<String>();
     public static final int[] MY_COLORS = {
             Color.rgb(247, 120, 107), Color.rgb(145, 168, 208)};
+
+    //레이더차트 관련
+    private RadarChart rChart;
+    private ArrayList<Integer> mineExpenseMoneyData = new ArrayList<Integer>();
+    private ArrayList<Integer> wholeExpenseMoneyData = new ArrayList<Integer>();
 
     /*현재시간 저장하기*/
     long now = System.currentTimeMillis(); //현재시간을 msec로 구함.
@@ -116,6 +132,66 @@ public class MonthlyStatFragment extends Fragment {
         addDataSet();
 
 
+        //add legend to chart
+        Legend legend = mChart.getLegend();
+        legend.setFormSize(10f);
+        legend.setForm(Legend.LegendForm.CIRCLE);
+        legend.setPosition(Legend.LegendPosition.BELOW_CHART_CENTER);
+        legend.setTextSize(12f);
+        legend.setTextColor(Color.BLACK);
+        legend.setXEntrySpace(5f);
+        legend.setYEntrySpace(5f);
+
+        //radarChart설정
+        rChart = (RadarChart)view.findViewById(R.id.idRadarChart);
+        rChart.setRotationEnabled(false);
+        rChart.getDescription().setEnabled(false);
+        rChart.setWebLineWidth(1f);
+        rChart.setWebColor(Color.BLACK);
+        rChart.setWebColorInner(Color.BLACK);
+        rChart.setWebAlpha(100);
+
+        setRadarChartData();
+
+        rChart.animateXY(
+                1400,1400,
+                Easing.EasingOption.EaseInOutQuad,
+                Easing.EasingOption.EaseInOutQuad);
+        XAxis xAxis = rChart.getXAxis();
+
+        xAxis.setTextSize(9f);
+        xAxis.setYOffset(0f);
+        xAxis.setXOffset(0f);
+        xAxis.setValueFormatter(new IAxisValueFormatter() {
+
+            private String[] mActivities = new String[]{"식비", "교통비", "문화", "생활", "음료/간식","교육","공과금","기타"};
+
+            @Override
+            public String getFormattedValue(float value, AxisBase axis) {
+                return mActivities[(int) value % mActivities.length];
+            }
+
+        });
+        xAxis.setTextColor(Color.BLACK);
+
+        YAxis yAxis = rChart.getYAxis();
+        yAxis.setLabelCount(5, false);
+        yAxis.setTextSize(9f);
+        yAxis.setAxisMinimum(0f);
+        yAxis.setAxisMaximum(10000f);  //max값
+        yAxis.setDrawLabels(true);  //숫자들
+
+        Legend l = rChart.getLegend();
+        l.setForm(Legend.LegendForm.CIRCLE);
+        l.setVerticalAlignment(Legend.LegendVerticalAlignment.TOP);
+        l.setHorizontalAlignment(Legend.LegendHorizontalAlignment.CENTER);
+        l.setOrientation(Legend.LegendOrientation.HORIZONTAL);
+        l.setPosition(Legend.LegendPosition.BELOW_CHART_CENTER);
+        l.setDrawInside(false);
+        l.setXEntrySpace(7f);
+        l.setYEntrySpace(5f);
+        l.setTextColor(Color.BLACK);
+
         //버튼리스너
         mChartBtn = (Button)view.findViewById(R.id.chartBtn);
 
@@ -128,12 +204,23 @@ public class MonthlyStatFragment extends Fragment {
 
                 sendObject();
 
+                //파이차트 관련
                 mChart.setRotationEnabled(true);
                 mChart.setHoleRadius(70f);
                 mChart.setTransparentCircleAlpha(0);
                 mChart.setCenterText(month+"월");
                 mChart.setCenterTextSize(10);
                 addDataSet();
+
+                //레이더차트 관련
+                rChart.clear();
+                rChart.setRotationEnabled(false);
+                rChart.getDescription().setEnabled(false);
+                rChart.setWebLineWidth(1f);
+                rChart.setWebColor(Color.BLACK);
+                rChart.setWebColorInner(Color.BLACK);
+                rChart.setWebAlpha(100);
+                setRadarChartData();
             }
         });
 
@@ -146,7 +233,6 @@ public class MonthlyStatFragment extends Fragment {
         StrictMode.setThreadPolicy(policy);
         GetMonthlyStat request = new GetMonthlyStat();
         request.run();
-        //showChart();
     }
 
     public String postData(){
@@ -225,18 +311,29 @@ public class MonthlyStatFragment extends Fragment {
             incomeExpenseLabel.add("수입");
             incomeExpenseLabel.add("지출");
 
-
             //RadarChart data채우기
-            Iterator<?> keys = stringToJson.keys();
 
+            mineExpenseMoneyData.clear();
+            wholeExpenseMoneyData.clear();
+            mineExpenseMoneyData.add(stringToJson.getJSONObject("mine").getInt("식비"));
+            mineExpenseMoneyData.add(stringToJson.getJSONObject("mine").getInt("교통비"));
+            mineExpenseMoneyData.add(stringToJson.getJSONObject("mine").getInt("문화"));
+            mineExpenseMoneyData.add(stringToJson.getJSONObject("mine").getInt("생활"));
+            mineExpenseMoneyData.add(stringToJson.getJSONObject("mine").getInt("음료/간식"));
+            mineExpenseMoneyData.add(stringToJson.getJSONObject("mine").getInt("교육"));
+            mineExpenseMoneyData.add(stringToJson.getJSONObject("mine").getInt("공과금"));
+            mineExpenseMoneyData.add(stringToJson.getJSONObject("mine").getInt("기타"));
 
-            while(keys.hasNext()){
-                String key = (String) keys.next();
-                Log.d("fieldddd :", stringToJson.get(key).toString());  //label 따로 저장해야함
-                //compareInExLabel.add(stringToJson.get(key).toString());
-                //compaareInExUserMoneyData.add(stringToJson.getInt(key));
-            }
+            wholeExpenseMoneyData.add(stringToJson.getJSONObject("whole").getInt("식비"));
+            wholeExpenseMoneyData.add(stringToJson.getJSONObject("whole").getInt("교통비"));
+            wholeExpenseMoneyData.add(stringToJson.getJSONObject("whole").getInt("문화"));
+            wholeExpenseMoneyData.add(stringToJson.getJSONObject("whole").getInt("생활"));
+            wholeExpenseMoneyData.add(stringToJson.getJSONObject("whole").getInt("음료/간식"));
+            wholeExpenseMoneyData.add(stringToJson.getJSONObject("whole").getInt("교육"));
+            wholeExpenseMoneyData.add(stringToJson.getJSONObject("whole").getInt("공과금"));
+            wholeExpenseMoneyData.add(stringToJson.getJSONObject("whole").getInt("기타"));
 
+            test++;
 
         }
         catch (JSONException e) {
@@ -269,19 +366,6 @@ public class MonthlyStatFragment extends Fragment {
 
         pieDataSet.setColors(colors);
 
-        //add legend to chart
-        Legend legend = mChart.getLegend();
-        legend.setFormSize(10f);
-        legend.setForm(Legend.LegendForm.CIRCLE);
-        legend.setPosition(Legend.LegendPosition.BELOW_CHART_CENTER);
-        legend.setTextSize(12f);
-        legend.setTextColor(Color.BLACK);
-        legend.setXEntrySpace(5f);
-        legend.setYEntrySpace(5f);
-
-        legend.setCustom(MY_COLORS, new String[]{"수입","지출"});
-
-
         //create pie data object
         ArrayList<String>xVals = new ArrayList<String>();
         xVals.add("수입");
@@ -289,5 +373,54 @@ public class MonthlyStatFragment extends Fragment {
         PieData pieData = new PieData(pieDataSet);
         mChart.setData(pieData);
         mChart.invalidate();
+    }
+
+    public void setRadarChartData(){
+
+        Log.d("msg: ", "setRadarChartData started");
+        int cnt = 8;    //꼭짓점 개수
+        ArrayList<RadarEntry> entries_mine = new ArrayList<RadarEntry>();
+        ArrayList<RadarEntry> entries_whole = new ArrayList<RadarEntry>();
+
+        if(mineExpenseMoneyData.size()!= 0) {
+            for (int i = 0; i < cnt; i++) {
+                Log.d(i+"번째들어가는값들:",Integer.toString(mineExpenseMoneyData.get(i)));
+                entries_mine.add(new RadarEntry(mineExpenseMoneyData.get(i)));
+                entries_whole.add(new RadarEntry(wholeExpenseMoneyData.get(i)));
+            }
+        }
+
+
+
+        RadarDataSet set1 = new RadarDataSet(entries_mine, "내 지출");
+        set1.setColor(Color.rgb(145, 168, 208));
+        set1.setFillColor(Color.rgb(145, 168, 208));
+        set1.setDrawFilled(true);
+        set1.setFillAlpha(180);
+        set1.setLineWidth(2f);
+        set1.setDrawHighlightCircleEnabled(true);
+        set1.setDrawHighlightIndicators(false);
+
+        RadarDataSet set2 = new RadarDataSet(entries_whole, "전체 사용자");
+        set2.setColor(Color.rgb(239, 181, 88));
+        set2.setFillColor(Color.rgb(239, 181, 88));
+        set2.setDrawFilled(true);
+        set2.setFillAlpha(180);
+        set2.setLineWidth(2f);
+        set2.setDrawHighlightCircleEnabled(true);
+        set2.setDrawHighlightIndicators(false);
+
+        ArrayList<IRadarDataSet> sets = new ArrayList<IRadarDataSet>();
+        sets.add(set1);
+        sets.add(set2);
+
+        RadarData data = new RadarData(sets);
+        //data.setValueTypeface(mTfLight);
+        data.setValueTextSize(8f);
+        data.setDrawValues(false);
+        data.setValueTextColor(Color.BLACK);
+
+        rChart.setData(data);
+        rChart.invalidate();
     }
 }

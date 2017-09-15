@@ -75,10 +75,19 @@
             android:layout_marginTop = "30dp"
             >
 
+            <!--pieChart-->
             <com.github.mikephil.charting.charts.PieChart
                 android:id="@+id/idPieChart"
                 android:layout_width="match_parent"
-                android:layout_height="300dp"></com.github.mikephil.charting.charts.PieChart>
+                android:layout_height="300dp"/>
+
+            <!--radarChart-->
+            <com.github.mikephil.charting.charts.RadarChart
+                android:id="@+id/idRadarChart"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:layout_below="@id/idPieChart"
+                android:layout_marginTop = "50dp"/>
         </RelativeLayout>
     </RelativeLayout>
 </ScrollView>
