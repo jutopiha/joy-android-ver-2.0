@@ -81,12 +81,14 @@
                     android:id="@+id/todayExpenseTv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="오늘 지출 금액 "/>
+                    android:text="오늘 지출"
+                    android:textSize="15dp"/>
                 <TextView
                     android:id="@+id/todayExpenseContent"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/todayExpenseTv"
+                    android:textSize="20dp"
                     android:text="10000"/>
             </RelativeLayout>
 
@@ -101,13 +103,15 @@
                     android:id="@+id/recentExpenseTv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="최근 지출 금액"/>
+                    android:text="최근 지출"
+                    android:textSize="15dp"/>
                 <TextView
                     android:id="@+id/recentExpenseContent"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/recentExpenseTv"
-                    android:text="10000"/>
+                    android:text="10000"
+                    android:textSize="20dp"/>
             </RelativeLayout>
 
             <!--일주일 지출 금액(오른쪽)-->
@@ -120,13 +124,15 @@
                     android:id="@+id/weekExpenseTv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="주간 지출 금액"/>
+                    android:text="주간 지출"
+                    android:textSize="15dp"/>
                 <TextView
                     android:id="@+id/weekExpenseContent"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/weekExpenseTv"
-                    android:text="10000"/>
+                    android:text="10000"
+                    android:textSize="20dp"/>
             </RelativeLayout>
 
         </RelativeLayout>
