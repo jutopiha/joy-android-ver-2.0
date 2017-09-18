@@ -14,8 +14,8 @@
             android:id="@+id/relative1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingTop = "50dp"
-            android:background="@color/middle_gray">
+            android:paddingTop = "30dp"
+            android:paddingBottom = "30dp">
 
             <!--가운데 정렬 위해 사용한 fake View-->
             <TextView
@@ -29,7 +29,7 @@
                 android:id="@+id/userCharacter"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:src="@drawable/icon_info"
+                android:src="@drawable/juha"
                 android:layout_toLeftOf="@id/fakeView1"
                 />
 
@@ -38,6 +38,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_toRightOf="@id/userCharacter"
+                android:layout_marginTop="20dp"
                 android:layout_marginRight="50dp"
                 android:layout_marginLeft="50dp"
                 android:layout_alignTop="@id/userCharacter"
@@ -49,7 +50,7 @@
                     android:layout_height="wrap_content"
                     android:text="name"
                     android:textSize="20dp"
-                    android:paddingBottom="20dp"/>
+                    android:paddingBottom="20dp" />
                 <TextView
                     android:id="@+id/userPoint"
                     android:layout_width="wrap_content"
@@ -60,14 +61,31 @@
             </RelativeLayout>
         </RelativeLayout>
 
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            style="@style/HomeDivider"
+            android:layout_below="@id/relative1"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:id="@+id/view1" />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            style="@style/HomeDivider"
+            android:layout_below="@id/view1"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:id="@+id/view2" />
+
         <!--지출 내역-->
         <RelativeLayout
             android:id="@+id/relative2"
-            android:layout_width="match_parent"
+            android:layout_width="320dp"
             android:layout_height="wrap_content"
             android:layout_below="@id/relative1"
             android:layout_marginTop="25dp"
-            android:background="@color/colorAccent">
+            android:layout_centerHorizontal="true">
 
             <!--오늘 지출 금액(가운데)-->
             <RelativeLayout
@@ -82,7 +100,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="오늘 지출"
-                    android:textSize="15dp"/>
+                    android:textSize="15dp"
+                    android:background="@color/violet"/>
                 <TextView
                     android:id="@+id/todayExpenseContent"
                     android:layout_width="wrap_content"
@@ -104,7 +123,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="최근 지출"
-                    android:textSize="15dp"/>
+                    android:textSize="15dp"
+                    android:background="@color/violet"/>
                 <TextView
                     android:id="@+id/recentExpenseContent"
                     android:layout_width="wrap_content"
@@ -125,7 +145,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="주간 지출"
-                    android:textSize="15dp"/>
+                    android:textSize="15dp"
+                    android:background="@color/violet"/>
                 <TextView
                     android:id="@+id/weekExpenseContent"
                     android:layout_width="wrap_content"
@@ -136,6 +157,24 @@
             </RelativeLayout>
 
         </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            style="@style/HomeDivider"
+            android:layout_below="@id/relative2"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:id="@+id/view3"
+            android:layout_marginTop="20dp"/>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            style="@style/HomeDivider"
+            android:layout_below="@id/view3"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:id="@+id/view4" />
 
         <!--이번달 총수입지출 원형그래프-->
         <RelativeLayout

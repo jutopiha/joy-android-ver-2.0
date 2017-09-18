@@ -92,7 +92,7 @@ public class HomeFragment extends Fragment {
         mChart.setRotationEnabled(true);
         mChart.setHoleRadius(70f);
         mChart.setTransparentCircleAlpha(0);
-        mChart.setCenterText("8월");
+        mChart.setCenterText("9월");
         mChart.setCenterTextSize(10);
 
         addDataSet();
@@ -188,24 +188,24 @@ public class HomeFragment extends Fragment {
             //데이터 뽑아내서 필요한 곳에 저장하는 부분
             name.setText(stringToJson.getString("name"));
             if(stringToJson.getString("point") == "null")
-                point.setText("0");
+                point.setText("0 P");
             else
-                point.setText(stringToJson.getString("point"));
+                point.setText(stringToJson.getString("point")+" Point");
 
             if(stringToJson.getString("recentExpense") == "null")
-                recentExpense.setText("0");
+                recentExpense.setText("-");
             else
-                recentExpense.setText(stringToJson.getString("recentExpense"));
+                recentExpense.setText(stringToJson.getString("recentExpense")+"원");
 
             if(stringToJson.getString("todayExpense") == "null")
-                todayExpense.setText("0");
+                todayExpense.setText("-");
             else
-                todayExpense.setText(stringToJson.getString("todayExpense"));
+                todayExpense.setText(stringToJson.getString("todayExpense")+"원");
 
             if(stringToJson.getString("weeklyExpense") == "null")
-                weekExpense.setText("0");
+                weekExpense.setText("-");
             else
-                weekExpense.setText(stringToJson.getString("weeklyExpense"));
+                weekExpense.setText(stringToJson.getString("weeklyExpense")+"원");
 
 
             //pieChart data채우기
