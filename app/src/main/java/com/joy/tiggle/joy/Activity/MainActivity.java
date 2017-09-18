@@ -76,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         // 임시
-        mTextMessage = (TextView) findViewById(R.id.message);
+        //mTextMessage = (TextView) findViewById(R.id.message);
 
         // 로그인 여부 확인
         if(AccessToken.getCurrentAccessToken() == null) {
