@@ -26,8 +26,6 @@ public class MainActivity extends AppCompatActivity {
     public static final String urlString = "http://18.220.36.184:9000";
     public static String currentUserId;
 
-    private TextView mTextMessage;
-
     HomeFragment fragment_home = (HomeFragment)getSupportFragmentManager().findFragmentById(R.id.navigation_home);
 
 
@@ -52,7 +50,6 @@ public class MainActivity extends AppCompatActivity {
                     selectedFragment = MonthlyStatFragment.newInstance();
                     break;
                 case R.id.navigation_quest:
-                    mTextMessage.setText("퀘스트 startActivity");
                     break;
             }
             if(selectedFragment==null)
@@ -75,8 +72,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // 임시
-        //mTextMessage = (TextView) findViewById(R.id.message);
 
         // 로그인 여부 확인
         if(AccessToken.getCurrentAccessToken() == null) {
@@ -119,7 +114,6 @@ public class MainActivity extends AppCompatActivity {
         // 상단 액션바 우측 메뉴 클릭 시
         switch (item.getItemId()) {
             case R.id.menu_info:
-                mTextMessage.setText("info startActivity");
                 Intent intent = new Intent(this, CharacterActivity.class);
                 startActivity(intent);
                 finish();
