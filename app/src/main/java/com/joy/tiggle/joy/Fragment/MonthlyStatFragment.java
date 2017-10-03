@@ -126,7 +126,7 @@ public class MonthlyStatFragment extends Fragment {
         mChart.setRotationEnabled(true);
         mChart.setHoleRadius(70f);
         mChart.setTransparentCircleAlpha(0);
-        mChart.setCenterText("8월");
+        mChart.setCenterText("11월");
         mChart.setCenterTextSize(10);
 
         addDataSet();

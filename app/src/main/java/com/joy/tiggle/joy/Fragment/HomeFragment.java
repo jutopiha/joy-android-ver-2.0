@@ -92,7 +92,7 @@ public class HomeFragment extends Fragment {
         mChart.setRotationEnabled(true);
         mChart.setHoleRadius(70f);
         mChart.setTransparentCircleAlpha(0);
-        mChart.setCenterText("9월");
+        mChart.setCenterText("10월");
         mChart.setCenterTextSize(10);
 
         addDataSet();

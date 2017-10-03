@@ -91,8 +91,10 @@ public class CharacterActivity extends AppCompatActivity implements View.OnClick
             case R.id.relativeCharacter1:
                 if(characterHas[0] == 0){
                     //캐릭터가 잠금 되어있을때, 아이템 수를 보고 잠금 해제 여부를 판단한다.
+                    mCustomDialog = new ButtonsCustomDialog(this, "캐릭터를 해제하시겠어요?", unlockListener, rightListener);
                 }
                 else{
+                    //캐릭터가 잠금 해제 되어있을때, 대표캐릭터 설정 여부를 물어본다.
                     mCustomDialog = new ButtonsCustomDialog(this, "대표캐릭터로 설정하시겠어요?", leftListener, rightListener);
                     mainCharacterNumber = 1;
                     mCustomDialog.show();
@@ -100,16 +102,57 @@ public class CharacterActivity extends AppCompatActivity implements View.OnClick
                 break;
             case R.id.relativeCharacter2:
                 if(characterHas[1] == 0){
-
+                    mCustomDialog = new ButtonsCustomDialog(this, "캐릭터를 해제하시겠어요?", unlockListener, rightListener);
                 }
                 else{
                     mCustomDialog = new ButtonsCustomDialog(this, "대표캐릭터로 설정하시겠어요?", leftListener, rightListener);
                     mainCharacterNumber = 2;
                     mCustomDialog.show();
-
                 }
+                break;
+            case R.id.relativeCharacter3:
+                Log.d("relativeCharacter3","statred");
+                if(characterHas[2] == 0){
+                    mCustomDialog = new ButtonsCustomDialog(this, "캐릭터를 해제하시겠어요?", unlockListener, rightListener);
+                    mCustomDialog.show();
+                }
+                else{
+                    mCustomDialog = new ButtonsCustomDialog(this, "대표캐릭터로 설정하시겠어요?", leftListener, rightListener);
+                    mainCharacterNumber = 3;
+                    mCustomDialog.show();
+                }
+                break;
+            case R.id.relativeCharacter4:
+                if(characterHas[3] == 0){
+                    mCustomDialog = new ButtonsCustomDialog(this, "캐릭터를 해제하시겠어요?", unlockListener, rightListener);
+                }
+                else{
+                    mCustomDialog = new ButtonsCustomDialog(this, "대표캐릭터로 설정하시겠어요?", leftListener, rightListener);
+                    mainCharacterNumber = 4;
+                    mCustomDialog.show();
+                }
+                break;
+            case R.id.relativeCharacter5:
+                if(characterHas[4] == 0){
+                    mCustomDialog = new ButtonsCustomDialog(this, "캐릭터를 해제하시겠어요?", unlockListener, rightListener);
+                }else{
+                    mCustomDialog = new ButtonsCustomDialog(this, "대표캐릭터로 설정하시겠어요?", leftListener, rightListener);
+                    mainCharacterNumber = 5;
+                    mCustomDialog.show();
+                }
+                break;
+            case R.id.relativeCharacter6:
+                if(characterHas[5] == 0){
+                    mCustomDialog = new ButtonsCustomDialog(this, "캐릭터를 해제하시겠어요?", unlockListener, rightListener);
+                }else {
+                    mCustomDialog = new ButtonsCustomDialog(this, "대표캐릭터로 설정하시겠어요?", leftListener, rightListener);
+                    mainCharacterNumber = 6;
+                    mCustomDialog.show();
+                }
+                break;
         }
     }
+
     private boolean setCustomActionBar(){
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();       // 기본 액션바 숨기기
@@ -292,6 +335,13 @@ public class CharacterActivity extends AppCompatActivity implements View.OnClick
 
     };
 
+    private View.OnClickListener unlockListener = new View.OnClickListener(){
+        public void onClick(View v){
+            Toast.makeText(getApplicationContext(), "캐릭터 잠금 해제", Toast.LENGTH_SHORT).show();
+            mCustomDialog.dismiss();
+        }
+    };
+
     private void sendUpdateMainCharacter(){
         Log.d("sendUpdateMainCharacter","started");
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
@@ -358,6 +408,5 @@ public class CharacterActivity extends AppCompatActivity implements View.OnClick
         } else {
             return null;
         }
-
     }
 }
