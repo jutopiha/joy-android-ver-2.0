@@ -41,36 +41,27 @@
             android:layout_margin="7dp"
             android:padding="7dp"
             android:layout_centerHorizontal="true"
-            android:background="@color/violet">
+            android:background="@drawable/character_background">
 
 
             <!--캐릭터-->
             <ImageView
                 android:id="@+id/imageMainCharacter"
                 android:layout_width="300dp"
-                android:layout_height="300dp"
+                android:layout_height="250dp"
                 android:src="@drawable/character1"
                 android:layout_centerHorizontal="true"/>
 
-            <RelativeLayout
+            <TextView
+                android:id="@+id/tvCharacterName"
+                android:text="아메리카노"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/imageMainCharacter"
-                android:layout_centerVertical="true">
-
-                <TextView
-                    android:id="@+id/tvCharacterName"
-                    android:text="아메리카노"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="20sp"
-                    android:textColor="@color/heavy_gray"
-                    android:layout_marginLeft="5dp"
-                    android:layout_alignParentLeft="true"/>
-
-
-            </RelativeLayout>
-
+                android:textSize="20sp"
+                android:textColor="@color/heavy_gray"
+                android:layout_marginLeft="5dp"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@id/imageMainCharacter"/>
 
         </RelativeLayout>
 
@@ -87,17 +78,19 @@
                 android:id="@+id/imageShop"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:src="@drawable/image_shop"/>
+                android:src="@drawable/next_arrow"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="10dp"/>
 
             <TextView
-                android:id="@+id/tvvv"
+                android:id="@+id/shopTv"
                 android:text="상점"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="32sp"
+                android:textSize="25sp"
                 android:textColor="@color/heavy_gray"
-                android:layout_toRightOf="@id/imageShop"
-                android:layout_marginLeft="5dp"/>
+                android:layout_toLeftOf="@id/imageShop"
+                android:layout_marginRight="5dp"/>
         </RelativeLayout>
 
 
@@ -105,116 +98,174 @@
             android:id="@+id/relativeOtherCharacter"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/relativeShop"
-            android:background="@color/cardview_dark_background">
+            android:layout_below="@id/relativeShop">
+
+            <TextView
+                android:id="@+id/characterList"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="나의 캐릭터들"
+                android:layout_marginLeft="10dp"
+                android:background="@color/violet"/>
 
             <HorizontalScrollView
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_below="@id/characterList"
+                android:scrollbars="none">
 
                 <RelativeLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
                     <RelativeLayout
                         android:id="@+id/relativeCharacter1"
-                        android:layout_width="160dp"
-                        android:layout_height="100dp"
+                        android:layout_width="130dp"
+                        android:layout_height="120dp"
                         android:layout_alignParentStart="true"
                         android:layout_alignParentLeft="true"
-                        android:layout_margin="10dp">
+                        android:layout_margin="10dp"
+                        android:background="@drawable/border_gray"
+                        android:onClick="onClick">
                         <ImageView
-                            android:layout_width="80dp"
-                            android:layout_height="80dp"
-                            android:layout_centerVertical="true"
+                            android:id="@+id/characterImageView1"
+                            android:layout_width="100dp"
+                            android:layout_height="70dp"
                             android:layout_centerHorizontal="true"
-                            android:src="@drawable/image_americano"/>
+                            android:layout_marginTop="20dp"/>
+                        <TextView
+                            android:id="@+id/characterName1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/characterImageView1"
+                            android:layout_centerHorizontal="true"
+                            android:textColor="#000000"
+                            android:text="풀어주세요"/>
                     </RelativeLayout>
 
                     <RelativeLayout
                         android:id="@+id/relativeCharacter2"
-                        android:layout_width="160dp"
-                        android:layout_height="100dp"
+                        android:layout_width="130dp"
+                        android:layout_height="120dp"
                         android:layout_toRightOf="@id/relativeCharacter1"
-                        android:layout_margin="10dp">
+                        android:layout_margin="10dp"
+                        android:background="@drawable/border_gray"
+                        android:onClick="onClick">
                         <ImageView
-                            android:layout_width="80dp"
-                            android:layout_height="80dp"
-                            android:layout_centerVertical="true"
+                            android:id="@+id/characterImageView2"
+                            android:layout_width="100dp"
+                            android:layout_height="70dp"
                             android:layout_centerHorizontal="true"
-                            android:src="@drawable/image_americano"/>
+                            android:layout_marginTop="20dp"/>
+                        <TextView
+                            android:id="@+id/characterName2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/characterImageView2"
+                            android:layout_centerHorizontal="true"
+                            android:textColor="#000000"
+                            android:text="풀어주세요"/>
 
                     </RelativeLayout>
 
                     <RelativeLayout
                         android:id="@+id/relativeCharacter3"
-                        android:layout_width="160dp"
-                        android:layout_height="100dp"
+                        android:layout_width="130dp"
+                        android:layout_height="120dp"
                         android:layout_margin="10dp"
-                        android:layout_toRightOf="@id/relativeCharacter2">
+                        android:layout_toRightOf="@id/relativeCharacter2"
+                        android:background="@drawable/border_gray">
 
                         <ImageView
-                            android:layout_width="80dp"
-                            android:layout_height="80dp"
-                            android:layout_centerVertical="true"
+                            android:id="@+id/characterImageView3"
+                            android:layout_width="100dp"
+                            android:layout_height="70dp"
                             android:layout_centerHorizontal="true"
-                            android:src="@drawable/image_americano"/>
+                            android:layout_marginTop="20dp"/>
+                        <TextView
+                            android:id="@+id/characterName3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/characterImageView3"
+                            android:layout_centerHorizontal="true"
+                            android:textColor="#000000"
+                            android:text="풀어주세요"/>
+
                     </RelativeLayout>
 
                     <RelativeLayout
                         android:id="@+id/relativeCharacter4"
-                        android:layout_width="160dp"
-                        android:layout_height="100dp"
+                        android:layout_width="130dp"
+                        android:layout_height="120dp"
                         android:layout_toRightOf="@id/relativeCharacter3"
-                        android:layout_margin="10dp">
+                        android:layout_margin="10dp"
+                        android:background="@drawable/border_gray">
 
                         <ImageView
-                            android:layout_width="80dp"
-                            android:layout_height="80dp"
-                            android:layout_centerVertical="true"
+                            android:id="@+id/characterImageView4"
+                            android:layout_width="100dp"
+                            android:layout_height="70dp"
                             android:layout_centerHorizontal="true"
-                            android:src="@drawable/image_americano"/>
+                            android:layout_marginTop="20dp"/>
+                        <TextView
+                            android:id="@+id/characterName4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/characterImageView4"
+                            android:layout_centerHorizontal="true"
+                            android:textColor="#000000"
+                            android:text="풀어주세요"/>
                     </RelativeLayout>
 
                     <RelativeLayout
                         android:id="@+id/relativeCharacter5"
-                        android:layout_width="160dp"
-                        android:layout_height="100dp"
+                        android:layout_width="130dp"
+                        android:layout_height="120dp"
                         android:layout_toRightOf="@id/relativeCharacter4"
-                        android:layout_margin="10dp">
+                        android:layout_margin="10dp"
+                        android:background="@drawable/border_gray">
 
                         <ImageView
-                            android:layout_width="80dp"
-                            android:layout_height="80dp"
-                            android:layout_centerVertical="true"
+                            android:id="@+id/characterImageView5"
+                            android:layout_width="100dp"
+                            android:layout_height="70dp"
                             android:layout_centerHorizontal="true"
-                            android:src="@drawable/image_americano"/>
+                            android:layout_marginTop="20dp"/>
+                        <TextView
+                            android:id="@+id/characterName5"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/characterImageView5"
+                            android:layout_centerHorizontal="true"
+                            android:textColor="#000000"
+                            android:text="풀어주세요"/>
                     </RelativeLayout>
 
                     <RelativeLayout
                         android:id="@+id/relativeCharacter6"
-                        android:layout_width="160dp"
-                        android:layout_height="100dp"
+                        android:layout_width="130dp"
+                        android:layout_height="120dp"
                         android:layout_toRightOf="@id/relativeCharacter5"
-                        android:layout_margin="10dp">
+                        android:layout_margin="10dp"
+                        android:background="@drawable/border_gray">
 
                         <ImageView
-                            android:layout_width="80dp"
-                            android:layout_height="80dp"
-                            android:layout_centerVertical="true"
+                            android:id="@+id/characterImageView6"
+                            android:layout_width="100dp"
+                            android:layout_height="70dp"
                             android:layout_centerHorizontal="true"
-                            android:src="@drawable/image_americano"/>
+                            android:layout_marginTop="20dp"/>
+                        <TextView
+                            android:id="@+id/characterName6"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/characterImageView6"
+                            android:layout_centerHorizontal="true"
+                            android:textColor="#000000"
+                            android:text="풀어주세요"/>
                     </RelativeLayout>
                 </RelativeLayout>
 
             </HorizontalScrollView>
-
-
-
-
-
-
-
-
 
 
         </RelativeLayout>
