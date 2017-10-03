@@ -20,8 +20,8 @@
             android:id="@+id/txt_content"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@android:color/black"
             android:textSize="20sp"
+            android:textColor="#6D6875"
             android:layout_below="@id/img_title"
             android:layout_centerInParent="true"
             android:textAlignment="center"/>
@@ -37,26 +37,28 @@
                 android:id="@+id/fakeView1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"/>
+                android:layout_centerHorizontal="true"
+                android:layout_margin="10dp"/>
 
             <Button
                 android:id="@+id/btn_left"
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:text="확인"
+                android:textColor="#6D6875"
                 android:layout_toLeftOf= "@id/fakeView1"
                 android:layout_alignParentBottom="true"
-                android:background="#F7AF9D"/>
+                android:layout_marginBottom="10dp"/>
 
             <Button
                 android:id="@+id/btn_right"
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:text="취소"
+                android:textColor="#6D6875"
                 android:layout_toRightOf="@id/fakeView1"
                 android:layout_alignParentBottom="true"
-                android:background="#F7AF9D"/>
-
+                android:layout_marginBottom="10dp"/>
         </RelativeLayout>
 
 
