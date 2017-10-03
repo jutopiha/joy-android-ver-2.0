@@ -93,7 +93,7 @@ public class CharacterActivity extends AppCompatActivity implements View.OnClick
                     //캐릭터가 잠금 되어있을때, 아이템 수를 보고 잠금 해제 여부를 판단한다.
                 }
                 else{
-                    mCustomDialog = new ButtonsCustomDialog(this, "티끌모아 태산", "대표캐릭터로 설정하시겠어요?", leftListener, rightListener);
+                    mCustomDialog = new ButtonsCustomDialog(this, "대표캐릭터로 설정하시겠어요?", leftListener, rightListener);
                     mainCharacterNumber = 1;
                     mCustomDialog.show();
                 }
@@ -103,7 +103,7 @@ public class CharacterActivity extends AppCompatActivity implements View.OnClick
 
                 }
                 else{
-                    mCustomDialog = new ButtonsCustomDialog(this, "티끌모아 태산", "대표캐릭터로 설정하시겠어요?", leftListener, rightListener);
+                    mCustomDialog = new ButtonsCustomDialog(this, "대표캐릭터로 설정하시겠어요?", leftListener, rightListener);
                     mainCharacterNumber = 2;
                     mCustomDialog.show();
 

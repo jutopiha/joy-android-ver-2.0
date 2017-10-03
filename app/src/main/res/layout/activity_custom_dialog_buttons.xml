@@ -1,53 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center">
-
-    <LinearLayout
+    
+    <RelativeLayout
         android:layout_width="300dp"
         android:layout_height="200dp"
-        android:background="@android:color/darker_gray"
-        android:orientation="vertical">
-
-        <TextView
-            android:id="@+id/txt_title"
+        android:background="@color/violet">
+        
+        <ImageView
+            android:id="@+id/img_title"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:textColor="@android:color/black"
-            android:textSize="15sp"/>
-
+            android:layout_height="45dp"
+            android:src="@drawable/login_logo"/>
+        
         <TextView
             android:id="@+id/txt_content"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
             android:textColor="@android:color/black"
-            android:textSize="25sp"/>
+            android:textSize="20sp"
+            android:layout_below="@id/img_title"
+            android:layout_centerInParent="true"
+            android:textAlignment="center"/>
 
-        <LinearLayout
-            android:layout_width="match_parent"
+        <RelativeLayout
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
-            android:gravity="center"
-            android:orientation="horizontal">
+            android:layout_below="@id/txt_content"
+            android:layout_centerInParent="true"
+            android:layout_alignParentBottom="true">
+
+            <TextView
+                android:id="@+id/fakeView1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"/>
 
             <Button
                 android:id="@+id/btn_left"
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
-                android:text="확인"/>
+                android:text="확인"
+                android:layout_toLeftOf= "@id/fakeView1"
+                android:layout_alignParentBottom="true"
+                android:background="#F7AF9D"/>
 
             <Button
                 android:id="@+id/btn_right"
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
-                android:text="취소"/>
+                android:text="취소"
+                android:layout_toRightOf="@id/fakeView1"
+                android:layout_alignParentBottom="true"
+                android:background="#F7AF9D"/>
 
-        </LinearLayout>
+        </RelativeLayout>
 
-    </LinearLayout>
 
-</LinearLayout>
+        
+
+        
+    </RelativeLayout>
+</RelativeLayout>

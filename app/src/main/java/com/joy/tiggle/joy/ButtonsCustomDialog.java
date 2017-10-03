@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 /**
@@ -16,11 +17,11 @@ import android.widget.TextView;
 
 public class ButtonsCustomDialog extends Dialog {
 
-    private TextView mTitleView;
+    private ImageView mTitleView;
     private TextView mContentView;
     private Button mLeftButton;
     private Button mRightButton;
-    private String mTitle;
+    //private String mTitle;
     private String mContent;
 
     private View.OnClickListener mLeftClickListener;
@@ -38,13 +39,13 @@ public class ButtonsCustomDialog extends Dialog {
 
         setContentView(R.layout.activity_custom_dialog_buttons);
 
-        mTitleView = (TextView) findViewById(R.id.txt_title);
+        mTitleView = (ImageView) findViewById(R.id.img_title);
         mContentView = (TextView) findViewById(R.id.txt_content);
         mLeftButton = (Button) findViewById(R.id.btn_left);
         mRightButton = (Button) findViewById(R.id.btn_right);
 
         //제목과 내용을 생성자에게 셋팅한다.
-        mTitleView.setText(mTitle);
+        //mTitleView.setText(mTitle);
         mContentView.setText(mContent);
 
         //클릭 이벤트 셋팅
@@ -61,16 +62,14 @@ public class ButtonsCustomDialog extends Dialog {
     }
 
     //클릭버튼이 하나일 때 생성자 함수로 클릭이벤트 받기
-    public ButtonsCustomDialog(Context context, String title, View.OnClickListener singleListener){
+    public ButtonsCustomDialog(Context context, View.OnClickListener singleListener){
         super(context, android.R.style.Theme_Translucent_NoTitleBar);
-        this.mTitle = title;
         this.mLeftClickListener = singleListener;
     }
 
     //클릭버튼이 두개일 때 생성자 함수로 클릭이벤트 받기
-    public ButtonsCustomDialog(Context context, String title, String content, View.OnClickListener leftListener, View.OnClickListener rightListener){
+    public ButtonsCustomDialog(Context context, String content, View.OnClickListener leftListener, View.OnClickListener rightListener ){
         super(context, android.R.style.Theme_Translucent_NoTitleBar);
-        this.mTitle = title;
         this.mContent = content;
         this.mLeftClickListener = leftListener;
         this.mRightClickListener = rightListener;
