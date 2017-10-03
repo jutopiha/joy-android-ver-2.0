@@ -10,7 +10,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.joy.tiggle.joy.ButtonsCustomDialog;
 import com.joy.tiggle.joy.CustomDialog;
 import com.joy.tiggle.joy.R;
 
@@ -45,7 +47,11 @@ public class CharacterActivity extends AppCompatActivity implements View.OnClick
 
     private ImageView characterImageView1, characterImageView2, characterImageView3, characterImageView4, characterImageView5, characterImageView6;
     private TextView characterName1, characterName2, characterName3, characterName4, characterName5, characterName6;
+    private TextView mainCharacterName;
     private int characterHas[] = {0,0,0,0,0,0};
+    private ButtonsCustomDialog mCustomDialog;
+    private int mainCharacterNumber;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,6 +68,8 @@ public class CharacterActivity extends AppCompatActivity implements View.OnClick
 
         characterName1 = (TextView)findViewById(R.id.characterName1);
         characterName2 = (TextView)findViewById(R.id.characterName2);
+
+        mainCharacterName = (TextView)findViewById(R.id.tvCharacterName);
 
 
         sendObject();
@@ -80,14 +88,14 @@ public class CharacterActivity extends AppCompatActivity implements View.OnClick
                 startActivity(intent);
                 finish();
                 break;
-            /*case R.id.relativeCharacter1:
+            case R.id.relativeCharacter1:
                 if(characterHas[0] == 0){
                     //캐릭터가 잠금 되어있을때, 아이템 수를 보고 잠금 해제 여부를 판단한다.
                 }
                 else{
-                    //캐릭터 잠금 해제 되어있을 때, 메인 캐릭터 변경 가능하도록 해준다.
-                    //customDialog = new CustomDialog(this, "티끌모아 태산", "내용",mClickOKayListener, mClickCancleListener);
-                    //customDialog.show();
+                    mCustomDialog = new ButtonsCustomDialog(this, "티끌모아 태산", "대표캐릭터로 설정하시겠어요?", leftListener, rightListener);
+                    mainCharacterNumber = 1;
+                    mCustomDialog.show();
                 }
                 break;
             case R.id.relativeCharacter2:
@@ -95,8 +103,11 @@ public class CharacterActivity extends AppCompatActivity implements View.OnClick
 
                 }
                 else{
+                    mCustomDialog = new ButtonsCustomDialog(this, "티끌모아 태산", "대표캐릭터로 설정하시겠어요?", leftListener, rightListener);
+                    mainCharacterNumber = 2;
+                    mCustomDialog.show();
 
-                }*/
+                }
         }
     }
     private boolean setCustomActionBar(){
@@ -117,7 +128,7 @@ public class CharacterActivity extends AppCompatActivity implements View.OnClick
         Log.d("sendOjbect","started");
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
-        CharacterActivity.GetcharcterMain request = new CharacterActivity.GetcharcterMain();
+        CharacterActivity.GetChracterMain request = new CharacterActivity.GetChracterMain();
         request.run();
     }
 
@@ -174,7 +185,7 @@ public class CharacterActivity extends AppCompatActivity implements View.OnClick
 
     }
 
-    private class GetcharcterMain extends Thread{
+    private class GetChracterMain extends Thread{
         @Override
         public void run(){
             postData();
@@ -183,7 +194,6 @@ public class CharacterActivity extends AppCompatActivity implements View.OnClick
 
     public void showCharecterMain(String jsonString) {
         Log.d("showMonthlyStat", "started");
-        int mainCharacterNumber;
         try {
             JSONObject stringToJson = new JSONObject(jsonString);   //서버에서 string으로 받은 결과를 json객체로 바꿈
             mainCharacterNumber = stringToJson.getInt("main");
@@ -193,21 +203,27 @@ public class CharacterActivity extends AppCompatActivity implements View.OnClick
                 case 1:
                     //Log.d("test", "case1 income");
                     mainCharacter.setImageResource(R.drawable.character1);
+                    mainCharacterName.setText("아메리카노");
                     break;
                 case 2:
                     mainCharacter.setImageResource(R.drawable.character2);
+                    mainCharacterName.setText("캐릭터2");
                     break;
                 case 3:
                     mainCharacter.setImageResource(R.drawable.character3);
+                    mainCharacterName.setText("캐릭3");
                     break;
                 case 4:
                     mainCharacter.setImageResource(R.drawable.character4);
+                    mainCharacterName.setText("캐릭터4");
                     break;
                 case 5:
                     mainCharacter.setImageResource(R.drawable.character5);
+                    mainCharacterName.setText("캐릭터5");
                     break;
                 case 6:
                     mainCharacter.setImageResource(R.drawable.character6);
+                    mainCharacterName.setText("캐릭터6");
                     break;
                 default:
                     mainCharacter.setImageResource(R.drawable.image_waterdrop);
@@ -255,5 +271,93 @@ public class CharacterActivity extends AppCompatActivity implements View.OnClick
         catch(JSONException e){
             Log.d("showMonthlyStat", "unexpected error");
         }
+    }
+
+    private View.OnClickListener leftListener = new View.OnClickListener(){
+        public void onClick(View v){
+            //선택한 대표 캐릭터 정보를 서버에게 보내고
+            sendUpdateMainCharacter();
+
+            //다시 로딩한다.
+            sendObject();
+            mCustomDialog.dismiss();
+
+        }
+    };
+
+    private View.OnClickListener rightListener = new View.OnClickListener(){
+        public void onClick(View v){
+            mCustomDialog.dismiss();
+        }
+
+    };
+
+    private void sendUpdateMainCharacter(){
+        Log.d("sendUpdateMainCharacter","started");
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.setThreadPolicy(policy);
+        CharacterActivity.GetcharcterMainUpdate request = new CharacterActivity.GetcharcterMainUpdate();
+        request.run();
+    }
+
+    private class GetcharcterMainUpdate extends Thread{
+        @Override
+        public void run(){
+            postDataUpdate();
+        }
+    }
+
+    public String postDataUpdate(){
+        Log.d("postDataUpdate","started");
+        String msg = MainActivity.urlString+"/character/main";
+
+        InputStream inputStream = null;
+        BufferedReader rd = null;
+        StringBuilder result = new StringBuilder();
+
+        StringBuilder requestUrl = new StringBuilder(msg);
+
+        List<NameValuePair> nvps = new ArrayList<NameValuePair>();
+        nvps.add(new BasicNameValuePair("uid", MainActivity.currentUserId));
+        nvps.add(new BasicNameValuePair("type", String.valueOf(mainCharacterNumber)));
+        String querystring = URLEncodedUtils.format(nvps, "utf-8");
+
+        requestUrl.append("?");
+        requestUrl.append(querystring);
+
+        HttpClient httpClient = new DefaultHttpClient();
+        HttpGet httpGet = new HttpGet(requestUrl.toString());
+        Log.d("msg is :", requestUrl.toString());
+
+        try {
+
+            //answer객체 서버로 전송하고 survey객체 받아오는 과정
+
+            HttpResponse httpResponse = httpClient.execute(httpGet);
+
+            Log.v("******server", "send msg successed");
+
+            inputStream = httpResponse.getEntity().getContent();
+            rd = new BufferedReader(new InputStreamReader(inputStream));
+            String line;
+            while ((line = rd.readLine()) != null) {
+                result.append(line);
+            }
+            Log.v("Main::bring success", "result:" + result.toString());
+            showCharecterMain(result.toString());
+
+        } catch (IOException e) {
+            e.printStackTrace();
+            Log.v("******server", "send msg failed");
+        }
+
+
+
+        if (result != null) {
+            return result.toString();
+        } else {
+            return null;
+        }
+
     }
 }
