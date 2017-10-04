@@ -19,6 +19,7 @@ import com.joy.tiggle.joy.Fragment.InputFragment;
 import com.joy.tiggle.joy.Fragment.HomeFragment;
 import com.joy.tiggle.joy.Fragment.DailyFragment;
 import com.joy.tiggle.joy.Fragment.MonthlyStatFragment;
+import com.joy.tiggle.joy.Fragment.QuestFragment;
 import com.joy.tiggle.joy.R;
 
 public class MainActivity extends AppCompatActivity {
@@ -50,6 +51,7 @@ public class MainActivity extends AppCompatActivity {
                     selectedFragment = MonthlyStatFragment.newInstance();
                     break;
                 case R.id.navigation_quest:
+                    selectedFragment = QuestFragment.newInstance();
                     break;
             }
             if(selectedFragment==null)
