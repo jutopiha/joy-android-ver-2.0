@@ -111,7 +111,7 @@ public class CharacterActivity extends AppCompatActivity implements View.OnClick
                 }
                 break;
             case R.id.relativeCharacter3:
-                Log.d("relativeCharacter3","statred");
+                Log.d("relativeCharacter3","started");
                 if(characterHas[2] == 0){
                     mCustomDialog = new ButtonsCustomDialog(this, "캐릭터를 해제하시겠어요?", unlockListener, rightListener);
                     mCustomDialog.show();

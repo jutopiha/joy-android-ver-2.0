@@ -1,14 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#ffffff">
 
-    <RelativeLayout
-        android:id="@+id/relativeCharacterActionbar"
+    <!--액션 바-->
+        <RelativeLayout
+        android:id="@+id/relativeShopActionbar"
         android:layout_width="match_parent"
         android:layout_height="56dp"
-        android:background="@color/colorAccent">
+        android:background="@color/violet">
         <Button
             android:id="@+id/btnBack"
             android:layout_width="20dp"
@@ -17,7 +24,7 @@
             android:background="@drawable/button_back"
             android:onClick="onClick" />
         <TextView
-            android:id="@+id/tvCharacter"
+            android:id="@+id/tvItemShop"
             android:text="아이템 상점"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -28,129 +35,1055 @@
             android:layout_toEndOf="@id/btnBack" />
     </RelativeLayout>
 
-
-
-    <RelativeLayout
-        android:id="@+id/relativeOtherCharacter"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/relativeCharacterActionbar"
-        android:background="@color/cardview_dark_background">
-
-        <HorizontalScrollView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-
-            <RelativeLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-                <RelativeLayout
-                    android:id="@+id/relativeItem1"
-                    android:layout_width="200dp"
-                    android:layout_height="250dp"
-                    android:layout_alignParentStart="true"
-                    android:layout_alignParentLeft="true"
-                    android:layout_margin="10dp"
-                    android:background="@color/light_gray">
-                    <ImageView
-                        android:layout_width="300dp"
-                        android:layout_height="300dp"
-                        android:layout_centerVertical="true"
-                        android:layout_centerHorizontal="true"
-                        android:src="@drawable/image_waterdrop"
-                        android:layout_margin="20dp"/>
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:id="@+id/relativeItem2"
-                    android:layout_width="200dp"
-                    android:layout_height="250dp"
-                    android:layout_margin="10dp"
-                    android:background="@color/light_gray"
-                    android:layout_toRightOf="@id/relativeItem1">
-                    <ImageView
-                        android:layout_width="300dp"
-                        android:layout_height="300dp"
-                        android:layout_centerVertical="true"
-                        android:layout_centerHorizontal="true"
-                        android:src="@drawable/image_americano"
-                        android:layout_margin="20dp"/>
-                </RelativeLayout>
-            </RelativeLayout>
-
-
-
-        </HorizontalScrollView>
-
-    </RelativeLayout>
-
-
-
-
-
-    <RelativeLayout
-        android:id="@+id/relativCharacterWhole"
+    <!--내용-->
+        <RelativeLayout
+        android:id="@+id/relativeUserInfoBorder"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/relativeOtherCharacter"
-        android:background="@color/middle_gray">
+        android:layout_below="@id/relativeShopActionbar"
+        >
 
-        <RelativeLayout
-            android:id="@+id/relativeMainCharacter"
-            android:layout_width="400dp"
-            android:layout_height="wrap_content"
-            android:layout_margin="7dp"
-            android:padding="7dp"
-            android:layout_centerHorizontal="true"
-            android:background="@color/light_gray">
-
-
-
+            <!--사용자 point 정보 나타내줌-->
             <RelativeLayout
-                android:layout_width="wrap_content"
+                android:id="@+id/relativeUserPointInfo"
+                android:layout_width="500dp"
                 android:layout_height="wrap_content"
-                android:layout_centerVertical="true">
+                android:layout_margin="7dp"
+                android:padding="7dp"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/border_gray">
 
-                <TextView
-                    android:id="@+id/tvCharacterName"
-                    android:text="현재 포인트"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="20sp"
-                    android:textColor="@color/heavy_gray"
-                    android:layout_marginLeft="5dp"
-                    android:layout_alignParentLeft="true"/>
-
-                <!--포인트 -->
                 <RelativeLayout
-                    android:id="@+id/relativePoint"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/tvCharacterName"
-                    android:layout_alignParentLeft="true">
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="25dp">
 
                     <ImageView
                         android:id="@+id/imagePoint"
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
-                        android:src="@drawable/image_coins"/>
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:src="@drawable/icon_coin"/>
 
                     <TextView
-                        android:id="@+id/tvAutoParse"
-                        android:text="100P"
+                        android:id="@+id/tvUserPointTitle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="16sp"
-                        android:textColor="@color/heavy_gray"
+                        android:text="내 포인트"
+
                         android:layout_toRightOf="@id/imagePoint"
-                        android:layout_marginLeft="5dp"/>
+                        android:layout_marginLeft="25dp"
+                        android:layout_centerVertical="true"/>
+
+                    <TextView
+                        android:id="@+id/tvUserPoint"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="1250p"
+                        android:textSize="20sp"
+                        android:textColor="@color/heavy_gray"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="50dp"/>
+
                 </RelativeLayout>
 
             </RelativeLayout>
 
+            <!--사용자 item 정보 나타내줌-->
+            <RelativeLayout
+                android:id="@+id/relativeUserItemInfo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="7dp"
+                android:padding="7dp"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@id/relativeUserPointInfo">
 
-        </RelativeLayout>
+                <!--tableLayout 사용하여 3*4로 아이템 정보 보여줌-->
+                <TableLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="7dp"
+                    android:layout_centerInParent="true">
+
+
+                    <TableRow>
+                        <!--아이템1-->
+                        <RelativeLayout
+                            android:id="@+id/relativeItem1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
+                            <ImageView
+                                android:id="@+id/imageItem1"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:src="@drawable/image_waterdrop"/>
+
+                            <TextView
+                                android:id="@+id/tvItem1"
+                                android:layout_width="50dp"
+                                android:layout_height="40dp"
+                                android:text="1"
+                                android:textSize="20sp"
+                                android:gravity="center"
+                                android:layout_toRightOf="@id/imageItem1" />
+                        </RelativeLayout>
+
+                        <!--아이템2-->
+                        <RelativeLayout
+                            android:id="@+id/relativeItem2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
+
+                            <ImageView
+                                android:id="@+id/imageItem2"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:src="@drawable/image_waterdrop"/>
+
+                            <TextView
+                                android:id="@+id/tvItem2"
+                                android:layout_width="50dp"
+                                android:layout_height="40dp"
+                                android:text="2"
+                                android:textSize="20sp"
+                                android:gravity="center"
+                                android:layout_toRightOf="@id/imageItem2"/>
+                        </RelativeLayout>
+
+                        <!--아이템3-->
+                        <RelativeLayout
+                            android:id="@+id/relativeItem3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
+
+                            <ImageView
+                                android:id="@+id/imageItem3"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:src="@drawable/image_waterdrop"/>
+
+                            <TextView
+                                android:id="@+id/tvItem3"
+                                android:layout_width="50dp"
+                                android:layout_height="40dp"
+                                android:text="3"
+                                android:textSize="20sp"
+                                android:gravity="center"
+                                android:layout_toRightOf="@id/imageItem3"/>
+                        </RelativeLayout>
+                    </TableRow>
+
+                    <TableRow>
+                        <!--아이템4-->
+                        <RelativeLayout
+                            android:id="@+id/relativeItem4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
+                            <ImageView
+                                android:id="@+id/imageItem4"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:src="@drawable/image_waterdrop"/>
+
+                            <TextView
+                                android:id="@+id/tvItem4"
+                                android:layout_width="50dp"
+                                android:layout_height="40dp"
+                                android:text="4"
+                                android:textSize="20sp"
+                                android:gravity="center"
+                                android:layout_toRightOf="@id/imageItem4" />
+                        </RelativeLayout>
+
+                        <!--아이템5-->
+                        <RelativeLayout
+                            android:id="@+id/relativeItem5"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
+
+                            <ImageView
+                                android:id="@+id/imageItem5"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:src="@drawable/image_waterdrop"/>
+
+                            <TextView
+                                android:id="@+id/tvItem5"
+                                android:layout_width="50dp"
+                                android:layout_height="40dp"
+                                android:text="5"
+                                android:textSize="20sp"
+                                android:gravity="center"
+                                android:layout_toRightOf="@id/imageItem5"/>
+                        </RelativeLayout>
+
+                        <!--아이템6-->
+                        <RelativeLayout
+                            android:id="@+id/relativeItem6"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
+
+                            <ImageView
+                                android:id="@+id/imageItem6"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:src="@drawable/image_waterdrop"/>
+
+                            <TextView
+                                android:id="@+id/tvItem6"
+                                android:layout_width="50dp"
+                                android:layout_height="40dp"
+                                android:text="6"
+                                android:textSize="20sp"
+                                android:gravity="center"
+                                android:layout_toRightOf="@id/imageItem6"/>
+                        </RelativeLayout>
+                    </TableRow>
+
+                    <TableRow>
+                        <!--아이템7-->
+                        <RelativeLayout
+                            android:id="@+id/relativeItem7"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
+                            <ImageView
+                                android:id="@+id/imageItem7"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:src="@drawable/image_waterdrop"/>
+
+                            <TextView
+                                android:id="@+id/tvItem7"
+                                android:layout_width="50dp"
+                                android:layout_height="40dp"
+                                android:text="7"
+                                android:textSize="20sp"
+                                android:gravity="center"
+                                android:layout_toRightOf="@id/imageItem7" />
+                        </RelativeLayout>
+
+                        <!--아이템8-->
+                        <RelativeLayout
+                            android:id="@+id/relativeItem8"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
+
+                            <ImageView
+                                android:id="@+id/imageItem8"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:src="@drawable/image_waterdrop"/>
+
+                            <TextView
+                                android:id="@+id/tvItem8"
+                                android:layout_width="50dp"
+                                android:layout_height="40dp"
+                                android:text="8"
+                                android:textSize="20sp"
+                                android:gravity="center"
+                                android:layout_toRightOf="@id/imageItem8"/>
+                        </RelativeLayout>
+
+                        <!--아이템9-->
+                        <RelativeLayout
+                            android:id="@+id/relativeItem9"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
+
+                            <ImageView
+                                android:id="@+id/imageItem9"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:src="@drawable/image_waterdrop"/>
+
+                            <TextView
+                                android:id="@+id/tvItem9"
+                                android:layout_width="50dp"
+                                android:layout_height="40dp"
+                                android:text="9"
+                                android:textSize="20sp"
+                                android:gravity="center"
+                                android:layout_toRightOf="@id/imageItem9"/>
+                        </RelativeLayout>
+                    </TableRow>
+
+                    <TableRow>
+                        <!--아이템10-->
+                        <RelativeLayout
+                            android:id="@+id/relativeItem10"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
+                            <ImageView
+                                android:id="@+id/imageItem10"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:src="@drawable/image_waterdrop"/>
+
+                            <TextView
+                                android:id="@+id/tvItem10"
+                                android:layout_width="50dp"
+                                android:layout_height="40dp"
+                                android:text="19"
+                                android:textSize="20sp"
+                                android:gravity="center"
+                                android:layout_toRightOf="@id/imageItem10" />
+                        </RelativeLayout>
+
+                        <!--아이템11-->
+                        <RelativeLayout
+                            android:id="@+id/relativeItem11"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
+
+                            <ImageView
+                                android:id="@+id/imageItem11"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:src="@drawable/image_waterdrop"/>
+
+                            <TextView
+                                android:id="@+id/tvItem11"
+                                android:layout_width="50dp"
+                                android:layout_height="40dp"
+                                android:text="11"
+                                android:textSize="20sp"
+                                android:gravity="center"
+                                android:layout_toRightOf="@id/imageItem11"/>
+                        </RelativeLayout>
+                    </TableRow>
+                </TableLayout>
+            </RelativeLayout>
+
+            <!--아이템 사기 타이틀-->
+            <RelativeLayout
+                android:id="@+id/relativeItemBuyInfo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="7dp"
+                android:padding="7dp"
+                android:layout_below="@id/relativeUserItemInfo">
+
+                <ImageView
+                    android:id="@+id/imageItemBuyTitle"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/icon_down_arrow"
+                    android:layout_centerVertical="true"/>
+
+                <TextView
+                    android:id="@+id/tvItemBuyTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="아이템 구입하기"
+                    android:textColor="@android:color/black"
+                    android:layout_toRightOf="@id/imageItemBuyTitle"
+                    android:layout_marginLeft="20dp"
+                    android:layout_centerVertical="true"/>
+
+                <Button
+                    android:id="@+id/btnItemBuy"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="구입하기"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"/>
+
+            </RelativeLayout>
+
+            <!--아이템 리스트 -->
+            <RelativeLayout
+                android:id="@+id/relativeItemsList"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="7dp"
+                android:padding="7dp"
+                android:layout_below="@id/relativeItemBuyInfo">
+
+                <!--아이템1-->
+                <RelativeLayout
+                    android:id="@+id/relativeListOfItem1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/light_gray"
+                    android:padding="5dp">
+
+                    <ImageView
+                        android:id="@+id/imageListOfItem1"
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:src="@drawable/image_waterdrop"
+                        android:layout_centerVertical="true"/>
+                    
+                    <TextView
+                        android:id="@+id/tvListOfItem1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="원두 (50p)"
+                        android:textSize="15sp"
+                        android:gravity="center"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="20dp"
+                        android:layout_toRightOf="@id/imageListOfItem1"/>
+
+                    <Button
+                        android:id="@+id/btnadd1"
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"
+                        android:background="@drawable/btn_add"
+                        android:onClick="onClick"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="10dp"/>
+
+                    <TextView
+                        android:id="@+id/numOfItem1"
+                        android:layout_width="30dp"
+                        android:layout_height="wrap_content"
+                        android:text="0"
+                        android:gravity="center"
+                        android:layout_centerVertical="true"
+                        android:layout_toLeftOf="@id/btnadd1" />
+
+                    <Button
+                        android:id="@+id/btnminus1"
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"
+                        android:background="@drawable/btn_minus"
+                        android:onClick="onClick"
+                        android:layout_centerVertical="true"
+                        android:layout_toLeftOf="@id/numOfItem1"/>
+
+
+
+
+
+                </RelativeLayout>
+
+                <!--아이템2-->
+                <RelativeLayout
+                    android:id="@+id/relativeListOfItem2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/light_gray"
+                    android:padding="5dp"
+                    android:layout_below="@id/relativeListOfItem1"
+                    android:layout_marginTop="3dp">
+
+                    <ImageView
+                        android:id="@+id/imageListOfItem2"
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:src="@drawable/image_waterdrop"
+                        android:layout_centerVertical="true"/>
+
+                    <TextView
+                        android:id="@+id/tvListOfItem2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="물 (70p)"
+                        android:textSize="15sp"
+                        android:gravity="center"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="20dp"
+                        android:layout_toRightOf="@id/imageListOfItem2"/>
+
+                    <Button
+                        android:id="@+id/btnadd2"
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"
+                        android:background="@drawable/btn_add"
+                        android:onClick="onClick"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="10dp"/>
+
+                    <TextView
+                        android:id="@+id/numOfItem2"
+                        android:layout_width="30dp"
+                        android:layout_height="wrap_content"
+                        android:text="0"
+                        android:gravity="center"
+                        android:layout_centerVertical="true"
+                        android:layout_toLeftOf="@id/btnadd2" />
+
+                    <Button
+                        android:id="@+id/btnminus2"
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"
+                        android:background="@drawable/btn_minus"
+                        android:onClick="onClick"
+                        android:layout_centerVertical="true"
+                        android:layout_toLeftOf="@id/numOfItem2"/>
+
+
+
+
+
+                </RelativeLayout>
+
+                <!--아이템3-->
+                <RelativeLayout
+                    android:id="@+id/relativeListOfItem3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/light_gray"
+                    android:padding="5dp"
+                    android:layout_below="@id/relativeListOfItem2"
+                    android:layout_marginTop="3dp">
+
+                    <ImageView
+                        android:id="@+id/imageListOfItem3"
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:src="@drawable/image_waterdrop"
+                        android:layout_centerVertical="true"/>
+
+                    <TextView
+                        android:id="@+id/tvListOfItem3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="얼음 (30p)"
+                        android:textSize="15sp"
+                        android:gravity="center"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="20dp"
+                        android:layout_toRightOf="@id/imageListOfItem3"/>
+
+                    <Button
+                        android:id="@+id/btnadd3"
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"
+                        android:background="@drawable/btn_add"
+                        android:onClick="onClick"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="10dp"/>
+
+                    <TextView
+                        android:id="@+id/numOfItem3"
+                        android:layout_width="30dp"
+                        android:layout_height="wrap_content"
+                        android:text="0"
+                        android:gravity="center"
+                        android:layout_centerVertical="true"
+                        android:layout_toLeftOf="@id/btnadd3" />
+
+                    <Button
+                        android:id="@+id/btnminus3"
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"
+                        android:background="@drawable/btn_minus"
+                        android:onClick="onClick"
+                        android:layout_centerVertical="true"
+                        android:layout_toLeftOf="@id/numOfItem3"/>
+
+
+
+
+
+                </RelativeLayout>
+
+                <!--아이템4-->
+                <RelativeLayout
+                    android:id="@+id/relativeListOfItem4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/light_gray"
+                    android:padding="5dp"
+                    android:layout_below="@id/relativeListOfItem3"
+                    android:layout_marginTop="3dp">
+
+                    <ImageView
+                        android:id="@+id/imageListOfItem4"
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:src="@drawable/image_waterdrop"
+                        android:layout_centerVertical="true"/>
+
+                    <TextView
+                        android:id="@+id/tvListOfItem4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="우유 (150p)"
+                        android:textSize="15sp"
+                        android:gravity="center"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="20dp"
+                        android:layout_toRightOf="@id/imageListOfItem4"/>
+
+                    <Button
+                        android:id="@+id/btnadd4"
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"
+                        android:background="@drawable/btn_add"
+                        android:onClick="onClick"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="10dp"/>
+
+                    <TextView
+                        android:id="@+id/numOfItem4"
+                        android:layout_width="30dp"
+                        android:layout_height="wrap_content"
+                        android:text="0"
+                        android:gravity="center"
+                        android:layout_centerVertical="true"
+                        android:layout_toLeftOf="@id/btnadd4" />
+
+                    <Button
+                        android:id="@+id/btnminus4"
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"
+                        android:background="@drawable/btn_minus"
+                        android:onClick="onClick"
+                        android:layout_centerVertical="true"
+                        android:layout_toLeftOf="@id/numOfItem4"/>
+
+
+
+
+
+                </RelativeLayout>
+
+                <!--아이템5-->
+                <RelativeLayout
+                    android:id="@+id/relativeListOfItem5"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/light_gray"
+                    android:padding="5dp"
+                    android:layout_below="@id/relativeListOfItem4"
+                    android:layout_marginTop="3dp">
+
+                    <ImageView
+                        android:id="@+id/imageListOfItem5"
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:src="@drawable/image_waterdrop"
+                        android:layout_centerVertical="true"/>
+
+                    <TextView
+                        android:id="@+id/tvListOfItem5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="초코 (350p)"
+                        android:textSize="15sp"
+                        android:gravity="center"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="20dp"
+                        android:layout_toRightOf="@id/imageListOfItem5"/>
+
+                    <Button
+                        android:id="@+id/btnadd5"
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"
+                        android:background="@drawable/btn_add"
+                        android:onClick="onClick"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="10dp"/>
+
+                    <TextView
+                        android:id="@+id/numOfItem5"
+                        android:layout_width="30dp"
+                        android:layout_height="wrap_content"
+                        android:text="0"
+                        android:gravity="center"
+                        android:layout_centerVertical="true"
+                        android:layout_toLeftOf="@id/btnadd5" />
+
+                    <Button
+                        android:id="@+id/btnminus5"
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"
+                        android:background="@drawable/btn_minus"
+                        android:onClick="onClick"
+                        android:layout_centerVertical="true"
+                        android:layout_toLeftOf="@id/numOfItem5"/>
+
+
+
+
+
+                </RelativeLayout>
+
+                <!--아이템6-->
+                <RelativeLayout
+                    android:id="@+id/relativeListOfItem6"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/light_gray"
+                    android:padding="5dp"
+                    android:layout_below="@id/relativeListOfItem5"
+                    android:layout_marginTop="3dp">
+
+                    <ImageView
+                        android:id="@+id/imageListOfItem6"
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:src="@drawable/image_waterdrop"
+                        android:layout_centerVertical="true"/>
+
+                    <TextView
+                        android:id="@+id/tvListOfItem6"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="녹차가루 (500p)"
+                        android:textSize="15sp"
+                        android:gravity="center"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="20dp"
+                        android:layout_toRightOf="@id/imageListOfItem6"/>
+
+                    <Button
+                        android:id="@+id/btnadd6"
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"
+                        android:background="@drawable/btn_add"
+                        android:onClick="onClick"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="10dp"/>
+
+                    <TextView
+                        android:id="@+id/numOfItem6"
+                        android:layout_width="30dp"
+                        android:layout_height="wrap_content"
+                        android:text="0"
+                        android:gravity="center"
+                        android:layout_centerVertical="true"
+                        android:layout_toLeftOf="@id/btnadd6" />
+
+                    <Button
+                        android:id="@+id/btnminus6"
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"
+                        android:background="@drawable/btn_minus"
+                        android:onClick="onClick"
+                        android:layout_centerVertical="true"
+                        android:layout_toLeftOf="@id/numOfItem6"/>
+
+
+
+
+
+                </RelativeLayout>
+
+                <!--아이템7-->
+                <RelativeLayout
+                    android:id="@+id/relativeListOfItem7"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/light_gray"
+                    android:padding="5dp"
+                    android:layout_below="@id/relativeListOfItem6"
+                    android:layout_marginTop="3dp">
+
+                    <ImageView
+                        android:id="@+id/imageListOfItem7"
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:src="@drawable/image_waterdrop"
+                        android:layout_centerVertical="true"/>
+
+                    <TextView
+                        android:id="@+id/tvListOfItem7"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="자몽청 (700p)"
+                        android:textSize="15sp"
+                        android:gravity="center"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="20dp"
+                        android:layout_toRightOf="@id/imageListOfItem7"/>
+
+                    <Button
+                        android:id="@+id/btnadd7"
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"
+                        android:background="@drawable/btn_add"
+                        android:onClick="onClick"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="10dp"/>
+
+                    <TextView
+                        android:id="@+id/numOfItem7"
+                        android:layout_width="30dp"
+                        android:layout_height="wrap_content"
+                        android:text="0"
+                        android:gravity="center"
+                        android:layout_centerVertical="true"
+                        android:layout_toLeftOf="@id/btnadd7" />
+
+                    <Button
+                        android:id="@+id/btnminus7"
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"
+                        android:background="@drawable/btn_minus"
+                        android:onClick="onClick"
+                        android:layout_centerVertical="true"
+                        android:layout_toLeftOf="@id/numOfItem7"/>
+
+
+
+
+
+                </RelativeLayout>
+
+                <!--아이템8-->
+                <RelativeLayout
+                    android:id="@+id/relativeListOfItem8"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/light_gray"
+                    android:padding="5dp"
+                    android:layout_below="@id/relativeListOfItem7"
+                    android:layout_marginTop="3dp">
+
+                    <ImageView
+                        android:id="@+id/imageListOfItem8"
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:src="@drawable/image_waterdrop"
+                        android:layout_centerVertical="true"/>
+
+                    <TextView
+                        android:id="@+id/tvListOfItem8"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="탄산수 (200p)"
+                        android:textSize="15sp"
+                        android:gravity="center"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="20dp"
+                        android:layout_toRightOf="@id/imageListOfItem8"/>
+
+                    <Button
+                        android:id="@+id/btnadd8"
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"
+                        android:background="@drawable/btn_add"
+                        android:onClick="onClick"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="10dp"/>
+
+                    <TextView
+                        android:id="@+id/numOfItem8"
+                        android:layout_width="30dp"
+                        android:layout_height="wrap_content"
+                        android:text="0"
+                        android:gravity="center"
+                        android:layout_centerVertical="true"
+                        android:layout_toLeftOf="@id/btnadd8" />
+
+                    <Button
+                        android:id="@+id/btnminus8"
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"
+                        android:background="@drawable/btn_minus"
+                        android:onClick="onClick"
+                        android:layout_centerVertical="true"
+                        android:layout_toLeftOf="@id/numOfItem8"/>
+
+
+
+
+
+                </RelativeLayout>
+
+                <!--아이템9-->
+                <RelativeLayout
+                    android:id="@+id/relativeListOfItem9"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/light_gray"
+                    android:padding="5dp"
+                    android:layout_below="@id/relativeListOfItem8"
+                    android:layout_marginTop="3dp">
+
+                    <ImageView
+                        android:id="@+id/imageListOfItem9"
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:src="@drawable/image_waterdrop"
+                        android:layout_centerVertical="true"/>
+
+                    <TextView
+                        android:id="@+id/tvListOfItem9"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="시럽 (200p)"
+                        android:textSize="15sp"
+                        android:gravity="center"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="20dp"
+                        android:layout_toRightOf="@id/imageListOfItem9"/>
+
+                    <Button
+                        android:id="@+id/btnadd9"
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"
+                        android:background="@drawable/btn_add"
+                        android:onClick="onClick"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="10dp"/>
+
+                    <TextView
+                        android:id="@+id/numOfItem9"
+                        android:layout_width="30dp"
+                        android:layout_height="wrap_content"
+                        android:text="0"
+                        android:gravity="center"
+                        android:layout_centerVertical="true"
+                        android:layout_toLeftOf="@id/btnadd9" />
+
+                    <Button
+                        android:id="@+id/btnminus9"
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"
+                        android:background="@drawable/btn_minus"
+                        android:onClick="onClick"
+                        android:layout_centerVertical="true"
+                        android:layout_toLeftOf="@id/numOfItem9"/>
+
+
+
+
+
+                </RelativeLayout>
+
+                <!--아이템10-->
+                <RelativeLayout
+                    android:id="@+id/relativeListOfItem10"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/light_gray"
+                    android:padding="5dp"
+                    android:layout_below="@id/relativeListOfItem9"
+                    android:layout_marginTop="3dp">
+
+                    <ImageView
+                        android:id="@+id/imageListOfItem10"
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:src="@drawable/image_waterdrop"
+                        android:layout_centerVertical="true"/>
+
+                    <TextView
+                        android:id="@+id/tvListOfItem10"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="파란색소 (800p)"
+                        android:textSize="15sp"
+                        android:gravity="center"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="20dp"
+                        android:layout_toRightOf="@id/imageListOfItem10"/>
+
+                    <Button
+                        android:id="@+id/btnadd10"
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"
+                        android:background="@drawable/btn_add"
+                        android:onClick="onClick"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="10dp"/>
+
+                    <TextView
+                        android:id="@+id/numOfItem10"
+                        android:layout_width="30dp"
+                        android:layout_height="wrap_content"
+                        android:text="0"
+                        android:gravity="center"
+                        android:layout_centerVertical="true"
+                        android:layout_toLeftOf="@id/btnadd10" />
+
+                    <Button
+                        android:id="@+id/btnminus10"
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"
+                        android:background="@drawable/btn_minus"
+                        android:onClick="onClick"
+                        android:layout_centerVertical="true"
+                        android:layout_toLeftOf="@id/numOfItem10"/>
+
+
+
+
+
+                </RelativeLayout>
+
+                <!--아이템11-->
+                <RelativeLayout
+                    android:id="@+id/relativeListOfItem11"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/light_gray"
+                    android:padding="5dp"
+                    android:layout_below="@id/relativeListOfItem10"
+                    android:layout_marginTop="3dp">
+
+                    <ImageView
+                        android:id="@+id/imageListOfItem11"
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:src="@drawable/image_waterdrop"
+                        android:layout_centerVertical="true"/>
+
+                    <TextView
+                        android:id="@+id/tvListOfItem11"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="레몬 (1000p)"
+                        android:textSize="15sp"
+                        android:gravity="center"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="20dp"
+                        android:layout_toRightOf="@id/imageListOfItem11"/>
+
+                    <Button
+                        android:id="@+id/btnadd11"
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"
+                        android:background="@drawable/btn_add"
+                        android:onClick="onClick"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="10dp"/>
+
+                    <TextView
+                        android:id="@+id/numOfItem11"
+                        android:layout_width="30dp"
+                        android:layout_height="wrap_content"
+                        android:text="0"
+                        android:gravity="center"
+                        android:layout_centerVertical="true"
+                        android:layout_toLeftOf="@id/btnadd11" />
+
+                    <Button
+                        android:id="@+id/btnminus11"
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"
+                        android:background="@drawable/btn_minus"
+                        android:onClick="onClick"
+                        android:layout_centerVertical="true"
+                        android:layout_toLeftOf="@id/numOfItem11"/>
+
+
+
+
+
+                </RelativeLayout>
+            </RelativeLayout>
+
     </RelativeLayout>
 
 
-</RelativeLayout>
+    </RelativeLayout>
+</ScrollView>
