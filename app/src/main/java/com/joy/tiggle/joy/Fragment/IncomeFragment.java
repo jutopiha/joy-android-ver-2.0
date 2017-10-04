@@ -20,6 +20,7 @@ import android.widget.NumberPicker;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 import com.joy.tiggle.joy.Activity.MainActivity;
 import com.joy.tiggle.joy.R;
@@ -42,6 +43,8 @@ import java.io.InputStreamReader;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
+
+import static com.facebook.FacebookSdk.getApplicationContext;
 
 /**
  * Created by 조현정 on 2017-08-27.
@@ -167,9 +170,20 @@ public class IncomeFragment extends Fragment {
         mObjectBtn.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                sendObject();
-                MainActivity mainActivity = (MainActivity)getActivity();
-                mainActivity.onFragmentChagned(0);
+                //null값이 있을 경우 처리
+                String s;
+                String getEdit = mIncomeMoneyEt.getText().toString();
+                getEdit = getEdit.trim();   //공백만 있을 경우도 안되게
+
+                if(getEdit.getBytes().length <= 0){//빈값이 넘어올때의 처리
+
+                    Toast.makeText(getApplicationContext(), "금액을 입력하세요.", Toast.LENGTH_SHORT).show();
+                }
+                else{
+                    sendObject();
+                    MainActivity mainActivity = (MainActivity)getActivity();
+                    mainActivity.onFragmentChagned(0);
+                }
             }
         });
         // Inflate the layout for this fragment
