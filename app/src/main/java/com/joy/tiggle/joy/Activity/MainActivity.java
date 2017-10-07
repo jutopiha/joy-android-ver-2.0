@@ -149,7 +149,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         //Back Button 2번 클릭시 앱 종료
-        //super.onBackPressed();
+
         long tempTime = System.currentTimeMillis();
         long intervalTime = tempTime - backPressedTime;
 
