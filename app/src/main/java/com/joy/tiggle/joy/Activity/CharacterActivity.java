@@ -86,7 +86,7 @@ public class CharacterActivity extends AppCompatActivity implements View.OnClick
             case R.id.relativeShop:
                 intent = new Intent(getApplicationContext(), ShopActivity.class);
                 startActivity(intent);
-                finish();
+                //finish();
                 break;
             case R.id.relativeCharacter1:
                 if(characterHas[0] == 0){
@@ -160,12 +160,12 @@ public class CharacterActivity extends AppCompatActivity implements View.OnClick
         return true;
     }
 
-
+    /*
     public void onClickShop(View v){
         Intent intent = new Intent(getApplicationContext(), ShopActivity.class);
         startActivity(intent);
         finish();
-    }
+    }*/
 
     private void sendObject(){
         Log.d("sendOjbect","started");

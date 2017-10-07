@@ -13,6 +13,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.facebook.AccessToken;
 import com.joy.tiggle.joy.Fragment.InputFragment;
@@ -26,6 +27,10 @@ public class MainActivity extends AppCompatActivity {
 
     public static final String urlString = "http://18.220.36.184:9000";
     public static String currentUserId;
+
+    //Back Button 2번 클릭시 앱 종료
+    private final long FINISH_INTERVAL_TIME = 2000;
+    private long backPressedTime=0;
 
     HomeFragment fragment_home = (HomeFragment)getSupportFragmentManager().findFragmentById(R.id.navigation_home);
 
@@ -118,13 +123,13 @@ public class MainActivity extends AppCompatActivity {
             case R.id.menu_info:
                 Intent intent = new Intent(this, CharacterActivity.class);
                 startActivity(intent);
-                finish();
+                //finish();
 
                 return true;
             case R.id.menu_setting:
                 intent = new Intent(this, SettingActivity.class);
                 startActivity(intent);
-                finish();
+                //finish();
 
                 return true;
         }
@@ -141,4 +146,22 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    @Override
+    public void onBackPressed() {
+        //Back Button 2번 클릭시 앱 종료
+        //super.onBackPressed();
+        long tempTime = System.currentTimeMillis();
+        long intervalTime = tempTime - backPressedTime;
+
+        if (0 <= intervalTime && FINISH_INTERVAL_TIME >= intervalTime)
+        {
+            super.onBackPressed();
+        }
+        else
+        {
+            backPressedTime = tempTime;
+            Toast.makeText(getApplicationContext(), "앱을 종료하려면 한 번 더 누르세요", Toast.LENGTH_SHORT).show();
+        }
+
+    }
 }
