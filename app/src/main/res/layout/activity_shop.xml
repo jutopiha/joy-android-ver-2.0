@@ -511,11 +511,6 @@
                         android:onClick="onClick"
                         android:layout_centerVertical="true"
                         android:layout_toLeftOf="@id/numOfItem2"/>
-
-
-
-
-
                 </RelativeLayout>
 
                 <!--아이템3-->
@@ -573,11 +568,6 @@
                         android:onClick="onClick"
                         android:layout_centerVertical="true"
                         android:layout_toLeftOf="@id/numOfItem3"/>
-
-
-
-
-
                 </RelativeLayout>
 
                 <!--아이템4-->
@@ -635,11 +625,6 @@
                         android:onClick="onClick"
                         android:layout_centerVertical="true"
                         android:layout_toLeftOf="@id/numOfItem4"/>
-
-
-
-
-
                 </RelativeLayout>
 
                 <!--아이템5-->
@@ -697,11 +682,6 @@
                         android:onClick="onClick"
                         android:layout_centerVertical="true"
                         android:layout_toLeftOf="@id/numOfItem5"/>
-
-
-
-
-
                 </RelativeLayout>
 
                 <!--아이템6-->
@@ -759,11 +739,6 @@
                         android:onClick="onClick"
                         android:layout_centerVertical="true"
                         android:layout_toLeftOf="@id/numOfItem6"/>
-
-
-
-
-
                 </RelativeLayout>
 
                 <!--아이템7-->
@@ -821,11 +796,6 @@
                         android:onClick="onClick"
                         android:layout_centerVertical="true"
                         android:layout_toLeftOf="@id/numOfItem7"/>
-
-
-
-
-
                 </RelativeLayout>
 
                 <!--아이템8-->
@@ -883,11 +853,6 @@
                         android:onClick="onClick"
                         android:layout_centerVertical="true"
                         android:layout_toLeftOf="@id/numOfItem8"/>
-
-
-
-
-
                 </RelativeLayout>
 
                 <!--아이템9-->
@@ -945,11 +910,6 @@
                         android:onClick="onClick"
                         android:layout_centerVertical="true"
                         android:layout_toLeftOf="@id/numOfItem9"/>
-
-
-
-
-
                 </RelativeLayout>
 
                 <!--아이템10-->
@@ -1007,11 +967,6 @@
                         android:onClick="onClick"
                         android:layout_centerVertical="true"
                         android:layout_toLeftOf="@id/numOfItem10"/>
-
-
-
-
-
                 </RelativeLayout>
 
                 <!--아이템11-->
@@ -1069,11 +1024,6 @@
                         android:onClick="onClick"
                         android:layout_centerVertical="true"
                         android:layout_toLeftOf="@id/numOfItem11"/>
-
-
-
-
-
                 </RelativeLayout>
             </RelativeLayout>
 

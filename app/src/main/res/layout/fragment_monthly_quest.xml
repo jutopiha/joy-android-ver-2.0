@@ -1,6 +1,164 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
 
-</LinearLayout>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/relativeQuestDetail"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="7dp"
+    android:padding="7dp">
+
+    <!--시작일-->
+    <RelativeLayout
+        android:id="@+id/relativeStartDay"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        android:padding="5dp"
+        android:layout_marginTop="10dp">
+
+        <TextView
+            android:id="@+id/tvStartDayTitle"
+            android:layout_width="60dp"
+            android:layout_height="35dp"
+            android:text="시작일"
+            android:textSize="15sp"
+            android:gravity="center"
+            android:background="@color/violet"
+            android:layout_centerVertical="true"/>
+
+        <TextView
+            android:id="@+id/tvStartDay"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2017-04-04"
+            android:textSize="15sp"
+            android:gravity="center"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="20dp"
+            android:layout_toRightOf="@id/tvStartDayTitle"/>
+    </RelativeLayout>
+
+    <!--종료일-->
+    <RelativeLayout
+        android:id="@+id/relativeEndDay"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        android:padding="5dp"
+        android:layout_below="@id/relativeStartDay"
+        android:layout_marginTop="10dp">
+
+        <TextView
+            android:id="@+id/tvEndDayTitle"
+            android:layout_width="60dp"
+            android:layout_height="35dp"
+            android:text="종료일"
+            android:textSize="15sp"
+            android:gravity="center"
+            android:background="@color/violet"
+            android:layout_centerVertical="true"/>
+
+        <TextView
+            android:id="@+id/tvEndDay"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2017-04-30"
+            android:textSize="15sp"
+            android:gravity="center"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="20dp"
+            android:layout_toRightOf="@id/tvEndDayTitle"/>
+
+    </RelativeLayout>
+
+    <!--목표금액-->
+    <RelativeLayout
+        android:id="@+id/relativeQuestMoney"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        android:padding="5dp"
+        android:layout_below="@id/relativeEndDay"
+        android:layout_marginTop="10dp">
+
+        <TextView
+            android:id="@+id/tvQuestMoneyTitle"
+            android:layout_width="60dp"
+            android:layout_height="35dp"
+            android:text="목표금액"
+            android:textSize="15sp"
+            android:gravity="center"
+            android:background="@color/violet"
+            android:layout_centerVertical="true"/>
+
+        <TextView
+            android:id="@+id/tvQuestMoney"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1000000"
+            android:textSize="15sp"
+            android:gravity="center"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="20dp"
+            android:layout_toRightOf="@id/tvQuestMoneyTitle"/>
+
+    </RelativeLayout>
+
+    <!--현재금액-->
+    <RelativeLayout
+        android:id="@+id/relativeRealMoney"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        android:padding="5dp"
+        android:layout_below="@id/relativeQuestMoney"
+        android:layout_marginTop="10dp">
+
+        <TextView
+            android:id="@+id/tvRealMoneyTitle"
+            android:layout_width="60dp"
+            android:layout_height="35dp"
+            android:text="현재금액"
+            android:textSize="15sp"
+            android:gravity="center"
+            android:background="@color/violet"
+            android:layout_centerVertical="true"/>
+
+        <TextView
+            android:id="@+id/tvRealMoney"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="55000"
+            android:textSize="15sp"
+            android:gravity="center"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="20dp"
+            android:layout_toRightOf="@id/tvRealMoneyTitle"/>
+
+    </RelativeLayout>
+
+
+    <!--달성버튼-->
+    <Button
+        android:id="@+id/btnClear"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="완료"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/relativeRealMoney"
+        android:layout_marginTop="150dp"/>
+
+    <!--삭제버튼-->
+    <Button
+        android:id="@+id/btnDelete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="삭제"
+        android:layout_toLeftOf="@+id/btnClear"
+        android:layout_below="@id/relativeRealMoney"
+        android:layout_marginTop="150dp"/>
+
+
+    <!--완료버튼-->
+</RelativeLayout>
