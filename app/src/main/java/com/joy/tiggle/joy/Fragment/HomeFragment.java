@@ -111,6 +111,7 @@ public class HomeFragment extends Fragment {
         return currentView;
     }
 
+
     private void sendObject(){
         Log.d("sendOjbect","들어왔다.");
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
@@ -180,7 +181,7 @@ public class HomeFragment extends Fragment {
     }
 
     public void showMainInfo(String jsonString){
-        Log.d("showMonthlyStat","들어왔다.");
+        Log.d("showMainInfo","started");
 
         try {
             JSONObject stringToJson = new JSONObject(jsonString);   //서버에서 string으로 받은 결과를 json객체로 바꿈

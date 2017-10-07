@@ -454,11 +454,6 @@
                         android:onClick="onClick"
                         android:layout_centerVertical="true"
                         android:layout_toLeftOf="@id/numOfItem1"/>
-
-
-
-
-
                 </RelativeLayout>
 
                 <!--아이템2-->
