@@ -429,8 +429,8 @@
 
                     <Button
                         android:id="@+id/btnadd1"
-                        android:layout_width="15dp"
-                        android:layout_height="15dp"
+                        android:layout_width="22dp"
+                        android:layout_height="22dp"
                         android:background="@drawable/btn_add"
                         android:onClick="onClick"
                         android:layout_alignParentRight="true"
@@ -448,8 +448,8 @@
 
                     <Button
                         android:id="@+id/btnminus1"
-                        android:layout_width="15dp"
-                        android:layout_height="15dp"
+                        android:layout_width="22dp"
+                        android:layout_height="22dp"
                         android:background="@drawable/btn_minus"
                         android:onClick="onClick"
                         android:layout_centerVertical="true"
@@ -486,8 +486,8 @@
 
                     <Button
                         android:id="@+id/btnadd2"
-                        android:layout_width="15dp"
-                        android:layout_height="15dp"
+                        android:layout_width="22dp"
+                        android:layout_height="22dp"
                         android:background="@drawable/btn_add"
                         android:onClick="onClick"
                         android:layout_alignParentRight="true"
@@ -505,8 +505,8 @@
 
                     <Button
                         android:id="@+id/btnminus2"
-                        android:layout_width="15dp"
-                        android:layout_height="15dp"
+                        android:layout_width="22dp"
+                        android:layout_height="22dp"
                         android:background="@drawable/btn_minus"
                         android:onClick="onClick"
                         android:layout_centerVertical="true"
@@ -543,8 +543,8 @@
 
                     <Button
                         android:id="@+id/btnadd3"
-                        android:layout_width="15dp"
-                        android:layout_height="15dp"
+                        android:layout_width="22dp"
+                        android:layout_height="22dp"
                         android:background="@drawable/btn_add"
                         android:onClick="onClick"
                         android:layout_alignParentRight="true"
@@ -562,8 +562,8 @@
 
                     <Button
                         android:id="@+id/btnminus3"
-                        android:layout_width="15dp"
-                        android:layout_height="15dp"
+                        android:layout_width="22dp"
+                        android:layout_height="22dp"
                         android:background="@drawable/btn_minus"
                         android:onClick="onClick"
                         android:layout_centerVertical="true"
@@ -600,8 +600,8 @@
 
                     <Button
                         android:id="@+id/btnadd4"
-                        android:layout_width="15dp"
-                        android:layout_height="15dp"
+                        android:layout_width="22dp"
+                        android:layout_height="22dp"
                         android:background="@drawable/btn_add"
                         android:onClick="onClick"
                         android:layout_alignParentRight="true"
@@ -619,8 +619,8 @@
 
                     <Button
                         android:id="@+id/btnminus4"
-                        android:layout_width="15dp"
-                        android:layout_height="15dp"
+                        android:layout_width="22dp"
+                        android:layout_height="22dp"
                         android:background="@drawable/btn_minus"
                         android:onClick="onClick"
                         android:layout_centerVertical="true"
@@ -657,8 +657,8 @@
 
                     <Button
                         android:id="@+id/btnadd5"
-                        android:layout_width="15dp"
-                        android:layout_height="15dp"
+                        android:layout_width="22dp"
+                        android:layout_height="22dp"
                         android:background="@drawable/btn_add"
                         android:onClick="onClick"
                         android:layout_alignParentRight="true"
@@ -676,8 +676,8 @@
 
                     <Button
                         android:id="@+id/btnminus5"
-                        android:layout_width="15dp"
-                        android:layout_height="15dp"
+                        android:layout_width="22dp"
+                        android:layout_height="22dp"
                         android:background="@drawable/btn_minus"
                         android:onClick="onClick"
                         android:layout_centerVertical="true"
@@ -714,8 +714,8 @@
 
                     <Button
                         android:id="@+id/btnadd6"
-                        android:layout_width="15dp"
-                        android:layout_height="15dp"
+                        android:layout_width="22dp"
+                        android:layout_height="22dp"
                         android:background="@drawable/btn_add"
                         android:onClick="onClick"
                         android:layout_alignParentRight="true"
@@ -733,8 +733,8 @@
 
                     <Button
                         android:id="@+id/btnminus6"
-                        android:layout_width="15dp"
-                        android:layout_height="15dp"
+                        android:layout_width="22dp"
+                        android:layout_height="22dp"
                         android:background="@drawable/btn_minus"
                         android:onClick="onClick"
                         android:layout_centerVertical="true"
@@ -771,8 +771,8 @@
 
                     <Button
                         android:id="@+id/btnadd7"
-                        android:layout_width="15dp"
-                        android:layout_height="15dp"
+                        android:layout_width="22dp"
+                        android:layout_height="22dp"
                         android:background="@drawable/btn_add"
                         android:onClick="onClick"
                         android:layout_alignParentRight="true"
@@ -790,8 +790,8 @@
 
                     <Button
                         android:id="@+id/btnminus7"
-                        android:layout_width="15dp"
-                        android:layout_height="15dp"
+                        android:layout_width="22dp"
+                        android:layout_height="22dp"
                         android:background="@drawable/btn_minus"
                         android:onClick="onClick"
                         android:layout_centerVertical="true"
@@ -828,8 +828,8 @@
 
                     <Button
                         android:id="@+id/btnadd8"
-                        android:layout_width="15dp"
-                        android:layout_height="15dp"
+                        android:layout_width="22dp"
+                        android:layout_height="22dp"
                         android:background="@drawable/btn_add"
                         android:onClick="onClick"
                         android:layout_alignParentRight="true"
@@ -847,8 +847,8 @@
 
                     <Button
                         android:id="@+id/btnminus8"
-                        android:layout_width="15dp"
-                        android:layout_height="15dp"
+                        android:layout_width="22dp"
+                        android:layout_height="22dp"
                         android:background="@drawable/btn_minus"
                         android:onClick="onClick"
                         android:layout_centerVertical="true"
@@ -885,8 +885,8 @@
 
                     <Button
                         android:id="@+id/btnadd9"
-                        android:layout_width="15dp"
-                        android:layout_height="15dp"
+                        android:layout_width="22dp"
+                        android:layout_height="22dp"
                         android:background="@drawable/btn_add"
                         android:onClick="onClick"
                         android:layout_alignParentRight="true"
@@ -904,8 +904,8 @@
 
                     <Button
                         android:id="@+id/btnminus9"
-                        android:layout_width="15dp"
-                        android:layout_height="15dp"
+                        android:layout_width="22dp"
+                        android:layout_height="22dp"
                         android:background="@drawable/btn_minus"
                         android:onClick="onClick"
                         android:layout_centerVertical="true"
@@ -942,8 +942,8 @@
 
                     <Button
                         android:id="@+id/btnadd10"
-                        android:layout_width="15dp"
-                        android:layout_height="15dp"
+                        android:layout_width="22dp"
+                        android:layout_height="22dp"
                         android:background="@drawable/btn_add"
                         android:onClick="onClick"
                         android:layout_alignParentRight="true"
@@ -961,8 +961,8 @@
 
                     <Button
                         android:id="@+id/btnminus10"
-                        android:layout_width="15dp"
-                        android:layout_height="15dp"
+                        android:layout_width="22dp"
+                        android:layout_height="22dp"
                         android:background="@drawable/btn_minus"
                         android:onClick="onClick"
                         android:layout_centerVertical="true"
@@ -999,8 +999,8 @@
 
                     <Button
                         android:id="@+id/btnadd11"
-                        android:layout_width="15dp"
-                        android:layout_height="15dp"
+                        android:layout_width="22dp"
+                        android:layout_height="22dp"
                         android:background="@drawable/btn_add"
                         android:onClick="onClick"
                         android:layout_alignParentRight="true"
@@ -1018,8 +1018,8 @@
 
                     <Button
                         android:id="@+id/btnminus11"
-                        android:layout_width="15dp"
-                        android:layout_height="15dp"
+                        android:layout_width="22dp"
+                        android:layout_height="22dp"
                         android:background="@drawable/btn_minus"
                         android:onClick="onClick"
                         android:layout_centerVertical="true"
