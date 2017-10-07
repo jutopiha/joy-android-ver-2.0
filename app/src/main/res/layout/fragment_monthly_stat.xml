@@ -56,13 +56,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/relativeMonthlyStat1"
-            android:layout_marginTop = "30dp">
+            android:layout_marginTop = "10dp">
 
             <Button
                 android:id="@+id/chartBtn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="그래프"
+                android:text="OKAY"
                 android:layout_centerHorizontal="true"/>
         </RelativeLayout>
 
