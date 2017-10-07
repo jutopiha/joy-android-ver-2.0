@@ -1,6 +1,10 @@
 package com.joy.tiggle.joy.Fragment;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.graphics.drawable.ShapeDrawable;
+import android.graphics.drawable.shapes.OvalShape;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.support.v4.app.Fragment;
@@ -17,6 +21,8 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -54,8 +60,13 @@ public class HomeFragment extends Fragment {
             Color.rgb(247, 120, 107), Color.rgb(145, 168, 208)};
 
     /*캐릭터, 이름, 포인트, 지출내역*/
-    private ImageView character;
+    private ImageView userProfilePicture;
+    private Bitmap bitmap;
+
     private TextView name, point, recentExpense, todayExpense, weekExpense;
+
+    //프로필 사진
+
 
     /*기본*/
     public static android.support.v4.app.Fragment newInstance(){
@@ -68,6 +79,9 @@ public class HomeFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         //mainInfoSetting();
+
+
+
     }
 
     /*기본*/
@@ -82,6 +96,38 @@ public class HomeFragment extends Fragment {
         recentExpense = (TextView)currentView.findViewById(R.id.recentExpenseContent);
         todayExpense = (TextView)currentView.findViewById(R.id.todayExpenseContent);
         weekExpense = (TextView)currentView.findViewById(R.id.weekExpenseContent);
+
+        // profile 사진
+        userProfilePicture = (ImageView)currentView.findViewById(R.id.userCharacter);
+
+        Thread mThread = new Thread() {
+            public void run() {
+                try{
+                    URL url = new URL("https://graph.facebook.com/" + MainActivity.currentUserId + "/picture?type=large");
+
+                    HttpURLConnection conn = (HttpURLConnection)url.openConnection();
+                    conn.setDoInput(true);
+                    conn.connect();
+
+                    InputStream is = conn.getInputStream();
+                    bitmap = BitmapFactory.decodeStream(is);
+
+                } catch(IOException ex) {
+
+                }
+
+            }
+        };
+        mThread.start();
+        try {
+            mThread.join();
+            userProfilePicture.setImageBitmap(bitmap);
+            userProfilePicture.setBackground(new ShapeDrawable(new OvalShape()));
+
+
+        } catch(InterruptedException e) {
+
+        }
 
         sendObject();
 
