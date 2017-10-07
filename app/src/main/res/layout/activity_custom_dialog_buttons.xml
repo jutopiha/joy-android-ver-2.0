@@ -4,10 +4,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center">
-    
+
     <RelativeLayout
         android:layout_width="300dp"
-        android:layout_height="200dp"
+        android:layout_height="500dp"
         android:background="@color/violet">
         
         <ImageView
@@ -15,15 +15,15 @@
             android:layout_width="match_parent"
             android:layout_height="45dp"
             android:src="@drawable/login_logo"/>
-        
+
         <TextView
             android:id="@+id/txt_content"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="20sp"
             android:textColor="#6D6875"
-            android:layout_below="@id/img_title"
             android:layout_centerInParent="true"
+            android:gravity="center"
             android:textAlignment="center"/>
 
         <RelativeLayout
@@ -60,10 +60,5 @@
                 android:layout_alignParentBottom="true"
                 android:layout_marginBottom="10dp"/>
         </RelativeLayout>
-
-
-        
-
-        
     </RelativeLayout>
 </RelativeLayout>

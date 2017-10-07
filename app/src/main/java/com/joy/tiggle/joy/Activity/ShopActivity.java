@@ -306,7 +306,7 @@ public class ShopActivity extends AppCompatActivity implements View.OnClickListe
             }
         }
 
-        order += "\n"+ "구매하시겠어요?";
+        order += "\n"+"총  " + String.valueOf(totalPrice) +" point"+"\n\n"+ "구매하시겠어요?";
         Log.d("test",order);
    }
 
