@@ -10,13 +10,17 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.gson.JsonObject;
+import com.joy.tiggle.joy.ButtonsCustomDialog;
 import com.joy.tiggle.joy.R;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
+import org.apache.http.client.methods.HttpPost;
 import org.apache.http.client.utils.URLEncodedUtils;
+import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONException;
@@ -39,6 +43,14 @@ public class ShopActivity extends AppCompatActivity implements View.OnClickListe
     private TextView items[] = new TextView[11];
     private TextView itembuy[] = new TextView[11];
     private int selectItems[] = {0,0,0,0,0,0,0,0,0,0,0};
+    private String selectItemsName[] = {"원두","물","얼음","우유","초코","녹차가루","자몽청","탄산수","시럽","파란색소","레몬"};
+    private int selectItemsPrice[] ={50, 70, 30, 150, 350, 500, 700, 200, 200, 800, 1000};
+    private String order;   //구매할 것들
+    private int totalPrice,point;   //구매 총액
+    private ButtonsCustomDialog mCustomDialog;
+
+    private JSONObject mainJsonObject = new JSONObject();
+    private JSONObject listJsonObject = new JSONObject();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,7 +72,6 @@ public class ShopActivity extends AppCompatActivity implements View.OnClickListe
                 finish();
                 break;
             case R.id.btnadd1:
-                Toast.makeText(getApplicationContext(), "플러스", Toast.LENGTH_SHORT).show();
                 selectItems[0]++;
                 itembuy[0].setText(String.valueOf(selectItems[0]));
                 break;
@@ -147,6 +158,11 @@ public class ShopActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.btnminus11:
                 if(selectItems[10] >=1) selectItems[10]--;
                 itembuy[10].setText(String.valueOf(selectItems[10]));
+                break;
+            case R.id.btnItemBuy:
+                makeOrder();
+                mCustomDialog = new ButtonsCustomDialog(this, order, okayListener, cancelListener);
+                mCustomDialog.show();
                 break;
         }
     }
@@ -259,6 +275,7 @@ public class ShopActivity extends AppCompatActivity implements View.OnClickListe
         try {
             JSONObject stringToJson = new JSONObject(jsonString);   //서버에서 string으로 받은 결과를 json객체로 바꿈
 
+            point = stringToJson.getInt("point");
             userPoint.setText(String.valueOf(stringToJson.getInt("point")));
             items[0].setText(String.valueOf(stringToJson.getJSONObject("list").getInt("1")));
             items[1].setText(String.valueOf(stringToJson.getJSONObject("list").getInt("2")));
@@ -277,4 +294,143 @@ public class ShopActivity extends AppCompatActivity implements View.OnClickListe
             Log.d("showItemMain", "unexpected error");
         }
     }
+
+    public void makeOrder(){
+        //order에 string 더할거
+        order="";
+
+        for(int i=0; i<11; i++){
+            if(selectItems[i] != 0){
+                order += selectItemsName[i]+ " "+String.valueOf(selectItems[i])+"개"+"\n";
+                totalPrice = selectItems[i]*selectItemsPrice[i];
+            }
+        }
+
+        order += "\n"+ "구매하시겠어요?";
+        Log.d("test",order);
+   }
+
+    private View.OnClickListener okayListener = new View.OnClickListener(){
+        public void onClick(View v){
+            if(point >= totalPrice){
+                //선택한 아이템 정보를 서버에게 보내고
+                sendOrderItem();
+
+                //다시 로딩한다.
+                //다시 로딩하기 전에 setText 0로 하고, select했던 것들 초기화해줘야한다
+                for(int i=0; i<11; i++){
+                    itembuy[i].setText("0");
+                    selectItems[i] = 0;
+                }
+                sendObject();
+            }
+            else{
+                Toast.makeText(getApplicationContext(), "포인트가 부족합니다", Toast.LENGTH_SHORT).show();
+            }
+            mCustomDialog.dismiss();
+        }
+    };
+
+    private View.OnClickListener cancelListener = new View.OnClickListener(){
+        public void onClick(View v){
+            mCustomDialog.dismiss();
+        }
+
+    };
+
+    private void sendOrderItem(){
+        try{
+            mainJsonObject.put("point",totalPrice);
+            listJsonObject.put("1",selectItems[0]);
+            listJsonObject.put("2",selectItems[1]);
+            listJsonObject.put("3",selectItems[2]);
+            listJsonObject.put("4",selectItems[3]);
+            listJsonObject.put("5",selectItems[4]);
+            listJsonObject.put("6",selectItems[5]);
+            listJsonObject.put("7",selectItems[6]);
+            listJsonObject.put("8",selectItems[7]);
+            listJsonObject.put("9",selectItems[8]);
+            listJsonObject.put("10",selectItems[9]);
+            listJsonObject.put("11",selectItems[10]);
+
+            mainJsonObject.put("list",listJsonObject);
+
+        }
+        catch(JSONException e) {
+            e.printStackTrace();
+        }
+        Log.d("sendOrderItem","started");
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.setThreadPolicy(policy);
+        ShopActivity.GetItemOrder request = new ShopActivity.GetItemOrder();
+        request.run();
+    }
+
+    private class GetItemOrder extends Thread{
+        @Override
+        public void run(){
+            postOrderData(mainJsonObject);
+        }
+    }
+
+    public String postOrderData(JSONObject data) {
+
+        String msg = MainActivity.urlString + "/item/buy";
+
+        InputStream inputStream = null;
+        BufferedReader rd = null;
+        StringBuilder result = new StringBuilder();
+
+        StringBuilder requestUrl = new StringBuilder(msg);
+
+        List<NameValuePair> nvps = new ArrayList<NameValuePair>();
+        nvps.add(new BasicNameValuePair("uid", MainActivity.currentUserId));
+        String querystring = URLEncodedUtils.format(nvps, "utf-8");
+
+        requestUrl.append("?");
+        requestUrl.append(querystring);
+
+        HttpClient httpClient = new DefaultHttpClient();
+        HttpPost httpPost = new HttpPost(requestUrl.toString());
+        Log.d("msg is :", requestUrl.toString());
+
+        try {
+            String json = "";
+            json = data.toString();
+            //json = URLEncoder.encode(json,"UTF-8"); //한글이 ??로 저장되는 거 바꿈
+            //String koreanJson = new String(json.getBytes("UTF-8"));
+
+            // loglog
+            Log.v("^^^^^json", json);
+
+            StringEntity stringEntity = new StringEntity(json, "utf-8");
+            httpPost.setEntity(stringEntity);
+
+
+            //answer객체 서버로 전송하고 survey객체 받아오는 과정
+
+            HttpResponse httpResponse = httpClient.execute(httpPost);
+            Log.v("******server", "send msg successed");
+
+            inputStream = httpResponse.getEntity().getContent();
+            rd = new BufferedReader(new InputStreamReader(inputStream));
+            String line;
+            while ((line = rd.readLine()) != null) {
+                result.append(line);
+            }
+            Log.v("Main::bring success", "result:" + result.toString());
+
+        } catch (IOException e) {
+            e.printStackTrace();
+            Log.v("******server", "send msg failed");
+        }
+
+        if (result != null) {
+            return result.toString();
+        } else {
+            return null;
+        }
+
+    }
 }
+
