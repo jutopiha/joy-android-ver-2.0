@@ -32,6 +32,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import static com.joy.tiggle.joy.Activity.SettingActivity.customDialog;
 
@@ -50,7 +51,8 @@ public class CharacterActivity extends AppCompatActivity implements View.OnClick
     private TextView mainCharacterName;
     private int characterHas[] = {0,0,0,0,0,0};
     private ButtonsCustomDialog mCustomDialog;
-    private int mainCharacterNumber;
+    private int mainCharacterNumber, selectCharacterNumber;
+    private String unlockResult;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,6 +70,10 @@ public class CharacterActivity extends AppCompatActivity implements View.OnClick
 
         characterName1 = (TextView)findViewById(R.id.characterName1);
         characterName2 = (TextView)findViewById(R.id.characterName2);
+        characterName3 = (TextView)findViewById(R.id.characterName3);
+        characterName4 = (TextView)findViewById(R.id.characterName4);
+        characterName5 = (TextView)findViewById(R.id.characterName5);
+        characterName6 = (TextView)findViewById(R.id.characterName6);
 
         mainCharacterName = (TextView)findViewById(R.id.tvCharacterName);
 
@@ -92,6 +98,8 @@ public class CharacterActivity extends AppCompatActivity implements View.OnClick
                 if(characterHas[0] == 0){
                     //캐릭터가 잠금 되어있을때, 아이템 수를 보고 잠금 해제 여부를 판단한다.
                     mCustomDialog = new ButtonsCustomDialog(this, "캐릭터를 해제하시겠어요?", unlockListener, rightListener);
+                    selectCharacterNumber = 1;
+                    mCustomDialog.show();
                 }
                 else{
                     //캐릭터가 잠금 해제 되어있을때, 대표캐릭터 설정 여부를 물어본다.
@@ -103,6 +111,8 @@ public class CharacterActivity extends AppCompatActivity implements View.OnClick
             case R.id.relativeCharacter2:
                 if(characterHas[1] == 0){
                     mCustomDialog = new ButtonsCustomDialog(this, "캐릭터를 해제하시겠어요?", unlockListener, rightListener);
+                    selectCharacterNumber = 2;
+                    mCustomDialog.show();
                 }
                 else{
                     mCustomDialog = new ButtonsCustomDialog(this, "대표캐릭터로 설정하시겠어요?", leftListener, rightListener);
@@ -114,6 +124,7 @@ public class CharacterActivity extends AppCompatActivity implements View.OnClick
                 Log.d("relativeCharacter3","started");
                 if(characterHas[2] == 0){
                     mCustomDialog = new ButtonsCustomDialog(this, "캐릭터를 해제하시겠어요?", unlockListener, rightListener);
+                    selectCharacterNumber = 3;
                     mCustomDialog.show();
                 }
                 else{
@@ -125,6 +136,8 @@ public class CharacterActivity extends AppCompatActivity implements View.OnClick
             case R.id.relativeCharacter4:
                 if(characterHas[3] == 0){
                     mCustomDialog = new ButtonsCustomDialog(this, "캐릭터를 해제하시겠어요?", unlockListener, rightListener);
+                    selectCharacterNumber = 4;
+                    mCustomDialog.show();
                 }
                 else{
                     mCustomDialog = new ButtonsCustomDialog(this, "대표캐릭터로 설정하시겠어요?", leftListener, rightListener);
@@ -135,6 +148,8 @@ public class CharacterActivity extends AppCompatActivity implements View.OnClick
             case R.id.relativeCharacter5:
                 if(characterHas[4] == 0){
                     mCustomDialog = new ButtonsCustomDialog(this, "캐릭터를 해제하시겠어요?", unlockListener, rightListener);
+                    selectCharacterNumber = 5;
+                    mCustomDialog.show();
                 }else{
                     mCustomDialog = new ButtonsCustomDialog(this, "대표캐릭터로 설정하시겠어요?", leftListener, rightListener);
                     mainCharacterNumber = 5;
@@ -144,6 +159,8 @@ public class CharacterActivity extends AppCompatActivity implements View.OnClick
             case R.id.relativeCharacter6:
                 if(characterHas[5] == 0){
                     mCustomDialog = new ButtonsCustomDialog(this, "캐릭터를 해제하시겠어요?", unlockListener, rightListener);
+                    selectCharacterNumber = 6;
+                    mCustomDialog.show();
                 }else {
                     mCustomDialog = new ButtonsCustomDialog(this, "대표캐릭터로 설정하시겠어요?", leftListener, rightListener);
                     mainCharacterNumber = 6;
@@ -337,7 +354,15 @@ public class CharacterActivity extends AppCompatActivity implements View.OnClick
 
     private View.OnClickListener unlockListener = new View.OnClickListener(){
         public void onClick(View v){
-            Toast.makeText(getApplicationContext(), "캐릭터 잠금 해제", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(getApplicationContext(), "캐릭터 잠금 해제", Toast.LENGTH_SHORT).show();
+            //선택한 캐릭터 정보를 서버에게 보내고
+            sendUnlockCharacter();
+            Log.d("unlockResult",unlockResult);
+
+            String temp = "\"success\"";
+            if(unlockResult.equals("\"success\"")) sendObject();
+            else    Toast.makeText(getApplicationContext(), "캐릭터 잠금 해제 실패", Toast.LENGTH_SHORT).show();
+
             mCustomDialog.dismiss();
         }
     };
@@ -408,5 +433,75 @@ public class CharacterActivity extends AppCompatActivity implements View.OnClick
         } else {
             return null;
         }
+    }
+
+    private void sendUnlockCharacter(){
+        Log.d("sendUnlockCharacter","started");
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.setThreadPolicy(policy);
+        CharacterActivity.GetCharacterUnlock request = new CharacterActivity.GetCharacterUnlock();
+        request.run();
+    }
+
+    private class GetCharacterUnlock extends Thread{
+        @Override
+        public void run(){
+            postDataUnlock();
+        }
+    }
+
+    public String postDataUnlock(){
+        Log.d("postDataUnlock","started.");
+        String msg = MainActivity.urlString+"/character/unlock";
+
+        InputStream inputStream = null;
+        BufferedReader rd = null;
+        StringBuilder result = new StringBuilder();
+
+        StringBuilder requestUrl = new StringBuilder(msg);
+
+        List<NameValuePair> nvps = new ArrayList<NameValuePair>();
+        nvps.add(new BasicNameValuePair("uid", MainActivity.currentUserId));
+        nvps.add(new BasicNameValuePair("type", String.valueOf(selectCharacterNumber)));
+        String querystring = URLEncodedUtils.format(nvps, "utf-8");
+
+        requestUrl.append("?");
+        requestUrl.append(querystring);
+
+        HttpClient httpClient = new DefaultHttpClient();
+        HttpGet httpGet = new HttpGet(requestUrl.toString());
+        Log.d("msg is :", requestUrl.toString());
+
+        try {
+
+            //answer객체 서버로 전송하고 survey객체 받아오는 과정
+
+            HttpResponse httpResponse = httpClient.execute(httpGet);
+
+            Log.v("******server", "send msg successed");
+
+            inputStream = httpResponse.getEntity().getContent();
+            rd = new BufferedReader(new InputStreamReader(inputStream));
+            String line;
+            while ((line = rd.readLine()) != null) {
+                result.append(line);
+            }
+            Log.v("Main::bring success", "result:" + result.toString());
+            //showCharecterMain(result.toString());
+            unlockResult = result.toString();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+            Log.v("******server", "send msg failed");
+        }
+
+
+
+        if (result != null) {
+            return result.toString();
+        } else {
+            return null;
+        }
+
     }
 }
