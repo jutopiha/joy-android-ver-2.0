@@ -341,17 +341,17 @@ public class ShopActivity extends AppCompatActivity implements View.OnClickListe
     private void sendOrderItem(){
         try{
             mainJsonObject.put("point",totalPrice);
-            listJsonObject.put("1",selectItems[0]);
-            listJsonObject.put("2",selectItems[1]);
-            listJsonObject.put("3",selectItems[2]);
-            listJsonObject.put("4",selectItems[3]);
-            listJsonObject.put("5",selectItems[4]);
-            listJsonObject.put("6",selectItems[5]);
-            listJsonObject.put("7",selectItems[6]);
-            listJsonObject.put("8",selectItems[7]);
-            listJsonObject.put("9",selectItems[8]);
-            listJsonObject.put("10",selectItems[9]);
-            listJsonObject.put("11",selectItems[10]);
+            listJsonObject.put("0",selectItems[0]);
+            listJsonObject.put("1",selectItems[1]);
+            listJsonObject.put("2",selectItems[2]);
+            listJsonObject.put("3",selectItems[3]);
+            listJsonObject.put("4",selectItems[4]);
+            listJsonObject.put("5",selectItems[5]);
+            listJsonObject.put("6",selectItems[6]);
+            listJsonObject.put("7",selectItems[7]);
+            listJsonObject.put("8",selectItems[8]);
+            listJsonObject.put("9",selectItems[9]);
+            listJsonObject.put("10",selectItems[10]);
 
             mainJsonObject.put("list",listJsonObject);
 
