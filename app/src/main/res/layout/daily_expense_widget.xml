@@ -1,0 +1,61 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/shape"
+    android:padding="@dimen/widget_margin">
+
+    <ImageView
+        android:id="@+id/widget_logo"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:src="@drawable/icon_logo"
+        android:layout_margin="8dp"
+        android:layout_marginTop ="50dp"
+        android:layout_marginLeft ="20dp"/>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="35dp"
+        android:src="@drawable/login_logo"
+        android:layout_marginTop="8dp"/>
+
+    <TextView
+        android:id="@+id/daily_expense_widget_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/daily_expense_widget_title"
+        android:layout_below="@id/widget_logo"
+        android:layout_margin="8dp"
+        android:layout_marginTop ="50dp"
+        android:layout_marginLeft ="20dp"
+        android:textSize="15dp"
+        android:textColor="@color/middle_gray"
+        />
+
+    <TextView
+        android:id="@+id/widget_won"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="원"
+        android:textSize="15dp"
+        android:textColor="@color/middle_gray"
+        android:layout_below = "@id/widget_logo"
+        android:layout_alignParentRight="true"
+        android:layout_margin="8dp"
+        android:layout_marginRight="50dp"/>
+
+    <TextView
+        android:id="@+id/widget_expense"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="-"
+        android:textSize="15dp"
+        android:textColor="@android:color/black"
+        android:layout_below = "@id/widget_logo"
+        android:layout_toLeftOf="@id/widget_won"
+        android:layout_margin="8dp"
+        android:layout_marginRight="50dp"/>
+
+
+
+</RelativeLayout>
