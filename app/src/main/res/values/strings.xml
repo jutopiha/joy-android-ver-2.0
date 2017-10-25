@@ -18,6 +18,7 @@
     <string name="fb_login_protocol_scheme">fb1892044964380913</string>
 
     <string name="authentication_fail">Authentication failed.</string>
-    <string name="appwidget_text">EXAMPLE</string>
-    <string name="add_widget">Add widget</string>
+    <string name="daily_expense_widget_title">오늘지출</string>
+    <string name="quest_list_widget_title">퀘스트목록</string>
+    <!--<string name="add_widget">Add widget</string>-->
 </resources>

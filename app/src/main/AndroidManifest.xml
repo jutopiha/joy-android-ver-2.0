@@ -70,14 +70,23 @@
                 <action android:name="android.provider.Telephony.SMS_RECEIVED" />
             </intent-filter>
         </receiver>
-        <receiver android:name=".DailyExpense">
+        <receiver android:name=".QuestListWidget">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
             </intent-filter>
 
             <meta-data
                 android:name="android.appwidget.provider"
-                android:resource="@xml/daily_expense_info" />
+                android:resource="@xml/quest_list_widget_info" />
+        </receiver>
+        <receiver android:name=".DailyExpenseWidget">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/daily_expense_widget_info" />
         </receiver>
     </application>
 

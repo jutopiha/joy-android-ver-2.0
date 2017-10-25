@@ -10,5 +10,6 @@
     <item name = "middle_gray" type="color">#8c8c8c</item>
     <item name = "heavy_gray" type="color">#0f0f0f</item>
     <item name = "transparent" type="color">#00000000</item>
+    <item name="light_yellow" type="color">#fffab5</item>
 
 </resources>

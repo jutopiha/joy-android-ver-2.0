@@ -24,7 +24,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"/>
 
-            <!--캐릭터-->
+            <!--프로필사진-->
             <ImageView
                 android:id="@+id/userCharacter"
                 android:layout_width="100dp"
@@ -78,13 +78,42 @@
             android:layout_marginRight="15dp"
             android:id="@+id/view2" />
 
-        <!--지출 내역-->
+        <!--어린이 칭찬카드-->
         <RelativeLayout
             android:id="@+id/relative2"
             android:layout_width="320dp"
             android:layout_height="wrap_content"
-            android:layout_below="@id/relative1"
-            android:layout_marginTop="25dp"
+            android:layout_marginTop="24dp"
+            android:layout_below="@+id/view2"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true">
+
+            <ImageView
+                android:id="@+id/character"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src = "@drawable/character4"
+                android:layout_marginLeft="50dp"
+                android:layout_marginRight="10dp"/>
+
+            <TextView
+                android:id="@+id/cardTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/character"
+                android:layout_centerVertical="true"
+                android:text=" 꼼꼼한 기록이 성공을 만든다구~!"
+                android:textSize = "15dp"
+                android:background="@drawable/character_text_border" />
+
+        </RelativeLayout>
+        <!--지출 내역-->
+        <RelativeLayout
+            android:id="@+id/relative3"
+            android:layout_width="320dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/relative2"
+            android:layout_marginTop="40dp"
             android:layout_centerHorizontal="true">
 
             <!--오늘 지출 금액(가운데)-->
@@ -176,13 +205,31 @@
             android:layout_marginRight="15dp"
             android:id="@+id/view4" />
 
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            style="@style/HomeDivider"
+            android:layout_below="@id/relative3"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:id="@+id/view5"
+            android:layout_marginTop="20dp"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            style="@style/HomeDivider"
+            android:layout_below="@id/view5"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:id="@+id/view6" />
         <!--이번달 총수입지출 원형그래프-->
         <RelativeLayout
-            android:id="@+id/relative3"
+            android:id="@+id/relative4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="3"
-            android:layout_below="@id/relative2">
+            android:layout_below="@id/relative3">
 
             <com.github.mikephil.charting.charts.PieChart
                 android:id="@+id/idPieChart"
