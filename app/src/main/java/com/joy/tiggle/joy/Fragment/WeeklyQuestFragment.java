@@ -35,7 +35,9 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import static com.facebook.FacebookSdk.getApplicationContext;
@@ -51,11 +53,19 @@ public class WeeklyQuestFragment extends Fragment {
     public static final String PAGE_TITLE = "주간 지출 목표";
     private int userGoalMoney;    //사용자 목표 금액 입력받아서 저장.
 
-    private Button mObjectBtn, mDeleteBtn;
+    private Button mObjectBtn, mDeleteBtn, mCompleteBtn;
     private TextView mStartDay, mEndDay, mObjectMoney, mRealMoney;
     private RelativeLayout layoutRegister, layoutInfo;
     private JSONObject jsonObject = new JSONObject(); // for temp
-    private String tempType, tempStartDay, tempEndDay, tempObjectMoney, tempRealMoney;
+    private String tempType, tempStartDay, tempEndDay, tempObjectMoney, tempRealMoney, tempClear;
+
+    long now = System.currentTimeMillis(); //현재시간을 msec로 구함.
+    Date date = new Date(now);  // 현재 시간을 date변수에 저장
+    SimpleDateFormat sdfNow = new SimpleDateFormat("MMdd");   //시간 나타낼 포맷 정함
+    String formatDate = sdfNow.format(date);    //nowDate변수에 값을 저장
+    private int nowDate = Integer.parseInt(formatDate);
+    private int endDate;
+
 
     public WeeklyQuestFragment(){
 
@@ -81,6 +91,7 @@ public class WeeklyQuestFragment extends Fragment {
         //필요한 findViewById
         mObjectBtn = (Button) currentView.findViewById(R.id.btnAddQuest);
         mDeleteBtn = (Button) currentView.findViewById(R.id.btnDelete);
+        mCompleteBtn = (Button) currentView.findViewById(R.id.btnClear);
         mStartDay = (TextView)currentView.findViewById(R.id.tvStartDay);
         mEndDay = (TextView) currentView.findViewById(R.id.tvEndDay);
         mObjectMoney = (TextView)currentView.findViewById(R.id.tvQuestMoney);
@@ -133,6 +144,13 @@ public class WeeklyQuestFragment extends Fragment {
 
         sendObject();
 
+        if(nowDate < endDate) {
+            mCompleteBtn.setEnabled(false);
+        }
+        else{
+            mCompleteBtn.setEnabled(true);
+        }
+
         if(tempType == null)  {
             layoutInfo.setVisibility(View.GONE);
         }
@@ -155,9 +173,25 @@ public class WeeklyQuestFragment extends Fragment {
                 layoutRegister.setVisibility(View.VISIBLE);
             }
         });
+
+        //완료버튼 리스너
+        mCompleteBtn.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                clearWeeklyQuestObject();
+
+                if(tempClear == "success")  Toast.makeText(getApplicationContext(), "퀘스트 성공! 아이템과 포인트를 확인하세요", Toast.LENGTH_LONG).show();
+                    else   Toast.makeText(getApplicationContext(), "퀘스트 실패! 다시 도전해 보세요", Toast.LENGTH_LONG).show();
+
+                layoutInfo.setVisibility(View.GONE);
+                layoutRegister.setVisibility(View.VISIBLE);
+
+            }
+        });
         return currentView;
     }
 
+    //첫 정보 받아오기
     private void sendObject(){
         Log.d("QuestsendObject","started.");
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
@@ -247,32 +281,15 @@ public class WeeklyQuestFragment extends Fragment {
             month = (temp - year*10000)/100;
             day = temp - year*10000 - month*100;
             tempEndDay = String.valueOf(year)+"-"+String.valueOf(month)+"-"+String.valueOf(day);
-
+            endDate = month*100 + day;
             tempObjectMoney = stringToJson.getJSONObject("weekly").getString("goalMoney");
             tempRealMoney = stringToJson.getJSONObject("weekly").getString("nowMoney");
-            /*월간 퀘스트
-            WeeklyQuestFragment.newMonthlyQuest.setType(stringToJson.getJSONObject("monthly").getString("type")); //월간퀘스트 타입 저장
-
-            temp = Integer.parseInt(stringToJson.getJSONObject("monthly").getString("startDate"));
-            year = temp/10000;
-            month = (temp - year*10000)/100;
-            day = temp - year*10000 - month*100;
-            WeeklyQuestFragment.newMonthlyQuest.setStartDate(String.valueOf(year)+"-"+String.valueOf(month)+"-"+String.valueOf(day));    //월간퀘스트 시작날짜 저장
-
-            temp = Integer.parseInt(stringToJson.getJSONObject("monthly").getString("endDate"));
-            year = temp/10000;
-            month = (temp - year*10000)/100;
-            day = temp - year*10000 - month*100;
-            WeeklyQuestFragment.newMonthlyQuest.setEndDate(String.valueOf(year)+"-"+String.valueOf(month)+"-"+String.valueOf(day));  //월간퀘스트 종료날짜 저장
-
-            WeeklyQuestFragment.newMonthlyQuest.setGoalMoney(stringToJson.getJSONObject("monthly").getString("goalMoney")); //월간퀘스트 목표금액 저장
-            WeeklyQuestFragment.newMonthlyQuest.setNowMoney(stringToJson.getJSONObject("monthly").getString("nowMoney")); //주간퀘스트 목표금액 저장
-            */
         }
         catch (JSONException e) {
         }
     }
 
+    //퀘스트 등록하기
     private void sendUserObjectMoney(){
         Log.d("sendUserObjectMoney","started.");
 
@@ -359,6 +376,7 @@ public class WeeklyQuestFragment extends Fragment {
 
     }
 
+    //삭제하기
     private void deleteWeeklyQuestObject(){
         Log.d("deleteWeeklyQuestObject","started.");
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
@@ -376,7 +394,7 @@ public class WeeklyQuestFragment extends Fragment {
 
     public String deleteData(){
         Log.d("deleteData","started");
-        String msg = MainActivity.urlString+"/giveup";
+        String msg = MainActivity.urlString+"/quest/giveup";
 
         InputStream inputStream = null;
         BufferedReader rd = null;
@@ -424,4 +442,77 @@ public class WeeklyQuestFragment extends Fragment {
             return null;
         }
     }
+
+    //완료하기
+    private void clearWeeklyQuestObject(){
+        Log.d("clearWeeklyQuestObject","started.");
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.setThreadPolicy(policy);
+        WeeklyQuestFragment.ClearQuest request = new WeeklyQuestFragment.ClearQuest();
+        request.run();
+    }
+
+    private class ClearQuest extends Thread{
+        @Override
+        public void run(){
+            clearData();
+        }
+    }
+
+    public String clearData(){
+        Log.d("clearData","started");
+        String msg = MainActivity.urlString+"/complete";
+
+        InputStream inputStream = null;
+        BufferedReader rd = null;
+        StringBuilder result = new StringBuilder();
+
+        StringBuilder requestUrl = new StringBuilder(msg);
+
+        List<NameValuePair> nvps = new ArrayList<NameValuePair>();
+        nvps.add(new BasicNameValuePair("uid", MainActivity.currentUserId));
+        nvps.add(new BasicNameValuePair("type", "weekly"));
+        String querystring = URLEncodedUtils.format(nvps, "utf-8");
+
+        requestUrl.append("?");
+        requestUrl.append(querystring);
+
+        HttpClient httpClient = new DefaultHttpClient();
+        HttpGet httpGet = new HttpGet(requestUrl.toString());
+        Log.d("msg is :", requestUrl.toString());
+
+        try {
+
+            //answer객체 서버로 전송하고 survey객체 받아오는 과정
+            HttpResponse httpResponse = httpClient.execute(httpGet);
+            Log.v("******server", "send msg successed");
+
+            inputStream = httpResponse.getEntity().getContent();
+            rd = new BufferedReader(new InputStreamReader(inputStream));
+            String line;
+            while ((line = rd.readLine()) != null) {
+                result.append(line);
+            }
+            Log.v("Main::bring success", "result:" + result.toString());
+
+            try{
+                JSONObject stringToJson = new JSONObject(result.toString());
+                tempClear = stringToJson.getString("DATA");
+            } catch(JSONException e){
+
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+            Log.v("******server", "send msg failed");
+        }
+
+
+        if (result != null) {
+            return result.toString();
+        } else {
+            return null;
+        }
+    }
+
 }
