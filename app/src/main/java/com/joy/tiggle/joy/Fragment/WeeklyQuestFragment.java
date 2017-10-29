@@ -70,9 +70,9 @@ public class WeeklyQuestFragment extends Fragment {
     private TextView mStartDay, mEndDay, mObjectMoney, mRealMoney;
     private RelativeLayout layoutRegister, layoutInfo;
     private JSONObject jsonObject = new JSONObject(); // for temp
-    private String temp;
-    private static Quest newWeeklyQuest = new Quest();
-    public static Quest newMonthlyQuest = new Quest();
+    private String tempType, tempStartDay, tempEndDay, tempObjectMoney, tempRealMoney;
+    //private static Quest newWeeklyQuest = new Quest();
+    //public static Quest newMonthlyQuest = new Quest();
 
     public WeeklyQuestFragment(){
 
@@ -121,7 +121,20 @@ public class WeeklyQuestFragment extends Fragment {
                 alert.setPositiveButton("ok", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int whichButton) {
                         userGoalMoney = Integer.parseInt(money.getText().toString());
-                        //sendUserObjectMoney();
+                        sendUserObjectMoney();
+                        sendObject();
+                        if(tempType == null)  {
+                            layoutInfo.setVisibility(View.GONE);
+                            layoutRegister.setVisibility(View.VISIBLE);
+                        }
+                        else{
+                            layoutRegister.setVisibility(View.GONE);
+                            mStartDay.setText(tempStartDay);
+                            mEndDay.setText(tempEndDay);
+                            mObjectMoney.setText(tempObjectMoney);
+                            mRealMoney.setText(tempRealMoney);
+                            layoutInfo.setVisibility(View.VISIBLE);
+                        }
                     }
                 });
 
@@ -135,16 +148,18 @@ public class WeeklyQuestFragment extends Fragment {
         });
 
         sendObject();
-        if(newWeeklyQuest.getType() == null)  {
+
+        if(tempType == null)  {
             layoutInfo.setVisibility(View.GONE);
         }
         else{
             layoutRegister.setVisibility(View.GONE);
-            mStartDay.setText(newWeeklyQuest.getStartDate());
-            mEndDay.setText(newWeeklyQuest.getEndDate());
-            mObjectMoney.setText(newWeeklyQuest.getGoalMoney());
-            mRealMoney.setText(newWeeklyQuest.getNowMoney());
+            mStartDay.setText(tempStartDay);
+            mEndDay.setText(tempEndDay);
+            mObjectMoney.setText(tempObjectMoney);
+            mRealMoney.setText(tempRealMoney);
         }
+
         return currentView;
     }
 
@@ -224,43 +239,128 @@ public class WeeklyQuestFragment extends Fragment {
             int temp, year, month, day;
 
             /*주간 퀘스트*/
-            newWeeklyQuest.setType(stringToJson.getJSONObject("weekly").getString("type")); //주간퀘스트 타입 저장
+            tempType = stringToJson.getJSONObject("weekly").getString("type");
 
             temp = Integer.parseInt(stringToJson.getJSONObject("weekly").getString("startDate"));
             year = temp/10000;
             month = (temp - year*10000)/100;
-            day = temp - year*10000 - month-100;
-            newWeeklyQuest.setStartDate(String.valueOf(year)+"-"+String.valueOf(month)+"-"+String.valueOf(day));    //주간퀘스트 시작날짜 저장
+            day = temp - year*10000 - month*100;
+            tempStartDay = String.valueOf(year)+"-"+String.valueOf(month)+"-"+String.valueOf(day);
 
             temp = Integer.parseInt(stringToJson.getJSONObject("weekly").getString("endDate"));
             year = temp/10000;
             month = (temp - year*10000)/100;
-            day = temp - year*10000 - month-100;
-            newWeeklyQuest.setEndDate(String.valueOf(year)+"-"+String.valueOf(month)+"-"+String.valueOf(day));  //주간퀘스트 종료날짜 저장
+            day = temp - year*10000 - month*100;
+            tempEndDay = String.valueOf(year)+"-"+String.valueOf(month)+"-"+String.valueOf(day);
 
-            newWeeklyQuest.setGoalMoney(stringToJson.getJSONObject("weekly").getString("goalMoney")); //주간퀘스트 목표금액 저장
-            newWeeklyQuest.setNowMoney(stringToJson.getJSONObject("weekly").getString("nowMoney")); //주간퀘스트 목표금액 저장
-
-            /*월간 퀘스트*/
-            newMonthlyQuest.setType(stringToJson.getJSONObject("monthly").getString("type")); //월간퀘스트 타입 저장
+            tempObjectMoney = stringToJson.getJSONObject("weekly").getString("goalMoney");
+            tempRealMoney = stringToJson.getJSONObject("weekly").getString("nowMoney");
+            /*월간 퀘스트
+            WeeklyQuestFragment.newMonthlyQuest.setType(stringToJson.getJSONObject("monthly").getString("type")); //월간퀘스트 타입 저장
 
             temp = Integer.parseInt(stringToJson.getJSONObject("monthly").getString("startDate"));
             year = temp/10000;
             month = (temp - year*10000)/100;
-            day = temp - year*10000 - month-100;
-            newMonthlyQuest.setStartDate(String.valueOf(year)+"-"+String.valueOf(month)+"-"+String.valueOf(day));    //월간퀘스트 시작날짜 저장
+            day = temp - year*10000 - month*100;
+            WeeklyQuestFragment.newMonthlyQuest.setStartDate(String.valueOf(year)+"-"+String.valueOf(month)+"-"+String.valueOf(day));    //월간퀘스트 시작날짜 저장
 
             temp = Integer.parseInt(stringToJson.getJSONObject("monthly").getString("endDate"));
             year = temp/10000;
             month = (temp - year*10000)/100;
-            day = temp - year*10000 - month-100;
-            newMonthlyQuest.setEndDate(String.valueOf(year)+"-"+String.valueOf(month)+"-"+String.valueOf(day));  //월간퀘스트 종료날짜 저장
+            day = temp - year*10000 - month*100;
+            WeeklyQuestFragment.newMonthlyQuest.setEndDate(String.valueOf(year)+"-"+String.valueOf(month)+"-"+String.valueOf(day));  //월간퀘스트 종료날짜 저장
 
-            newMonthlyQuest.setGoalMoney(stringToJson.getJSONObject("monthly").getString("goalMoney")); //월간퀘스트 목표금액 저장
-            newMonthlyQuest.setNowMoney(stringToJson.getJSONObject("monthly").getString("nowMoney")); //주간퀘스트 목표금액 저장
-
+            WeeklyQuestFragment.newMonthlyQuest.setGoalMoney(stringToJson.getJSONObject("monthly").getString("goalMoney")); //월간퀘스트 목표금액 저장
+            WeeklyQuestFragment.newMonthlyQuest.setNowMoney(stringToJson.getJSONObject("monthly").getString("nowMoney")); //주간퀘스트 목표금액 저장
+            */
         }
         catch (JSONException e) {
         }
+    }
+
+    private void sendUserObjectMoney(){
+        Log.d("sendUserObjectMoney","started.");
+
+        try {
+            jsonObject.put("type","weekly");
+            jsonObject.put("money",userGoalMoney);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.setThreadPolicy(policy);
+        SaveNewWeeklyQuest request = new SaveNewWeeklyQuest();
+        request.run();
+    }
+
+    private class SaveNewWeeklyQuest extends Thread
+    {
+        @Override
+        public void run() {
+
+            postWeeklyQuestMoneyData(jsonObject);
+
+        }
+    }
+
+    public String postWeeklyQuestMoneyData(JSONObject data) {
+
+        String msg = MainActivity.urlString + "/quest/start";
+
+        InputStream inputStream = null;
+        BufferedReader rd = null;
+        StringBuilder result = new StringBuilder();
+
+        StringBuilder requestUrl = new StringBuilder(msg);
+
+        List<NameValuePair> nvps = new ArrayList<NameValuePair>();
+        nvps.add(new BasicNameValuePair("uid", MainActivity.currentUserId));
+        String querystring = URLEncodedUtils.format(nvps, "utf-8");
+
+        requestUrl.append("?");
+        requestUrl.append(querystring);
+
+        HttpClient httpClient = new DefaultHttpClient();
+        HttpPost httpPost = new HttpPost(requestUrl.toString());
+        Log.d("msg is :", requestUrl.toString());
+
+        try {
+
+            String json="";
+            json=data.toString();
+
+            // loglog
+            Log.v("^^^^^json", json);
+
+            StringEntity stringEntity=new StringEntity(json, "utf-8");
+            httpPost.setEntity(stringEntity);
+
+            //answer객체 서버로 전송하고 survey객체 받아오는 과정
+
+            HttpResponse httpResponse = httpClient.execute(httpPost);
+            Log.v("******server", "send msg successed");
+
+            inputStream = httpResponse.getEntity().getContent();
+            rd = new BufferedReader(new InputStreamReader(inputStream));
+            String line;
+            while ((line = rd.readLine()) != null) {
+                result.append(line);
+            }
+            Log.v("Main::bring success", "result:" + result.toString());
+
+        } catch (IOException e) {
+            e.printStackTrace();
+            Log.v("******server", "send msg failed");
+        }
+
+
+
+        if (result != null) {
+            return result.toString();
+        } else {
+            return null;
+        }
+
     }
 }
