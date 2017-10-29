@@ -62,7 +62,7 @@ public class MonthlyQuestFragment extends Fragment {
     public static final String PAGE_TITLE = "월간 지출 목표";
     private int userGoalMoney;    //사용자 목표 금액 입력받아서 저장.
 
-    private Button mObjectBtn;
+    private Button mObjectBtn,mDeleteBtn;
     private TextView mStartDay, mEndDay, mObjectMoney, mRealMoney;
     private RelativeLayout layoutRegister, layoutInfo;
     private JSONObject jsonObject = new JSONObject(); // for temp
@@ -91,6 +91,7 @@ public class MonthlyQuestFragment extends Fragment {
 
         //필요한 findViewById
         mObjectBtn = (Button) currentView.findViewById(R.id.btnAddQuest);
+        mDeleteBtn = (Button) currentView.findViewById(R.id.btnDelete);
         mStartDay = (TextView)currentView.findViewById(R.id.tvStartDay);
         mEndDay = (TextView) currentView.findViewById(R.id.tvEndDay);
         mObjectMoney = (TextView)currentView.findViewById(R.id.tvQuestMoney);
@@ -151,6 +152,18 @@ public class MonthlyQuestFragment extends Fragment {
             mObjectMoney.setText(tempObjectMoney);
             mRealMoney.setText(tempRealMoney);
         }
+
+        //삭제버튼 리스너
+        mDeleteBtn.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                Toast.makeText(getApplicationContext(), "삭제완료", Toast.LENGTH_LONG).show();
+                deleteMonthlyQuestObject();
+                sendObject();
+                layoutInfo.setVisibility(View.GONE);
+                layoutRegister.setVisibility(View.VISIBLE);
+            }
+        });
 
         return currentView;
     }
@@ -344,4 +357,69 @@ public class MonthlyQuestFragment extends Fragment {
         }
     }
 
+    private void deleteMonthlyQuestObject(){
+        Log.d("deleteQuestObject","start");
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.setThreadPolicy(policy);
+        MonthlyQuestFragment.DeleteQuest request = new MonthlyQuestFragment.DeleteQuest();
+        request.run();
+    }
+
+    private class DeleteQuest extends Thread{
+        @Override
+        public void run(){
+            deleteData();
+        }
+    }
+
+    public String deleteData(){
+        Log.d("deleteData","started");
+        String msg = MainActivity.urlString+"/giveup";
+
+        InputStream inputStream = null;
+        BufferedReader rd = null;
+        StringBuilder result = new StringBuilder();
+
+        StringBuilder requestUrl = new StringBuilder(msg);
+
+        List<NameValuePair> nvps = new ArrayList<NameValuePair>();
+        nvps.add(new BasicNameValuePair("uid", MainActivity.currentUserId));
+        nvps.add(new BasicNameValuePair("type", "weekly"));
+        String querystring = URLEncodedUtils.format(nvps, "utf-8");
+
+        requestUrl.append("?");
+        requestUrl.append(querystring);
+
+        HttpClient httpClient = new DefaultHttpClient();
+        HttpGet httpGet = new HttpGet(requestUrl.toString());
+        Log.d("msg is :", requestUrl.toString());
+
+        try {
+
+            //answer객체 서버로 전송하고 survey객체 받아오는 과정
+            HttpResponse httpResponse = httpClient.execute(httpGet);
+            Log.v("******server", "send msg successed");
+
+            inputStream = httpResponse.getEntity().getContent();
+            rd = new BufferedReader(new InputStreamReader(inputStream));
+            String line;
+            while ((line = rd.readLine()) != null) {
+                result.append(line);
+            }
+            Log.v("Main::bring success", "result:" + result.toString());
+            //showQuestInfo(result.toString());
+
+        } catch (IOException e) {
+            e.printStackTrace();
+            Log.v("******server", "send msg failed");
+        }
+
+
+
+        if (result != null) {
+            return result.toString();
+        } else {
+            return null;
+        }
+    }
 }
