@@ -412,7 +412,7 @@ public class MonthlyQuestFragment extends Fragment {
 
         List<NameValuePair> nvps = new ArrayList<NameValuePair>();
         nvps.add(new BasicNameValuePair("uid", MainActivity.currentUserId));
-        nvps.add(new BasicNameValuePair("type", "weekly"));
+        nvps.add(new BasicNameValuePair("type", "monthly"));
         String querystring = URLEncodedUtils.format(nvps, "utf-8");
 
         requestUrl.append("?");
