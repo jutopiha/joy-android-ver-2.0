@@ -1,8 +1,10 @@
 package com.joy.tiggle.joy;
 
+import android.app.PendingIntent;
 import android.appwidget.AppWidgetManager;
 import android.appwidget.AppWidgetProvider;
 import android.content.Context;
+import android.content.Intent;
 import android.os.StrictMode;
 import android.util.Log;
 import android.widget.RemoteViews;
@@ -58,6 +60,12 @@ public class DailyExpenseWidget extends AppWidgetProvider {
         for (int appWidgetId : appWidgetIds) {
             updateAppWidget(context, appWidgetManager, appWidgetId);
         }
+
+        RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.daily_expense_widget);
+        Intent intent = new Intent(context, MainActivity.class);
+        PendingIntent pe = PendingIntent.getActivity(context,0,intent, 0);
+        views.setOnClickPendingIntent(R.id.relative,pe);
+        appWidgetManager.updateAppWidget(appWidgetIds,views);
     }
 
     @Override

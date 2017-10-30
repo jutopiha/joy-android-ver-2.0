@@ -1,8 +1,10 @@
 package com.joy.tiggle.joy;
 
+import android.app.PendingIntent;
 import android.appwidget.AppWidgetManager;
 import android.appwidget.AppWidgetProvider;
 import android.content.Context;
+import android.content.Intent;
 import android.os.StrictMode;
 import android.util.Log;
 import android.view.View;
@@ -10,6 +12,7 @@ import android.widget.RelativeLayout;
 import android.widget.RemoteViews;
 
 import com.joy.tiggle.joy.Activity.MainActivity;
+import com.joy.tiggle.joy.Fragment.QuestFragment;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
@@ -79,6 +82,12 @@ public class QuestListWidget extends AppWidgetProvider {
         for (int appWidgetId : appWidgetIds) {
             updateAppWidget(context, appWidgetManager, appWidgetId);
         }
+        RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.quest_list_widget);
+        Intent intent = new Intent(context, MainActivity.class);
+        PendingIntent pe = PendingIntent.getActivity(context,0,intent, 0);
+        views.setOnClickPendingIntent(R.id.relative,pe);
+        appWidgetManager.updateAppWidget(appWidgetIds,views);
+
     }
 
     @Override
