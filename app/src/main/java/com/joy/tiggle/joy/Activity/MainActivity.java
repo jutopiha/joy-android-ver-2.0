@@ -127,13 +127,13 @@ public class MainActivity extends AppCompatActivity {
             case R.id.menu_info:
                 Intent intent = new Intent(this, CharacterActivity.class);
                 startActivity(intent);
-                //finish();
+                finish();
 
                 return true;
             case R.id.menu_setting:
                 intent = new Intent(this, SettingActivity.class);
                 startActivity(intent);
-                //finish();
+                finish();
 
                 return true;
         }

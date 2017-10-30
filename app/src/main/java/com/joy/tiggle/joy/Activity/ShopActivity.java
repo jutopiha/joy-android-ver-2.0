@@ -49,6 +49,10 @@ public class ShopActivity extends AppCompatActivity implements View.OnClickListe
     private int totalPrice,point;   //구매 총액
     private ButtonsCustomDialog mCustomDialog;
 
+    //Back Button 2번 클릭시 앱 종료, 1번누르면 character로
+    private final long FINISH_INTERVAL_TIME = 2000;
+    private long backPressedTime=0;
+
     private JSONObject mainJsonObject = new JSONObject();
     private JSONObject listJsonObject = new JSONObject();
 
@@ -429,6 +433,29 @@ public class ShopActivity extends AppCompatActivity implements View.OnClickListe
             return result.toString();
         } else {
             return null;
+        }
+
+    }
+
+    @Override
+    public void onBackPressed() {
+        //Back Button 2번 클릭시 앱 종료
+
+        long tempTime = System.currentTimeMillis();
+        long intervalTime = tempTime - backPressedTime;
+
+        if (0 <= intervalTime && FINISH_INTERVAL_TIME >= intervalTime)
+        {
+            //2번 눌렀을때
+            super.onBackPressed();
+        }
+        else
+        {
+            //한번 눌렀을때
+            backPressedTime = tempTime;
+            Intent intent = new Intent(getApplicationContext(), CharacterActivity.class);
+            startActivity(intent);
+            finish();
         }
 
     }

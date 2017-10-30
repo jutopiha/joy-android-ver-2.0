@@ -30,6 +30,10 @@ public class SettingActivity extends AppCompatActivity implements View.OnClickLi
 
     public static CustomDialog customDialog;
 
+    //Back Button 2번 클릭시 앱 종료, 1번누르면 main으로
+    private final long FINISH_INTERVAL_TIME = 2000;
+    private long backPressedTime=0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -80,5 +84,27 @@ public class SettingActivity extends AppCompatActivity implements View.OnClickLi
     };
 
 
+    @Override
+    public void onBackPressed() {
+        //Back Button 2번 클릭시 앱 종료
+
+        long tempTime = System.currentTimeMillis();
+        long intervalTime = tempTime - backPressedTime;
+
+        if (0 <= intervalTime && FINISH_INTERVAL_TIME >= intervalTime)
+        {
+            //2번 눌렀을때
+            super.onBackPressed();
+        }
+        else
+        {
+            //한번 눌렀을때
+            backPressedTime = tempTime;
+            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+            startActivity(intent);
+            finish();
+        }
+
+    }
 
 }
