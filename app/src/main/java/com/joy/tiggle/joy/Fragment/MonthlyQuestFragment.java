@@ -168,6 +168,12 @@ public class MonthlyQuestFragment extends Fragment {
             mEndDay.setText(tempEndDay);
             mObjectMoney.setText(tempObjectMoney);
             mRealMoney.setText(tempRealMoney);
+            if(nowDate < endDate) {
+                mCompleteBtn.setEnabled(false);
+            }
+            else{
+                mCompleteBtn.setEnabled(true);
+            }
         }
 
         //삭제버튼 리스너

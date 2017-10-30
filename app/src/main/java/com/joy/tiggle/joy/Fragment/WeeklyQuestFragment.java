@@ -129,6 +129,12 @@ public class WeeklyQuestFragment extends Fragment {
                             mObjectMoney.setText(tempObjectMoney);
                             mRealMoney.setText(tempRealMoney);
                             layoutInfo.setVisibility(View.VISIBLE);
+                            if(nowDate < endDate) {
+                                mCompleteBtn.setEnabled(false);
+                            }
+                            else{
+                                mCompleteBtn.setEnabled(true);
+                            }
                         }
                     }
                 });
