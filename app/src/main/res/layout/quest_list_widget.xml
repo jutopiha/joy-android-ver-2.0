@@ -9,26 +9,240 @@
         android:layout_width="35dp"
         android:layout_height="35dp"
         android:src="@drawable/icon_logo"
-        android:layout_margin="8dp"
+        android:layout_margin="5dp"
         android:layout_marginTop ="50dp"
-        android:layout_marginLeft ="20dp"/>
+        android:layout_marginLeft ="20dp" />
 
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="35dp"
         android:src="@drawable/login_logo"
-        android:layout_marginTop="8dp"/>
+        android:layout_marginTop="5dp" />
 
-    <TextView
-        android:id="@+id/quest_list_widget_title"
-        android:layout_width="wrap_content"
+    <RelativeLayout
+        android:id="@+id/weekly_quest_relative1"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/quest_list_widget_title"
-        android:layout_below="@id/widget_logo"
-        android:layout_margin="8dp"
-        android:layout_marginTop ="50dp"
-        android:layout_marginLeft ="20dp"
-        android:textSize="15dp"
-        android:textColor="@color/middle_gray"
-        />
+        android:layout_below="@id/widget_logo">
+
+        <TextView
+            android:id="@+id/weekly_quest_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/weekly_quest_widget_title"
+            android:layout_marginLeft="8dp"
+            android:layout_marginBottom="5dp"
+            android:textSize="18dp"
+            android:textColor="@color/middle_gray" />
+
+        <!-- 주간 지출 목표 금액 -->
+        <TextView
+            android:id="@+id/weekly_quest_goal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="목표 금액"
+            android:layout_below="@id/weekly_quest_title"
+            android:layout_marginRight = "20dp"
+            android:layout_marginLeft ="20dp"
+            android:textSize="15dp"
+            android:textColor="@color/middle_gray"/>
+
+        <TextView
+            android:id="@+id/weekly_won"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="원"
+            android:textSize="15dp"
+            android:textColor="@color/middle_gray"
+            android:layout_alignParentRight="true"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="20dp"
+            android:layout_below="@id/weekly_quest_title"/>
+
+        <TextView
+            android:id="@+id/widget_weekly_quest_goal_money"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="-"
+            android:textSize="15dp"
+            android:textColor="@android:color/black"
+            android:layout_toLeftOf="@id/weekly_won"
+            android:layout_marginLeft="20dp"
+            android:layout_below="@id/weekly_quest_title"/>
+
+        <TextView
+            android:id="@+id/weekly_quest_real"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="현재 금액"
+            android:layout_below="@id/weekly_quest_goal"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft ="20dp"
+            android:textSize="15dp"
+            android:textColor="@color/middle_gray"/>
+
+        <TextView
+            android:id="@+id/weekly_won2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="원"
+            android:textSize="15dp"
+            android:textColor="@color/middle_gray"
+            android:layout_alignParentRight="true"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="20dp"
+            android:layout_below="@id/weekly_quest_goal"/>
+
+        <TextView
+            android:id="@+id/widget_weekly_quest_real_money"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="-"
+            android:textSize="15dp"
+            android:textColor="@android:color/black"
+            android:layout_toLeftOf="@id/weekly_won"
+            android:layout_marginLeft="20dp"
+            android:layout_below="@id/weekly_quest_goal"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/monthly_quest_relative1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/weekly_quest_relative1"
+        android:layout_marginTop="15dp">
+
+        <TextView
+            android:id="@+id/monthly_quest_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/monthly_quest_widget_title"
+            android:layout_marginLeft="8dp"
+            android:layout_marginBottom="5dp"
+            android:textSize="18dp"
+            android:textColor="@color/middle_gray" />
+
+        <!-- 월간 지출 목표 금액 -->
+        <TextView
+            android:id="@+id/monthly_quest_goal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="목표 금액"
+            android:layout_below="@id/monthly_quest_title"
+            android:layout_marginRight = "20dp"
+            android:layout_marginLeft ="20dp"
+            android:textSize="15dp"
+            android:textColor="@color/middle_gray"/>
+
+        <TextView
+            android:id="@+id/monthly_won"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="원"
+            android:textSize="15dp"
+            android:textColor="@color/middle_gray"
+            android:layout_alignParentRight="true"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="20dp"
+            android:layout_below="@id/monthly_quest_title"/>
+
+        <TextView
+            android:id="@+id/widget_monthly_quest_goal_money"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="-"
+            android:textSize="15dp"
+            android:textColor="@android:color/black"
+            android:layout_toLeftOf="@id/monthly_won"
+            android:layout_marginLeft="20dp"
+            android:layout_below="@id/monthly_quest_title"/>
+
+        <TextView
+            android:id="@+id/monthly_quest_real"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="현재 금액"
+            android:layout_below="@id/monthly_quest_goal"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft ="20dp"
+            android:textSize="15dp"
+            android:textColor="@color/middle_gray"/>
+
+        <TextView
+            android:id="@+id/monthly_won2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="원"
+            android:textSize="15dp"
+            android:textColor="@color/middle_gray"
+            android:layout_alignParentRight="true"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="20dp"
+            android:layout_below="@id/monthly_quest_goal"/>
+
+        <TextView
+            android:id="@+id/widget_monthly_quest_real_money"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="-"
+            android:textSize="15dp"
+            android:textColor="@android:color/black"
+            android:layout_toLeftOf="@id/monthly_won"
+            android:layout_marginLeft="20dp"
+            android:layout_below="@id/monthly_quest_goal"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/weekly_quest_relative2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/widget_logo">
+
+        <TextView
+            android:id="@+id/weekly_quest_title2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/weekly_quest_widget_title"
+            android:layout_marginLeft="8dp"
+            android:layout_marginBottom="5dp"
+            android:textSize="18dp"
+            android:textColor="@color/middle_gray" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="퀘스트를 등록해주세요"
+            android:layout_centerInParent="true"
+            android:layout_below="@id/weekly_quest_title2"
+            android:textColor="@color/middle_gray"/>
+
+    </RelativeLayout>
+    
+    <RelativeLayout
+        android:id="@+id/monthly_quest_relative2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/weekly_quest_relative1"
+        android:layout_marginTop="15dp">
+
+        <TextView
+            android:id="@+id/monthly_quest_title2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/monthly_quest_widget_title"
+            android:layout_marginLeft="8dp"
+            android:layout_marginBottom="5dp"
+            android:textSize="18dp"
+            android:textColor="@color/middle_gray" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="퀘스트를 등록해주세요"
+            android:layout_centerInParent="true"
+            android:layout_below="@id/monthly_quest_title2"
+            android:textColor="@color/middle_gray"/>
+
+    </RelativeLayout>
+    
 </RelativeLayout>
