@@ -186,9 +186,6 @@
                 android:layout_toLeftOf="@+id/btnClear"
                 android:layout_below="@id/relativeRealMoney"
                 android:layout_marginTop="150dp"/>
-
-
-            <!--완료버튼-->
         </RelativeLayout>
     </RelativeLayout>
 
