@@ -186,7 +186,7 @@ public class WeeklyQuestFragment extends Fragment {
             public void onClick(View v){
                 clearWeeklyQuestObject();
 
-                if(tempClear == "success")  Toast.makeText(getApplicationContext(), "퀘스트 성공! 아이템과 포인트를 확인하세요", Toast.LENGTH_LONG).show();
+                if(tempClear.equals("success"))  Toast.makeText(getApplicationContext(), "퀘스트 성공! 아이템과 포인트를 확인하세요", Toast.LENGTH_LONG).show();
                     else   Toast.makeText(getApplicationContext(), "퀘스트 실패! 다시 도전해 보세요", Toast.LENGTH_LONG).show();
 
                 layoutInfo.setVisibility(View.GONE);
@@ -467,7 +467,7 @@ public class WeeklyQuestFragment extends Fragment {
 
     public String clearData(){
         Log.d("clearData","started");
-        String msg = MainActivity.urlString+"/complete";
+        String msg = MainActivity.urlString+"/quest/complete";
 
         InputStream inputStream = null;
         BufferedReader rd = null;
@@ -504,6 +504,8 @@ public class WeeklyQuestFragment extends Fragment {
             try{
                 JSONObject stringToJson = new JSONObject(result.toString());
                 tempClear = stringToJson.getString("DATA");
+                Log.d("testest", stringToJson.getString("DATA"));
+                Log.d("test",tempClear);
             } catch(JSONException e){
 
             }
