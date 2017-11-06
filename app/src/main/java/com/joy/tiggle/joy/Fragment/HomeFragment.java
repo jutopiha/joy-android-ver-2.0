@@ -62,13 +62,12 @@ public class HomeFragment extends Fragment {
     private ImageView userProfilePicture;
     private Bitmap bitmap;
 
-    private TextView name, point, recentExpense, todayExpense, weekExpense;
+    private TextView name, point, recentExpense, todayExpense, weekExpense, cardTv;
     private RelativeLayout relative2;
     private View view1, view2;
     private int birth;
 
     //프로필 사진
-
 
     /*기본*/
     public static android.support.v4.app.Fragment newInstance(){
@@ -101,6 +100,7 @@ public class HomeFragment extends Fragment {
         relative2 = (RelativeLayout)currentView.findViewById(R.id.relative2);
         view1 = (View)currentView.findViewById(R.id.view1);
         view2 = (View)currentView.findViewById(R.id.view2);
+        cardTv = (TextView)currentView.findViewById(R.id.cardTv);
 
         // profile 사진
         userProfilePicture = (ImageView)currentView.findViewById(R.id.userCharacter);
@@ -160,6 +160,25 @@ public class HomeFragment extends Fragment {
         l.setTextColor(Color.BLACK);
 
         if(birth >= 2005){
+            //랜덤 값 만들기
+            double randomValue = Math.random();
+            int intValue = (int)(randomValue *5)+1;
+            if(intValue == 1){
+                cardTv.setText("꼼꼼한 기록이 성공을 만든다구~!");
+            }
+            else if(intValue == 2){
+                cardTv.setText("퀘스트는 잘 진행하고 있지??");
+            }
+            else if(intValue == 3){
+                cardTv.setText("오늘의 지출을 잊지말고 입력해줘~");
+            }
+            else if(intValue == 4){
+                cardTv.setText("오늘의 금융지식 체크하러 가자~");
+            }
+            else{
+                cardTv.setText("오늘도 돼지에게 밥을 줬다. 돼지가 왜 뚱뚱한지 이제 알겠다.");
+            }
+
             relative2.setVisibility(View.VISIBLE);
             view1.setVisibility(View.VISIBLE);
             view2.setVisibility(View.VISIBLE);
