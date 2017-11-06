@@ -1,4 +1,4 @@
-package com.joy.tiggle.joy;
+package com.joy.tiggle.joy.Dialog;
 
 import android.app.Dialog;
 import android.content.Context;
@@ -10,6 +10,8 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.joy.tiggle.joy.R;
 
 /**
  * Created by CE-L-17 on 2017-10-03.

@@ -1,4 +1,4 @@
-package com.joy.tiggle.joy;
+package com.joy.tiggle.joy.Widget;
 
 import android.app.PendingIntent;
 import android.appwidget.AppWidgetManager;
@@ -7,12 +7,10 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.StrictMode;
 import android.util.Log;
-import android.view.View;
-import android.widget.RelativeLayout;
 import android.widget.RemoteViews;
 
 import com.joy.tiggle.joy.Activity.MainActivity;
-import com.joy.tiggle.joy.Fragment.QuestFragment;
+import com.joy.tiggle.joy.R;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
@@ -34,46 +32,25 @@ import java.util.List;
 /**
  * Implementation of App Widget functionality.
  */
-public class QuestListWidget extends AppWidgetProvider {
+public class DailyExpenseWidget extends AppWidgetProvider {
 
-    static String resultType1, resultType2;
-    static int weeklyGoal, weeklyReal, monthlyGoal, monthlyReal;
-    static RelativeLayout layoutRegister1, layoutInfo1, layoutRegister2,layoutInfo2;
+    static String resultMoney;
 
     static void updateAppWidget(Context context, AppWidgetManager appWidgetManager,
                                 int appWidgetId) {
 
-        CharSequence widgetText = context.getString(R.string.quest_list_widget_title);
+        CharSequence widgetText = context.getString(R.string.daily_expense_widget_title);
         // Construct the RemoteViews object
+        RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.daily_expense_widget);
+
         sendObject();
 
-        RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.quest_list_widget);
-        if(resultType1 == null){
-            views.setViewVisibility(R.id.weekly_quest_relative1, View.INVISIBLE);
-            views.setViewVisibility(R.id.weekly_quest_relative2, View.VISIBLE);
-        }
-        else{
-            //주간 퀘스트가 있을때
-            views.setTextViewText(R.id.widget_weekly_quest_goal_money, String.valueOf(weeklyGoal));
-            views.setTextViewText(R.id.widget_weekly_quest_real_money, String.valueOf(weeklyReal));
-            views.setViewVisibility(R.id.weekly_quest_relative1, View.VISIBLE);
-            views.setViewVisibility(R.id.weekly_quest_relative2, View.INVISIBLE);
-        }
-
-        if(resultType2 == null){
-            views.setViewVisibility(R.id.monthly_quest_relative1, View.INVISIBLE);
-            views.setViewVisibility(R.id.monthly_quest_relative2, View.VISIBLE);
-        }
-        else{
-            //월간 퀘스트가 있을때
-            views.setTextViewText(R.id.widget_monthly_quest_goal_money, String.valueOf(monthlyGoal));
-            views.setTextViewText(R.id.widget_monthly_quest_real_money, String.valueOf(monthlyReal));
-            views.setViewVisibility(R.id.monthly_quest_relative1, View.VISIBLE);
-            views.setViewVisibility(R.id.monthly_quest_relative2, View.INVISIBLE);
-        }
+        views.setTextViewText(R.id.daily_expense_widget_title, widgetText);
+        views.setTextViewText(R.id.widget_expense, resultMoney);
 
         // Instruct the widget manager to update the widget
         appWidgetManager.updateAppWidget(appWidgetId, views);
+
     }
 
     @Override
@@ -82,12 +59,12 @@ public class QuestListWidget extends AppWidgetProvider {
         for (int appWidgetId : appWidgetIds) {
             updateAppWidget(context, appWidgetManager, appWidgetId);
         }
-        RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.quest_list_widget);
+
+        RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.daily_expense_widget);
         Intent intent = new Intent(context, MainActivity.class);
         PendingIntent pe = PendingIntent.getActivity(context,0,intent, 0);
         views.setOnClickPendingIntent(R.id.relative,pe);
         appWidgetManager.updateAppWidget(appWidgetIds,views);
-
     }
 
     @Override
@@ -104,20 +81,20 @@ public class QuestListWidget extends AppWidgetProvider {
         Log.d("sendObject","started.");
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
-        QuestListWidget.GetQuestInfo request = new QuestListWidget.GetQuestInfo();
+        DailyExpenseWidget.GetDailyInfo request = new DailyExpenseWidget.GetDailyInfo();
         request.run();
     }
 
-    static private class GetQuestInfo extends Thread{
+    static private class GetDailyInfo extends Thread{
         @Override
         public void run(){
             postData();
         }
     }
 
-    static public String postData() {
-        Log.d("postData", "started");
-        String msg = MainActivity.urlString + "/quest";
+    static public String postData(){
+        Log.d("postData","started");
+        String msg = MainActivity.urlString+"/main";
 
         InputStream inputStream = null;
         BufferedReader rd = null;
@@ -151,7 +128,7 @@ public class QuestListWidget extends AppWidgetProvider {
                 result.append(line);
             }
             Log.v("Main::bring success", "result:" + result.toString());
-            showQuestInfo(result.toString());
+            showDailyInfo(result.toString());
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -159,14 +136,16 @@ public class QuestListWidget extends AppWidgetProvider {
         }
 
 
+
         if (result != null) {
             return result.toString();
         } else {
             return null;
         }
+
     }
 
-    static public void showQuestInfo(String jsonString){
+    static public void showDailyInfo(String jsonString){
         Log.d("showDailyInfo","started");
 
         try {
@@ -174,13 +153,8 @@ public class QuestListWidget extends AppWidgetProvider {
 
 
             //데이터 뽑아내서 필요한 곳에 저장하는 부분
-            resultType1 = stringToJson.getJSONObject("weekly").getString("type");
-            weeklyGoal = stringToJson.getJSONObject("weekly").getInt("goalMoney");
-            weeklyReal = stringToJson.getJSONObject("weekly").getInt("nowMoney");
+            resultMoney =  stringToJson.getString("todayExpense");
 
-            resultType2 = stringToJson.getJSONObject("monthly").getString("type");
-            monthlyGoal = stringToJson.getJSONObject("monthly").getInt("goalMoney");
-            monthlyReal = stringToJson.getJSONObject("monthly").getInt("nowMoney");
         }
         catch (JSONException e) {
         }

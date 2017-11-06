@@ -1,4 +1,4 @@
-package com.joy.tiggle.joy;
+package com.joy.tiggle.joy.Dialog;
 
 import android.app.Activity;
 import android.app.Dialog;
@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+
+import com.joy.tiggle.joy.R;
 
 /**
  * Created by CE-L-05 on 2017-08-25.
