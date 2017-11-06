@@ -6,6 +6,7 @@ import android.os.StrictMode;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -13,6 +14,7 @@ import android.widget.Button;
 import android.widget.CalendarView;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.joy.tiggle.joy.Activity.MainActivity;
@@ -63,6 +65,8 @@ public class DailyFragment extends Fragment {
     private int allExpense;
     private TextView mAllIncome, mAllExpense;
     private RelativeLayout mR;
+    private ListView mIncomeList, mExpenseList;
+    private ScrollView mScrollV;
 
 
     IncomeListViewAdapter incomeAdapter= new IncomeListViewAdapter();
@@ -95,11 +99,14 @@ public class DailyFragment extends Fragment {
         View currentView = inflater.inflate(R.layout.fragment_daily, container, false);
 
         //필요한 것들 findViewById
-        mObjectBtn = (Button)currentView.findViewById(R.id.objectBtn);
+        mObjectBtn = (Button)currentView.findViewById(R.id.dailyBtn);
         mAllIncome = (TextView)currentView.findViewById(R.id.allIncomeTv);
         mAllExpense = (TextView)currentView.findViewById(R.id.allExpenseTv);
         CalendarView calendar = (CalendarView)currentView.findViewById(R.id.calendar);
         mR = (RelativeLayout)currentView.findViewById(R.id.lists);
+        mIncomeList = (ListView)currentView.findViewById(R.id.incomeList);
+        mExpenseList = (ListView)currentView.findViewById(R.id.expenseList);
+        mScrollV = (ScrollView)currentView.findViewById(R.id.scrollV);
 
         //리스너 등록
         calendar.setOnDateChangeListener(new CalendarView.OnDateChangeListener(){
@@ -115,7 +122,42 @@ public class DailyFragment extends Fragment {
             }
         });
 
-        //selectDay = sYear*10000+(sMonth+1)*100+sDay;
+        //캘린더 스크롤 살리기
+        calendar.setOnTouchListener(new View.OnTouchListener(){
+            @Override
+            public boolean onTouch(View v, MotionEvent event){
+                Log.d("CUSTOM_MAP", "start onTouch");
+                int action = event.getAction();
+                switch (action) {
+                    case MotionEvent.ACTION_DOWN:// MapView에서 터치를 발생할 때, 부모뷰(ScrollView)가 TouchEvent를 가로채는 것을 막음
+                        mScrollV.requestDisallowInterceptTouchEvent(true);
+                        break;
+
+                    case MotionEvent.ACTION_UP: // MapView에서 터치를 뗄때, 부모뷰(ScrollView)가 TouchEvent를 가로채는 것을 허용함
+                        mScrollV.requestDisallowInterceptTouchEvent(false);
+                        break;
+                }
+                return true;
+            }
+        });
+        // 수입리스트 스크롤 살리기
+        mIncomeList.setOnTouchListener(new View.OnTouchListener(){
+            @Override
+            public boolean onTouch(View v,MotionEvent event){
+                mScrollV.requestDisallowInterceptTouchEvent(true);
+                return false;
+            }
+        });
+        //지출리스트 스크롤 살리기
+        mExpenseList.setOnTouchListener(new View.OnTouchListener(){
+            @Override
+            public boolean onTouch(View v,MotionEvent event){
+                mScrollV.requestDisallowInterceptTouchEvent(true);
+                return false;
+            }
+        });
+
+
         selectDay = currentDate;
 
 
