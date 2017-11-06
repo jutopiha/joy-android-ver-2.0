@@ -13,6 +13,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.github.mikephil.charting.charts.PieChart;
@@ -23,9 +24,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import com.github.mikephil.charting.components.Legend;
@@ -64,6 +63,9 @@ public class HomeFragment extends Fragment {
     private Bitmap bitmap;
 
     private TextView name, point, recentExpense, todayExpense, weekExpense;
+    private RelativeLayout relative2;
+    private View view1, view2;
+    private int birth;
 
     //프로필 사진
 
@@ -96,6 +98,9 @@ public class HomeFragment extends Fragment {
         recentExpense = (TextView)currentView.findViewById(R.id.recentExpenseContent);
         todayExpense = (TextView)currentView.findViewById(R.id.todayExpenseContent);
         weekExpense = (TextView)currentView.findViewById(R.id.weekExpenseContent);
+        relative2 = (RelativeLayout)currentView.findViewById(R.id.relative2);
+        view1 = (View)currentView.findViewById(R.id.view1);
+        view2 = (View)currentView.findViewById(R.id.view2);
 
         // profile 사진
         userProfilePicture = (ImageView)currentView.findViewById(R.id.userCharacter);
@@ -153,6 +158,17 @@ public class HomeFragment extends Fragment {
         l.setXEntrySpace(7f);
         l.setYEntrySpace(5f);
         l.setTextColor(Color.BLACK);
+
+        if(birth >= 2005){
+            relative2.setVisibility(View.VISIBLE);
+            view1.setVisibility(View.VISIBLE);
+            view2.setVisibility(View.VISIBLE);
+        }
+        else{
+            relative2.setVisibility(View.GONE);
+            view1.setVisibility(View.GONE);
+            view2.setVisibility(View.GONE);
+        }
 
         return currentView;
     }
@@ -233,11 +249,13 @@ public class HomeFragment extends Fragment {
             JSONObject stringToJson = new JSONObject(jsonString);   //서버에서 string으로 받은 결과를 json객체로 바꿈
 
             //데이터 뽑아내서 필요한 곳에 저장하는 부분
+            birth = Integer.parseInt(stringToJson.getString("birth"));
             name.setText(stringToJson.getString("name"));
             if(stringToJson.getString("point") == "null")
                 point.setText("0 P");
             else
                 point.setText(stringToJson.getString("point")+" Point");
+
 
             if(stringToJson.getString("recentExpense") == "null")
                 recentExpense.setText("-");
