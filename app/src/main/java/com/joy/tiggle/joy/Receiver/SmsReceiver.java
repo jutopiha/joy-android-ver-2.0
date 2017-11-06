@@ -16,7 +16,6 @@ import android.os.Bundle;
 import android.os.StrictMode;
 import android.telephony.SmsMessage;
 import android.util.Log;
-import android.widget.Toast;
 
 import com.joy.tiggle.joy.Activity.MainActivity;
 import com.joy.tiggle.joy.Object.Card;
