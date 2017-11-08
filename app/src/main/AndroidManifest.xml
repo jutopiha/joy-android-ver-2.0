@@ -32,6 +32,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".Activity.AddInfoActivity" />
         <activity android:name=".Activity.SigninActivity" />
         <activity android:name=".Activity.SettingActivity" />
         <activity android:name=".Activity.CharacterActivity" />
@@ -40,6 +41,7 @@
         <activity android:name=".Activity.ShowExpenseDetailActivity" />
         <activity android:name=".Activity.ModifyIncomeActivity" />
         <activity android:name=".Activity.ModifyExpenseActivity" />
+        <activity android:name=".Activity.KidsActivity" />
 
         <!-- To use facebook. 2017-05-18 by Juha. -->
         <activity
@@ -73,7 +75,7 @@
                 <action android:name="android.provider.Telephony.SMS_RECEIVED" />
             </intent-filter>
         </receiver>
-        <receiver android:name=".QuestListWidget">
+        <receiver android:name=".Widget.QuestListWidget">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
             </intent-filter>
@@ -82,7 +84,7 @@
                 android:name="android.appwidget.provider"
                 android:resource="@xml/quest_list_widget_info" />
         </receiver>
-        <receiver android:name=".DailyExpenseWidget">
+        <receiver android:name=".Widget.DailyExpenseWidget">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
             </intent-filter>

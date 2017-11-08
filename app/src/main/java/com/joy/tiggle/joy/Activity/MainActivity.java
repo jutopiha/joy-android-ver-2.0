@@ -16,6 +16,9 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.facebook.AccessToken;
+import com.joy.tiggle.joy.Activity.CharacterActivity;
+import com.joy.tiggle.joy.Activity.SettingActivity;
+import com.joy.tiggle.joy.Activity.SigninActivity;
 import com.joy.tiggle.joy.Fragment.InputFragment;
 import com.joy.tiggle.joy.Fragment.HomeFragment;
 import com.joy.tiggle.joy.Fragment.DailyFragment;
@@ -132,6 +135,12 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             case R.id.menu_setting:
                 intent = new Intent(this, SettingActivity.class);
+                startActivity(intent);
+                finish();
+
+                return true;
+            case R.id.menu_kids:
+                intent = new Intent(this, KidsActivity.class);
                 startActivity(intent);
                 finish();
 

@@ -1,0 +1,578 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <!--상단 액션 바 -->
+        <RelativeLayout
+            android:id="@+id/relativeKidsZoneActionbar"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:background="@color/violet">
+            <Button
+                android:id="@+id/btnBack"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_margin="18dp"
+                android:background="@drawable/button_back"
+                android:onClick="onClick" />
+            <TextView
+                android:id="@+id/tvKidsZone"
+                android:text="금융키즈존"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="17sp"
+                android:textColor="@color/light_gray"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@id/btnBack"
+                android:layout_toEndOf="@id/btnBack" />
+        </RelativeLayout>
+
+        <!--1단원 타이틀-->
+        <RelativeLayout
+            android:id="@+id/relative1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/relativeKidsZoneActionbar"
+            android:layout_marginTop="10dp"
+            android:background="@color/new_gray">
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="50dp"
+                android:id = "@+id/down_arrow1"
+                android:src = "@drawable/icon_down_arrow"
+                android:padding="7dp"
+                android:layout_marginLeft="10dp"/>
+
+            <TextView
+                android:id="@+id/subTitle1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/down_arrow1"
+                android:layout_marginLeft="10dp"
+                android:text="현명한 경제 지식을 배워요"
+                android:textSize="18dp"
+                android:layout_centerVertical="true"
+                android:layout_alignParentBottom="true"
+                android:textColor="@color/heavy_gray" />
+        </RelativeLayout>
+
+        <!--1단원 링크들-->
+        <RelativeLayout
+            android:id="@+id/relative1of1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/relative1">
+
+            <!--1-1-->
+            <RelativeLayout
+                android:id="@+id/relative1Link1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="onClick">
+
+                <ImageView
+                    android:id="@+id/imageOfLink1"
+                    android:layout_width="40dp"
+                    android:layout_height="50dp"
+                    android:src = "@drawable/question"
+                    android:padding="7dp"
+                    android:layout_marginLeft="10dp"/>
+
+                <TextView
+                    android:id="@+id/tvOfLink1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@id/imageOfLink1"
+                    android:layout_marginLeft="10dp"
+                    android:text="우리에게 꼭 필요해요"
+                    android:textSize="15dp"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentBottom="true"
+                    android:textColor="@color/heavy_gray" />
+            </RelativeLayout>
+
+            <!-- 1-2 -->
+            <RelativeLayout
+                android:id="@+id/relative1Link2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/relative1Link1"
+                android:onClick="onClick">
+
+                <ImageView
+                    android:id="@+id/imageOfLink2"
+                    android:layout_width="40dp"
+                    android:layout_height="50dp"
+                    android:src = "@drawable/question"
+                    android:padding="7dp"
+                    android:layout_marginLeft="10dp"/>
+
+                <TextView
+                    android:id="@+id/tvOfLink2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@id/imageOfLink2"
+                    android:layout_marginLeft="10dp"
+                    android:text="둘 중 하나만 선택해요"
+                    android:textSize="15dp"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentBottom="true"
+                    android:textColor="@color/heavy_gray" />
+            </RelativeLayout>
+
+            <!-- 1-3 -->
+            <RelativeLayout
+                android:id="@+id/relative1Link3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/relative1Link2"
+                android:onClick="onClick">
+
+                <ImageView
+                    android:id="@+id/imageOfLink3"
+                    android:layout_width="40dp"
+                    android:layout_height="50dp"
+                    android:src = "@drawable/question"
+                    android:padding="7dp"
+                    android:layout_marginLeft="10dp"/>
+
+                <TextView
+                    android:id="@+id/tvOfLink3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@id/imageOfLink3"
+                    android:layout_marginLeft="10dp"
+                    android:text="서로 원하는 물건을 바꿔요"
+                    android:textSize="15dp"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentBottom="true"
+                    android:textColor="@color/heavy_gray" />
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+        <!--2단원 타이틀-->
+        <RelativeLayout
+            android:id="@+id/relative2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/relative1of1"
+            android:layout_marginTop="10dp"
+            android:background="@color/new_gray">
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="50dp"
+                android:id = "@+id/down_arrow2"
+                android:src = "@drawable/icon_down_arrow"
+                android:padding="7dp"
+                android:layout_marginLeft="10dp"/>
+
+            <TextView
+                android:id="@+id/subTitle2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/down_arrow2"
+                android:layout_marginLeft="10dp"
+                android:text="시장속에 경제가 숨어있어요"
+                android:textSize="18dp"
+                android:layout_centerVertical="true"
+                android:layout_alignParentBottom="true"
+                android:textColor="@color/heavy_gray" />
+        </RelativeLayout>
+
+        <!--2단원 링크들-->
+        <RelativeLayout
+            android:id="@+id/relative2of1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/relative2">
+
+            <!--2-1-->
+            <RelativeLayout
+                android:id="@+id/relative2Link1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="onClick"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true">
+
+                <ImageView
+                    android:id="@+id/imageOfLink4"
+                    android:layout_width="40dp"
+                    android:layout_height="50dp"
+                    android:src = "@drawable/cash_register"
+                    android:padding="7dp"
+                    android:layout_marginLeft="10dp"/>
+
+                <TextView
+                    android:id="@+id/tvOfLink4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@id/imageOfLink4"
+                    android:layout_marginLeft="10dp"
+                    android:text="시장에 대해 알아보아요"
+                    android:textSize="15dp"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentBottom="true"
+                    android:textColor="@color/heavy_gray" />
+            </RelativeLayout>
+
+            <!-- 2-2 -->
+            <RelativeLayout
+                android:id="@+id/relative2Link2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/relative2Link1"
+                android:onClick="onClick">
+
+                <ImageView
+                    android:id="@+id/imageOfLink5"
+                    android:layout_width="40dp"
+                    android:layout_height="50dp"
+                    android:src = "@drawable/cash_register"
+                    android:padding="7dp"
+                    android:layout_marginLeft="10dp"/>
+
+                <TextView
+                    android:id="@+id/tvOfLink5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@id/imageOfLink5"
+                    android:layout_marginLeft="10dp"
+                    android:text="가격은 어떻게 정해지나요?"
+                    android:textSize="15dp"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentBottom="true"
+                    android:textColor="@color/heavy_gray" />
+            </RelativeLayout>
+
+            <!-- 2-3 -->
+            <RelativeLayout
+                android:id="@+id/relative2Link3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/relative2Link2"
+                android:onClick="onClick">
+
+                <ImageView
+                    android:id="@+id/imageOfLink6"
+                    android:layout_width="40dp"
+                    android:layout_height="50dp"
+                    android:src = "@drawable/cash_register"
+                    android:padding="7dp"
+                    android:layout_marginLeft="10dp"/>
+
+                <TextView
+                    android:id="@+id/tvOfLink6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@id/imageOfLink6"
+                    android:layout_marginLeft="10dp"
+                    android:text="서로 원하는 물건을 바꿔요"
+                    android:textSize="15dp"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentBottom="true"
+                    android:textColor="@color/heavy_gray" />
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+        <!--3단원 타이틀-->
+        <RelativeLayout
+            android:id="@+id/relative3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/relative2of1"
+            android:layout_marginTop="10dp"
+            android:background="@color/new_gray">
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="50dp"
+                android:id = "@+id/down_arrow3"
+                android:src = "@drawable/icon_down_arrow"
+                android:padding="7dp"
+                android:layout_marginLeft="10dp"/>
+
+            <TextView
+                android:id="@+id/subTitle3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/down_arrow3"
+                android:layout_marginLeft="10dp"
+                android:text="우리 집에도 경제가 있어요"
+                android:textSize="18dp"
+                android:layout_centerVertical="true"
+                android:layout_alignParentBottom="true"
+                android:textColor="@color/heavy_gray" />
+        </RelativeLayout>
+
+        <!--3단원 링크들-->
+        <RelativeLayout
+            android:id="@+id/relative3of1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/relative3">
+
+            <!--3-1-->
+            <RelativeLayout
+                android:id="@+id/relative3Link1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="onClick">
+
+                <ImageView
+                    android:id="@+id/imageOfLink7"
+                    android:layout_width="40dp"
+                    android:layout_height="50dp"
+                    android:src = "@drawable/startup"
+                    android:padding="7dp"
+                    android:layout_marginLeft="10dp"/>
+
+                <TextView
+                    android:id="@+id/tvOfLink7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@id/imageOfLink7"
+                    android:layout_marginLeft="10dp"
+                    android:text="소비란 무엇인가요?"
+                    android:textSize="15dp"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentBottom="true"
+                    android:textColor="@color/heavy_gray" />
+            </RelativeLayout>
+
+            <!-- 3-2 -->
+            <RelativeLayout
+                android:id="@+id/relative3Link2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/relative3Link1"
+                android:onClick="onClick">
+
+                <ImageView
+                    android:id="@+id/imageOfLink8"
+                    android:layout_width="40dp"
+                    android:layout_height="50dp"
+                    android:src = "@drawable/startup"
+                    android:padding="7dp"
+                    android:layout_marginLeft="10dp"/>
+
+                <TextView
+                    android:id="@+id/tvOfLink8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@id/imageOfLink8"
+                    android:layout_marginLeft="10dp"
+                    android:text="저축하는 습관을 가져요"
+                    android:textSize="15dp"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentBottom="true"
+                    android:textColor="@color/heavy_gray" />
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+        <!--4단원 타이틀-->
+        <RelativeLayout
+            android:id="@+id/relative4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/relative3of1"
+            android:layout_marginTop="10dp"
+            android:background="@color/new_gray">
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="50dp"
+                android:id = "@+id/down_arrow4"
+                android:src = "@drawable/icon_down_arrow"
+                android:padding="7dp"
+                android:layout_marginLeft="10dp"/>
+
+            <TextView
+                android:id="@+id/subTitle4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/down_arrow4"
+                android:layout_marginLeft="10dp"
+                android:text="기업 속에 경제가 숨어있어요"
+                android:textSize="18dp"
+                android:layout_centerVertical="true"
+                android:layout_alignParentBottom="true"
+                android:textColor="@color/heavy_gray" />
+        </RelativeLayout>
+
+        <!--4단원 링크들-->
+        <RelativeLayout
+            android:id="@+id/relative4of1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/relative4">
+
+            <!--4-1-->
+            <RelativeLayout
+                android:id="@+id/relative4Link1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="onClick">
+
+                <ImageView
+                    android:id="@+id/imageOfLink9"
+                    android:layout_width="40dp"
+                    android:layout_height="50dp"
+                    android:src = "@drawable/like"
+                    android:padding="7dp"
+                    android:layout_marginLeft="10dp"/>
+
+                <TextView
+                    android:id="@+id/tvOfLink9"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@id/imageOfLink9"
+                    android:layout_marginLeft="10dp"
+                    android:text="기업에서 무슨 일을 할까요?"
+                    android:textSize="15dp"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentBottom="true"
+                    android:textColor="@color/heavy_gray" />
+            </RelativeLayout>
+
+            <!-- 4-2 -->
+            <RelativeLayout
+                android:id="@+id/relative4Link2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/relative4Link1"
+                android:onClick="onClick">
+
+                <ImageView
+                    android:id="@+id/imageOfLink10"
+                    android:layout_width="40dp"
+                    android:layout_height="50dp"
+                    android:src = "@drawable/like"
+                    android:padding="7dp"
+                    android:layout_marginLeft="10dp"/>
+
+                <TextView
+                    android:id="@+id/tvOfLink10"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@id/imageOfLink10"
+                    android:layout_marginLeft="10dp"
+                    android:text="생산이란 무슨 뜻인가요?"
+                    android:textSize="15dp"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentBottom="true"
+                    android:textColor="@color/heavy_gray" />
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+        <!--5단원 타이틀-->
+        <RelativeLayout
+            android:id="@+id/relative5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/relative4of1"
+            android:layout_marginTop="10dp"
+            android:background="@color/new_gray">
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="50dp"
+                android:id = "@+id/down_arrow5"
+                android:src = "@drawable/icon_down_arrow"
+                android:padding="7dp"
+                android:layout_marginLeft="10dp"/>
+
+            <TextView
+                android:id="@+id/subTitle5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/down_arrow5"
+                android:layout_marginLeft="10dp"
+                android:text="금융과 신용은 친구예요"
+                android:textSize="18dp"
+                android:layout_centerVertical="true"
+                android:layout_alignParentBottom="true"
+                android:textColor="@color/heavy_gray" />
+        </RelativeLayout>
+
+        <!--5단원 링크들-->
+        <RelativeLayout
+            android:id="@+id/relative5of1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/relative5">
+
+            <!--4-1-->
+            <RelativeLayout
+                android:id="@+id/relative5Link1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="onClick">
+
+                <ImageView
+                    android:id="@+id/imageOfLink11"
+                    android:layout_width="40dp"
+                    android:layout_height="50dp"
+                    android:src = "@drawable/credit_card"
+                    android:padding="7dp"
+                    android:layout_marginLeft="10dp"/>
+
+                <TextView
+                    android:id="@+id/tvOfLink11"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@id/imageOfLink11"
+                    android:layout_marginLeft="10dp"
+                    android:text="금융이 빌려드려요"
+                    android:textSize="15dp"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentBottom="true"
+                    android:textColor="@color/heavy_gray" />
+            </RelativeLayout>
+
+            <!-- 4-2 -->
+            <RelativeLayout
+                android:id="@+id/relative5Link2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/relative5Link1"
+                android:onClick="onClick">
+
+                <ImageView
+                    android:id="@+id/imageOfLink12"
+                    android:layout_width="40dp"
+                    android:layout_height="50dp"
+                    android:src = "@drawable/credit_card"
+                    android:padding="7dp"
+                    android:layout_marginLeft="10dp"/>
+
+                <TextView
+                    android:id="@+id/tvOfLink12"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@id/imageOfLink12"
+                    android:layout_marginLeft="10dp"
+                    android:text="신용은 무엇인가요?"
+                    android:textSize="15dp"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentBottom="true"
+                    android:textColor="@color/heavy_gray" />
+            </RelativeLayout>
+
+        </RelativeLayout>
+    </RelativeLayout>
+
+</ScrollView>
