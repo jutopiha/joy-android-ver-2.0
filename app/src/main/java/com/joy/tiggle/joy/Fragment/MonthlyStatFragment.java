@@ -16,6 +16,7 @@ import com.github.mikephil.charting.charts.PieChart;
 import com.github.mikephil.charting.charts.RadarChart;
 import com.github.mikephil.charting.components.AxisBase;
 import com.github.mikephil.charting.components.Legend;
+import com.github.mikephil.charting.components.LegendEntry;
 import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.PieData;
@@ -46,7 +47,6 @@ import java.io.InputStreamReader;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -66,6 +66,7 @@ public class MonthlyStatFragment extends Fragment {
     private ArrayList<String> incomeExpenseLabel = new ArrayList<String>();
     public static final int[] MY_COLORS = {
             Color.rgb(247, 120, 107), Color.rgb(145, 168, 208)};
+
 
     //레이더차트 관련
     private RadarChart rChart;
@@ -142,6 +143,19 @@ public class MonthlyStatFragment extends Fragment {
         legend.setXEntrySpace(5f);
         legend.setYEntrySpace(5f);
 
+        List<LegendEntry> entries = new ArrayList<>();
+        ArrayList<String>titleList = new ArrayList<String>();
+        titleList.add("수입");
+        titleList.add("지출");
+        for (int i = 0; i < 2; i++) {
+            LegendEntry entry = new LegendEntry();
+            entry.formColor = MY_COLORS[i];
+            entry.label = titleList.get(i);
+            entries.add(entry);
+        }
+
+        legend.setCustom(entries);
+
         //radarChart설정
         rChart = (RadarChart)view.findViewById(R.id.idRadarChart);
         rChart.setRotationEnabled(false);
@@ -191,6 +205,7 @@ public class MonthlyStatFragment extends Fragment {
         l.setXEntrySpace(7f);
         l.setYEntrySpace(5f);
         l.setTextColor(Color.BLACK);
+
 
         //버튼리스너
         mChartBtn = (Button)view.findViewById(R.id.chartBtn);

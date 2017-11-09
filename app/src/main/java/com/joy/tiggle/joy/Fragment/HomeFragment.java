@@ -28,6 +28,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.github.mikephil.charting.components.Legend;
+import com.github.mikephil.charting.components.LegendEntry;
 import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.data.PieEntry;
@@ -143,7 +144,7 @@ public class HomeFragment extends Fragment {
         mChart.setRotationEnabled(true);
         mChart.setHoleRadius(70f);
         mChart.setTransparentCircleAlpha(0);
-        mChart.setCenterText("10월");
+        mChart.setCenterText("11월");
         mChart.setCenterTextSize(10);
 
         addDataSet();
@@ -158,6 +159,19 @@ public class HomeFragment extends Fragment {
         l.setXEntrySpace(7f);
         l.setYEntrySpace(5f);
         l.setTextColor(Color.BLACK);
+
+        List<LegendEntry> entries = new ArrayList<>();
+        ArrayList<String>titleList = new ArrayList<String>();
+        titleList.add("수입");
+        titleList.add("지출");
+        for (int i = 0; i < 2; i++) {
+            LegendEntry entry = new LegendEntry();
+            entry.formColor = MY_COLORS[i];
+            entry.label = titleList.get(i);
+            entries.add(entry);
+        }
+
+        l.setCustom(entries);
 
         if(birth >= 2005){
             //랜덤 값 만들기
@@ -321,9 +335,10 @@ public class HomeFragment extends Fragment {
         }
 
         //create the data set
-        PieDataSet pieDataSet = new PieDataSet(yEntrys, "월통계");
-        pieDataSet.setSliceSpace(2);
+        PieDataSet pieDataSet = new PieDataSet(yEntrys, "수입 / 지출");
+        pieDataSet.setSliceSpace(1);
         pieDataSet.setValueTextSize(12);
+
 
         //add colors to dataset
         ArrayList<Integer> colors = new ArrayList<>();
@@ -332,10 +347,7 @@ public class HomeFragment extends Fragment {
 
         pieDataSet.setColors(colors);
 
-        //create pie data object
-        ArrayList<String>xVals = new ArrayList<String>();
-        xVals.add("수입");
-        xVals.add("지출");
+
         PieData pieData = new PieData(pieDataSet);
         mChart.setData(pieData);
         mChart.invalidate();
