@@ -83,7 +83,8 @@
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_alignParentRight="true"
-                android:layout_alignParentEnd="true"/>
+                android:layout_alignParentEnd="true"
+                android:onClick = "onClick"/>
         </RelativeLayout>
 
         <View
@@ -117,7 +118,8 @@
                 android:layout_centerVertical="true"
                 android:layout_alignParentRight="true"
                 android:switchMinWidth="32dp"
-                android:checked="true"/>
+                android:checked="true"
+                android:onClick = "onClick"/>
         </RelativeLayout>
 
         <View
