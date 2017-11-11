@@ -48,57 +48,46 @@ public class KidsActivity extends AppCompatActivity {
             case R.id.relative1Link2:
                 intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://youtu.be/f9lbIftP5MI"));
                 startActivity(intent);
-                finish();
                 break;
             case R.id.relative1Link3:
                 intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://youtu.be/J0DFRbafPms"));
                 startActivity(intent);
-                finish();
                 break;
             case R.id.relative2Link1:
                 intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://youtu.be/6OIFpf2X1MU"));
                 startActivity(intent);
-                finish();
                 break;
             case R.id.relative2Link2:
                 intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://youtu.be/AoVhcRCr4y4"));
                 startActivity(intent);
-                finish();
                 break;
             case R.id.relative2Link3:
                 intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://youtu.be/6pZQqwBFjWQ"));
                 startActivity(intent);
-                finish();
                 break;
             case R.id.relative3Link1:
                 intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://youtu.be/bKWN00nBzA0"));
                 startActivity(intent);
-                finish();
                 break;
             case R.id.relative3Link2:
                 intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://youtu.be/VCx0BXY0iSI"));
                 startActivity(intent);
-                finish();
                 break;
             case R.id.relative4Link1:
                 intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://youtu.be/1SsR8Xv93-0"));
                 startActivity(intent);
-                finish();
                 break;
             case R.id.relative4Link2:
                 intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://youtu.be/mRAUkWXdKOc"));
                 startActivity(intent);
-                finish();
                 break;
             case R.id.relative5Link1:
                 intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://youtu.be/3iQuSZPTcn8"));
                 startActivity(intent);
-                finish();
                 break;
             case R.id.relative5Link2:
                 intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://youtu.be/tedwFJY8OPM"));
                 startActivity(intent);
-                finish();
                 break;
         }
     }

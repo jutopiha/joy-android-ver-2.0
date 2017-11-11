@@ -9,12 +9,8 @@ import android.widget.Button;
 import android.widget.Switch;
 import android.widget.TextView;
 
-import com.joy.tiggle.joy.CustomDialog;
+import com.joy.tiggle.joy.Dialog.CustomDialog;
 import com.joy.tiggle.joy.R;
-
-import org.json.JSONObject;
-
-import java.io.IOException;
 
 /**
  * Created by Lee Juha on 2017-08-25.

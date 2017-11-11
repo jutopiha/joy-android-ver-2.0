@@ -118,7 +118,7 @@ public class MonthlyStatFragment extends Fragment {
         monthPicker.setMaxValue(12);
         monthPicker.setWrapSelectorWheel(false);
         monthPicker.setOnLongPressUpdateInterval(100);
-        monthPicker.setValue(10);
+        monthPicker.setValue(11);
 
         //piechart설정
         mChart = (PieChart)view.findViewById(R.id.idPieChart);
@@ -189,10 +189,10 @@ public class MonthlyStatFragment extends Fragment {
         xAxis.setTextColor(Color.BLACK);
 
         YAxis yAxis = rChart.getYAxis();
-        yAxis.setLabelCount(5, false);
+        yAxis.setLabelCount(4, false);
         yAxis.setTextSize(9f);
         yAxis.setAxisMinimum(0f);
-        yAxis.setAxisMaximum(10000f);  //max값
+        yAxis.setAxisMaximum(20000f);  //max값
         yAxis.setDrawLabels(true);  //숫자들
 
         Legend l = rChart.getLegend();

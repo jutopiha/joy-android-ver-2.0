@@ -7,13 +7,11 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.joy.tiggle.joy.ButtonsCustomDialog;
-import com.joy.tiggle.joy.CustomDialog;
+import com.joy.tiggle.joy.Dialog.ButtonsCustomDialog;
 import com.joy.tiggle.joy.R;
 
 import org.apache.http.HttpResponse;
@@ -32,9 +30,6 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
-
-import static com.joy.tiggle.joy.Activity.SettingActivity.customDialog;
 
 
 /**
@@ -271,7 +266,7 @@ public class CharacterActivity extends AppCompatActivity implements View.OnClick
                     break;
                 case 2:
                     mainCharacter.setImageResource(R.drawable.character2);
-                    mainCharacterName.setText("캐릭터2");
+                    mainCharacterName.setText("카푸치노");
                     break;
                 case 3:
                     mainCharacter.setImageResource(R.drawable.character3);
@@ -297,14 +292,14 @@ public class CharacterActivity extends AppCompatActivity implements View.OnClick
             if(stringToJson.getJSONObject("list").getInt("1") == 0)     characterImageView1.setImageResource(R.drawable.question_mark);
             else{
                 characterHas[0] = 1;
-                characterImageView1.setImageResource(R.drawable.character1);
+                characterImageView1.setImageResource(R.drawable.character1_head);
                 characterName1.setText("아메리카노");
             }
             if(stringToJson.getJSONObject("list").getInt("2") == 0)     characterImageView2.setImageResource(R.drawable.question_mark);
             else{
                 characterHas[1] = 1;
-                characterImageView2.setImageResource(R.drawable.character2);
-                characterName2.setText("캐릭터2");
+                characterImageView2.setImageResource(R.drawable.character2_head);
+                characterName2.setText("카푸치노");
             }
             if(stringToJson.getJSONObject("list").getInt("3") == 0)     characterImageView3.setImageResource(R.drawable.question_mark);
             else{

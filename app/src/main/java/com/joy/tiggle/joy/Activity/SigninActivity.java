@@ -235,6 +235,7 @@ public class SigninActivity extends AppCompatActivity implements View.OnClickLis
 
         //최초 로그인 시 SignActivity->MainActivity
         goMain();
+        //최초 로그인 시 SignActivity ->AddInfoActivity -> MainActivity
 
     }
 

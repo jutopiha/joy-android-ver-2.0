@@ -29,7 +29,7 @@
                 android:id="@+id/userCharacter"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:src="@drawable/juha"
+                android:src="@drawable/test_picture"
                 android:layout_toLeftOf="@id/fakeView1"
                 />
 
@@ -92,7 +92,7 @@
                 android:id="@+id/character"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:src = "@drawable/character4"
+                android:src = "@drawable/character1_head"
                 android:layout_marginLeft="50dp"
                 android:layout_marginRight="10dp"/>
 

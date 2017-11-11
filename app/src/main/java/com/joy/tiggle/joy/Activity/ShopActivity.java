@@ -10,8 +10,7 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.gson.JsonObject;
-import com.joy.tiggle.joy.ButtonsCustomDialog;
+import com.joy.tiggle.joy.Dialog.ButtonsCustomDialog;
 import com.joy.tiggle.joy.R;
 
 import org.apache.http.HttpResponse;
@@ -43,8 +42,8 @@ public class ShopActivity extends AppCompatActivity implements View.OnClickListe
     private TextView items[] = new TextView[11];
     private TextView itembuy[] = new TextView[11];
     private int selectItems[] = {0,0,0,0,0,0,0,0,0,0,0};
-    private String selectItemsName[] = {"원두","물","얼음","우유","초코","녹차가루","자몽청","탄산수","시럽","파란색소","레몬"};
-    private int selectItemsPrice[] ={50, 70, 30, 150, 350, 500, 700, 200, 200, 800, 1000};
+    private String selectItemsName[] = {"원두","물","얼음","초코","녹차가루","우유","자몽청","탄산수","시럽","파란색소","레몬"};
+    private int selectItemsPrice[] ={50, 70, 30, 350, 500, 150, 700, 200, 200, 800, 1000};
     private String order;   //구매할 것들
     private int totalPrice,point;   //구매 총액
     private ButtonsCustomDialog mCustomDialog;

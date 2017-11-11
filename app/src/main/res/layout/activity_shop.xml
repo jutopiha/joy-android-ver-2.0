@@ -118,7 +118,7 @@
                                 android:id="@+id/imageItem1"
                                 android:layout_width="40dp"
                                 android:layout_height="40dp"
-                                android:src="@drawable/image_waterdrop"/>
+                                android:src="@drawable/image_coffee"/>
 
                             <TextView
                                 android:id="@+id/tvItem1"
@@ -162,7 +162,7 @@
                                 android:id="@+id/imageItem3"
                                 android:layout_width="40dp"
                                 android:layout_height="40dp"
-                                android:src="@drawable/image_waterdrop"/>
+                                android:src="@drawable/image_ice"/>
 
                             <TextView
                                 android:id="@+id/tvItem3"
@@ -185,7 +185,7 @@
                                 android:id="@+id/imageItem4"
                                 android:layout_width="40dp"
                                 android:layout_height="40dp"
-                                android:src="@drawable/image_waterdrop"/>
+                                android:src="@drawable/image_choco"/>
 
                             <TextView
                                 android:id="@+id/tvItem4"
@@ -207,7 +207,7 @@
                                 android:id="@+id/imageItem5"
                                 android:layout_width="40dp"
                                 android:layout_height="40dp"
-                                android:src="@drawable/image_waterdrop"/>
+                                android:src="@drawable/image_green"/>
 
                             <TextView
                                 android:id="@+id/tvItem5"
@@ -229,7 +229,7 @@
                                 android:id="@+id/imageItem6"
                                 android:layout_width="40dp"
                                 android:layout_height="40dp"
-                                android:src="@drawable/image_waterdrop"/>
+                                android:src="@drawable/image_milk"/>
 
                             <TextView
                                 android:id="@+id/tvItem6"
@@ -252,7 +252,7 @@
                                 android:id="@+id/imageItem7"
                                 android:layout_width="40dp"
                                 android:layout_height="40dp"
-                                android:src="@drawable/image_waterdrop"/>
+                                android:src="@drawable/image_fruit"/>
 
                             <TextView
                                 android:id="@+id/tvItem7"
@@ -274,7 +274,7 @@
                                 android:id="@+id/imageItem8"
                                 android:layout_width="40dp"
                                 android:layout_height="40dp"
-                                android:src="@drawable/image_waterdrop"/>
+                                android:src="@drawable/image_sparkling"/>
 
                             <TextView
                                 android:id="@+id/tvItem8"
@@ -296,7 +296,7 @@
                                 android:id="@+id/imageItem9"
                                 android:layout_width="40dp"
                                 android:layout_height="40dp"
-                                android:src="@drawable/image_waterdrop"/>
+                                android:src="@drawable/image_syrup"/>
 
                             <TextView
                                 android:id="@+id/tvItem9"
@@ -319,7 +319,7 @@
                                 android:id="@+id/imageItem10"
                                 android:layout_width="40dp"
                                 android:layout_height="40dp"
-                                android:src="@drawable/image_waterdrop"/>
+                                android:src="@drawable/image_blue"/>
 
                             <TextView
                                 android:id="@+id/tvItem10"
@@ -341,7 +341,7 @@
                                 android:id="@+id/imageItem11"
                                 android:layout_width="40dp"
                                 android:layout_height="40dp"
-                                android:src="@drawable/image_waterdrop"/>
+                                android:src="@drawable/image_lemon"/>
 
                             <TextView
                                 android:id="@+id/tvItem11"
@@ -415,7 +415,7 @@
                         android:id="@+id/imageListOfItem1"
                         android:layout_width="35dp"
                         android:layout_height="35dp"
-                        android:src="@drawable/image_waterdrop"
+                        android:src="@drawable/image_coffee"
                         android:layout_centerVertical="true"/>
                     
                     <TextView
@@ -529,7 +529,7 @@
                         android:id="@+id/imageListOfItem3"
                         android:layout_width="35dp"
                         android:layout_height="35dp"
-                        android:src="@drawable/image_waterdrop"
+                        android:src="@drawable/image_ice"
                         android:layout_centerVertical="true"/>
 
                     <TextView
@@ -586,14 +586,14 @@
                         android:id="@+id/imageListOfItem4"
                         android:layout_width="35dp"
                         android:layout_height="35dp"
-                        android:src="@drawable/image_waterdrop"
+                        android:src="@drawable/image_choco"
                         android:layout_centerVertical="true"/>
 
                     <TextView
                         android:id="@+id/tvListOfItem4"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="우유 (150p)"
+                        android:text="초코 (350p)"
                         android:textSize="15sp"
                         android:gravity="center"
                         android:layout_centerVertical="true"
@@ -643,14 +643,14 @@
                         android:id="@+id/imageListOfItem5"
                         android:layout_width="35dp"
                         android:layout_height="35dp"
-                        android:src="@drawable/image_waterdrop"
+                        android:src="@drawable/image_green"
                         android:layout_centerVertical="true"/>
 
                     <TextView
                         android:id="@+id/tvListOfItem5"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="초코 (350p)"
+                        android:text="녹차가루 (500p)"
                         android:textSize="15sp"
                         android:gravity="center"
                         android:layout_centerVertical="true"
@@ -700,14 +700,14 @@
                         android:id="@+id/imageListOfItem6"
                         android:layout_width="35dp"
                         android:layout_height="35dp"
-                        android:src="@drawable/image_waterdrop"
+                        android:src="@drawable/image_milk"
                         android:layout_centerVertical="true"/>
 
                     <TextView
                         android:id="@+id/tvListOfItem6"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="녹차가루 (500p)"
+                        android:text="우유 (150p)"
                         android:textSize="15sp"
                         android:gravity="center"
                         android:layout_centerVertical="true"
@@ -757,7 +757,7 @@
                         android:id="@+id/imageListOfItem7"
                         android:layout_width="35dp"
                         android:layout_height="35dp"
-                        android:src="@drawable/image_waterdrop"
+                        android:src="@drawable/image_fruit"
                         android:layout_centerVertical="true"/>
 
                     <TextView
@@ -814,7 +814,7 @@
                         android:id="@+id/imageListOfItem8"
                         android:layout_width="35dp"
                         android:layout_height="35dp"
-                        android:src="@drawable/image_waterdrop"
+                        android:src="@drawable/image_sparkling"
                         android:layout_centerVertical="true"/>
 
                     <TextView
@@ -871,7 +871,7 @@
                         android:id="@+id/imageListOfItem9"
                         android:layout_width="35dp"
                         android:layout_height="35dp"
-                        android:src="@drawable/image_waterdrop"
+                        android:src="@drawable/image_syrup"
                         android:layout_centerVertical="true"/>
 
                     <TextView
@@ -928,7 +928,7 @@
                         android:id="@+id/imageListOfItem10"
                         android:layout_width="35dp"
                         android:layout_height="35dp"
-                        android:src="@drawable/image_waterdrop"
+                        android:src="@drawable/image_blue"
                         android:layout_centerVertical="true"/>
 
                     <TextView
@@ -985,9 +985,9 @@
                         android:id="@+id/imageListOfItem11"
                         android:layout_width="35dp"
                         android:layout_height="35dp"
-                        android:src="@drawable/image_waterdrop"
+                        android:src="@drawable/image_lemon"
                         android:layout_centerVertical="true"/>
-
+`
                     <TextView
                         android:id="@+id/tvListOfItem11"
                         android:layout_width="wrap_content"

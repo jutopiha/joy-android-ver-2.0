@@ -1,11 +1,7 @@
 package com.joy.tiggle.joy.Fragment;
 
 
-import android.content.Context;
 import android.content.DialogInterface;
-import android.content.res.Resources;
-import android.graphics.drawable.ColorDrawable;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.support.v4.app.Fragment;
@@ -15,15 +11,10 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
-import android.widget.DatePicker;
 import android.widget.EditText;
-import android.widget.NumberPicker;
 import android.widget.RelativeLayout;
-import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.TimePicker;
 import android.widget.Toast;
 
 import com.joy.tiggle.joy.Activity.MainActivity;
@@ -45,7 +36,6 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.lang.reflect.Field;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -137,6 +127,13 @@ public class MonthlyQuestFragment extends Fragment {
                             mObjectMoney.setText(tempObjectMoney);
                             mRealMoney.setText(tempRealMoney);
                             layoutInfo.setVisibility(View.VISIBLE);
+
+                            if(nowDate < endDate) {
+                                mCompleteBtn.setEnabled(false);
+                            }
+                            else{
+                                mCompleteBtn.setEnabled(true);
+                            }
                         }
                     }
                 });

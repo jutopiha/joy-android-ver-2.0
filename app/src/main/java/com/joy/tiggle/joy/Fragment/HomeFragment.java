@@ -176,7 +176,7 @@ public class HomeFragment extends Fragment {
         if(birth >= 2005){
             //랜덤 값 만들기
             double randomValue = Math.random();
-            int intValue = (int)(randomValue *5)+1;
+            int intValue = (int)(randomValue *4)+1;
             if(intValue == 1){
                 cardTv.setText("꼼꼼한 기록이 성공을 만든다구~!");
             }
@@ -186,11 +186,8 @@ public class HomeFragment extends Fragment {
             else if(intValue == 3){
                 cardTv.setText("오늘의 지출을 잊지말고 입력해줘~");
             }
-            else if(intValue == 4){
-                cardTv.setText("오늘의 금융지식 체크하러 가자~");
-            }
             else{
-                cardTv.setText("오늘도 돼지에게 밥을 줬다. 돼지가 왜 뚱뚱한지 이제 알겠다.");
+                cardTv.setText("오늘의 금융지식 체크하러 가자~");
             }
 
             relative2.setVisibility(View.VISIBLE);

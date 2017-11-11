@@ -49,7 +49,7 @@ public class ModifyExpenseActivity extends AppCompatActivity implements View.OnC
     private Spinner mExpenseCategory, mExpensePayMethod;
 
     private Expense selectExpense;
-    private String expenseCat1 ="식비", expenseCat2="교통비",expenseCat3="문화생활", expenseCat4="생필품", expenseCat5="미용", expenseCat6="음료/간식", expenseCat7="의료/건강", expenseCat8="교육", expenseCat9="의류", expenseCat10="통신비", expenseCat11="공과금", expenseCat12="기타";
+    private String expenseCat1 ="식비", expenseCat2="교통비",expenseCat3="문화", expenseCat4="생활", expenseCat5="음료/간식", expenseCat6="교육", expenseCat7="공과금", expenseCat8="기타";
     private String expenseCat13="현금", expenseCat14="카드";
 
     InputMethodManager imm; //화면 터치시 키보드 내리기 위한
@@ -110,16 +110,7 @@ public class ModifyExpenseActivity extends AppCompatActivity implements View.OnC
             mExpenseCategory.setSelection(6);
         else if(expenseCat8.equals(selectExpense.getmCategory()))
             mExpenseCategory.setSelection(7);
-        else if(expenseCat9.equals(selectExpense.getmCategory()))
-            mExpenseCategory.setSelection(8);
-        else if(expenseCat10.equals(selectExpense.getmCategory()))
-            mExpenseCategory.setSelection(9);
-        else if(expenseCat11.equals(selectExpense.getmCategory()))
-            mExpenseCategory.setSelection(10);
-        else if(expenseCat12.equals(selectExpense.getmCategory()))
-            mExpenseCategory.setSelection(11);
-        else if(expenseCat13.equals(selectExpense.getmCategory()))
-            mExpenseCategory.setSelection(12);
+
 
         mExpenseMoney.setText(String.valueOf(selectExpense.getmMoney()));
 
