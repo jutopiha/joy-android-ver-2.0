@@ -34,7 +34,7 @@ import java.util.List;
  */
 public class DailyExpenseWidget extends AppWidgetProvider {
 
-    static String resultMoney;
+    static String resultMoney= "";
 
     static void updateAppWidget(Context context, AppWidgetManager appWidgetManager,
                                 int appWidgetId) {
@@ -46,6 +46,7 @@ public class DailyExpenseWidget extends AppWidgetProvider {
         sendObject();
 
         views.setTextViewText(R.id.daily_expense_widget_title, widgetText);
+        Log.d("dailyExpenseWidget",resultMoney);
         if(resultMoney.equals("null")) resultMoney = "0";
         views.setTextViewText(R.id.widget_expense, resultMoney);
 
