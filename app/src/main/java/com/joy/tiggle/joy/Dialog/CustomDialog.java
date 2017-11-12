@@ -30,10 +30,10 @@ public class CustomDialog extends Dialog {
         setContentView(R.layout.custom_dialog);
 
         btnClose = (Button) findViewById(R.id.listview_bt);
-        dialogTitle = (TextView) findViewById(R.id.list_title);
+        //dialogTitle = (TextView) findViewById(R.id.list_title);
 
         // 제목 설정
-        dialogTitle.setText(title);
+        //dialogTitle.setText(title);
 
         // 버튼 리스너 설정
         btnClose.setOnClickListener(checkBtListener);
