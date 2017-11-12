@@ -301,17 +301,17 @@ public class HomeFragment extends Fragment {
 
 
             if(stringToJson.getString("recentExpense") == "null")
-                recentExpense.setText("-");
+                recentExpense.setText("0원");
             else
                 recentExpense.setText(stringToJson.getString("recentExpense")+"원");
 
             if(stringToJson.getString("todayExpense") == "null")
-                todayExpense.setText("-");
+                todayExpense.setText("0원");
             else
                 todayExpense.setText(stringToJson.getString("todayExpense")+"원");
 
             if(stringToJson.getString("weeklyExpense") == "null")
-                weekExpense.setText("-");
+                weekExpense.setText("0원");
             else
                 weekExpense.setText(stringToJson.getString("weeklyExpense")+"원");
 
