@@ -176,12 +176,6 @@ public class CharacterActivity extends AppCompatActivity implements View.OnClick
         return true;
     }
 
-    /*
-    public void onClickShop(View v){
-        Intent intent = new Intent(getApplicationContext(), ShopActivity.class);
-        startActivity(intent);
-        finish();
-    }*/
 
     private void sendObject(){
         Log.d("sendOjbect","started");

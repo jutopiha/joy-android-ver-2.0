@@ -84,7 +84,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
         // 로그인 여부 확인
         if(AccessToken.getCurrentAccessToken() == null) {
             // 로그인이 되어 있지 않은 경우, SigninActivity로 간다

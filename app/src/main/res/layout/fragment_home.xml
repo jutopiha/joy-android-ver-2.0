@@ -29,7 +29,6 @@
                 android:id="@+id/userCharacter"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:src="@drawable/test_picture"
                 android:layout_toLeftOf="@id/fakeView1"
                 />
 

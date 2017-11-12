@@ -13,14 +13,8 @@
             android:id="@+id/relativeAddInfoActionbar"
             android:layout_width="match_parent"
             android:layout_height="56dp"
-            android:background="@color/violet">
-            <Button
-                android:id="@+id/btnBack"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:layout_margin="18dp"
-                android:background="@drawable/button_back"
-                android:onClick="onClick" />
+            android:background="@color/colorAccent">
+
             <TextView
                 android:id="@+id/tvAddInfo"
                 android:text="추가 정보 입력"
@@ -28,16 +22,128 @@
                 android:layout_height="wrap_content"
                 android:textSize="17sp"
                 android:textColor="@color/light_gray"
-                android:layout_centerVertical="true"
-                android:layout_toRightOf="@id/btnBack"
-                android:layout_toEndOf="@id/btnBack" />
+                android:layout_centerInParent="true" />
         </RelativeLayout>
 
-        <!--추가 정보 입력받을 것-->
+        <RelativeLayout
+            android:id="@+id/relativeAddInfoContent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/relativeAddInfoActionbar"
+            android:paddingTop="30dp"
+            android:paddingBottom="30dp">
 
-        <!--닉네임-->
-        <!--나이-->
-        <!--성별-->
+            <!--프로필사진-->
+            <RelativeLayout
+                android:id="@+id/relativeProfile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp">
+
+                <TextView
+                    android:id = "@+id/tvProfile"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="프로필 사진"
+                    android:layout_marginLeft="50dp"/>
+
+                <ImageView
+                    android:id="@+id/userProfile"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_toRightOf="@id/tvProfile"
+                    android:layout_marginLeft="30dp" />
+
+            </RelativeLayout>
+
+            <!--이름-->
+            <RelativeLayout
+                android:id="@+id/relativeUserName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/relativeProfile"
+                android:layout_marginBottom="20dp">
+
+                <TextView
+                    android:id = "@+id/tvUserName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="이름"
+                    android:layout_marginLeft="50dp"/>
+
+                <EditText
+                    android:id="@+id/etUserName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@id/tvUserName"
+                    android:layout_marginLeft="50dp"
+                    android:hint="이름을 입력해 주세요" />
+
+            </RelativeLayout>
+
+            <!--나이-->
+            <RelativeLayout
+                android:id="@+id/relativeUserBirth"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/relativeUserName"
+                android:layout_marginBottom="20dp">
+
+                <TextView
+                    android:id = "@+id/tvUserBirth"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="출생년도"
+                    android:layout_marginLeft="50dp" />
+
+                <EditText
+                    android:id="@+id/etUserBirth"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@id/tvUserBirth"
+                    android:layout_marginLeft="30dp"
+                    android:inputType="number"/>
+
+            </RelativeLayout>
+
+            <!--성별-->
+            <RelativeLayout
+                android:id="@+id/relativeUserGender"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/relativeUserBirth"
+                android:layout_marginBottom="20dp">
+
+                <TextView
+                    android:id = "@+id/tvUserGender"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="성별"
+                    android:layout_marginLeft="50dp"/>
+
+                <Spinner
+                    android:id="@+id/etUserGender"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@id/tvUserGender"
+                    android:layout_marginLeft="50dp"
+                    android:entries="@array/gender"/>
+
+            </RelativeLayout>
+
+            <Button
+                android:id="@+id/btnSubmit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="확인"
+                android:textColor="#6D6875"
+                android:layout_below="@id/relativeUserGender"
+                android:layout_centerInParent="true"
+                android:layout_marginTop="20dp"
+                android:theme="@style/MyButton"
+                android:onClick="onClick"/>
+
+        </RelativeLayout>
 
     </RelativeLayout>
 </ScrollView>

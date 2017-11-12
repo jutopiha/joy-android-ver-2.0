@@ -75,6 +75,7 @@ public class HomeFragment extends Fragment {
 
     /*기본*/
     public static android.support.v4.app.Fragment newInstance(){
+
         HomeFragment fragment = new HomeFragment();
         return fragment;
     }
