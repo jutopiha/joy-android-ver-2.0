@@ -143,6 +143,7 @@ public class HomeFragment extends Fragment {
             Log.d("로그인여부확인","true");
         }
         else {
+            Log.d("uid_test: ",MainActivity.currentUserId);
             Log.d("로그인여부확인","false");
             sendObject();
         }
