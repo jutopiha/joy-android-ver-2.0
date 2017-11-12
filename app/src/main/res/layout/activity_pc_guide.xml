@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:background="@color/colorAccent"
+        android:id="@+id/relativePCGuideActionbar">
+        <Button
+            android:id="@+id/btnBack"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_margin="18dp"
+            android:background="@drawable/button_back"
+            android:onClick="onClick" />
+        <TextView
+            android:id="@+id/tvSetting"
+            android:text="PC가계부"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="17sp"
+            android:textColor="#ffffff"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@id/btnBack"
+            android:layout_toEndOf="@id/btnBack"
+            android:textAlignment="center"
+            android:layout_marginRight="30dp"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/relativePCGuideContent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/relativePCGuideActionbar"
+        android:layout_marginTop="50dp">
+
+        <TextView
+            android:id="@+id/tvPCContent1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="50dp"
+            android:text="PC에서도 가계부 서비스를 이용해보세요!"/>
+
+        <TextView
+            android:id="@+id/tvPCContent2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:layout_below="@+id/tvPCContent1"
+            android:text="웹에서 커뮤니티 기능도 이용할 수 있어요"/>
+
+        
+        <ImageView
+            android:id="@+id/pcImage"
+            android:layout_width="match_parent"
+            android:layout_height="126dp"
+            android:src="@drawable/image_pc_guide"
+            android:layout_below="@id/tvPCContent2"
+            android:layout_marginTop ="50dp"/>
+
+        <RelativeLayout
+            android:id="@+id/relative1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/pcImage"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="70dp">
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="50dp"
+                android:id = "@+id/right_arrow"
+                android:src = "@drawable/icon_right_arrow"
+                android:padding="7dp" />
+
+            <TextView
+                android:id="@+id/subTitle1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/right_arrow"
+                android:layout_marginLeft="10dp"
+                android:text="웹 version 사용하기"
+                android:textSize="18dp"
+                android:layout_centerVertical="true"
+                android:textColor="@color/heavy_gray"
+                android:onClick="onClick"/>
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+
+</RelativeLayout>

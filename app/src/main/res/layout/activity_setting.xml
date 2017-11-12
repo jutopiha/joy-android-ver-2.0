@@ -186,7 +186,7 @@
         </RelativeLayout>
 
         <RelativeLayout
-            android:id="@+id/btnAsk"
+            android:id="@+id/btnPCMode"
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:layout_marginLeft="15dp"
@@ -194,8 +194,8 @@
             android:layout_below="@id/relativeAboutSetting"
             android:onClick="onClick">
             <TextView
-                android:id="@+id/tvAsk"
-                android:text="문의하기"
+                android:id="@+id/tvPCMode"
+                android:text="PC가계부"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="16sp"
@@ -207,10 +207,37 @@
             android:layout_width="match_parent"
             android:layout_height="1px"
             style="@style/HomeDivider"
-            android:layout_below="@id/btnAsk"
+            android:layout_below="@id/btnPCMode"
             android:layout_marginLeft="15dp"
             android:layout_marginRight="15dp"
             android:id="@+id/view4" />
+
+        <RelativeLayout
+            android:id="@+id/btnTutorial"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_below="@id/btnPCMode"
+            android:onClick="onClick">
+            <TextView
+                android:id="@+id/tvTutorial"
+                android:text="튜토리얼"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:textColor="@color/heavy_gray"
+                android:layout_centerVertical="true"/>
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            style="@style/HomeDivider"
+            android:layout_below="@id/btnTutorial"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:id="@+id/view5" />
 
         <RelativeLayout
             android:id="@+id/btnAbout"
@@ -218,8 +245,9 @@
             android:layout_height="48dp"
             android:layout_marginLeft="15dp"
             android:layout_marginRight="15dp"
-            android:layout_below="@id/btnAsk"
+            android:layout_below="@id/btnTutorial"
             android:onClick="onClick">
+
             <TextView
                 android:id="@+id/tvAbout"
                 android:text="만든 사람들"
@@ -231,8 +259,6 @@
         </RelativeLayout>
 
     </RelativeLayout>
-
-
 
     <RelativeLayout
         android:id="@+id/relativeAppInfo"

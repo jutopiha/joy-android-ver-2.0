@@ -13,6 +13,7 @@ import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.joy.tiggle.joy.Dialog.ButtonsCustomDialog;
 import com.joy.tiggle.joy.Dialog.CustomDialog;
 import com.joy.tiggle.joy.R;
 
@@ -39,9 +40,6 @@ import java.util.List;
 
 
 public class SettingActivity extends AppCompatActivity implements View.OnClickListener {
-
-    private TextView tvSetting;
-    private int FLAG = -1;
 
     private Switch switchAutoParse, switchAutoPush;
     private int parseInfo, pushInfo;
@@ -84,39 +82,6 @@ public class SettingActivity extends AppCompatActivity implements View.OnClickLi
         sendObject();
     }
 
-    public int checkFlag(){
-        return FLAG;
-    }
-    /*@Override
-    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked){
-        int temp_flag = checkFlag();
-
-        if(temp_flag == 0){
-            if(isChecked){
-                parseInfo=1;
-            }
-            else {
-                parseInfo = 0;
-            }
-            sendParseUpdate();
-            sendObject();
-        }
-        else if(temp_flag == 1){
-            if(isChecked){
-                pushInfo =1;
-            }
-            else {
-                pushInfo = 0;
-            }
-            sendPushUpdate();
-            sendObject();
-        }
-        else{
-            Toast.makeText(this, "아니야아니야ㅠㅠㅠ", Toast.LENGTH_SHORT).show();
-
-        }
-    }
-    */
     public void onClick(View v){
         switch(v.getId()){
             case R.id.btnBack:
@@ -129,7 +94,9 @@ public class SettingActivity extends AppCompatActivity implements View.OnClickLi
                 startActivity(intent);
                 finish();
                 break;
-            case R.id.btnAsk:
+            case R.id.btnPCMode:
+                intent = new Intent(getApplicationContext(), PCGuideActivity.class);
+                startActivity(intent);
                 finish();
                 break;
             case R.id.btnAbout:
