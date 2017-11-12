@@ -43,6 +43,7 @@
         <activity android:name=".Activity.ModifyExpenseActivity" />
         <activity android:name=".Activity.KidsActivity" />
         <activity android:name=".Activity.PCGuideActivity" />
+        <activity android:name=".Activity.ModifyInfoActivity" />
 
         <!-- To use facebook. 2017-05-18 by Juha. -->
         <activity
