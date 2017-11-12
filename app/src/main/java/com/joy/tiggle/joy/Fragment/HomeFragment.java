@@ -1,5 +1,6 @@
 package com.joy.tiggle.joy.Fragment;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
@@ -16,6 +17,7 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.facebook.AccessToken;
 import com.github.mikephil.charting.charts.PieChart;
 
 import java.io.BufferedReader;
@@ -33,6 +35,7 @@ import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.data.PieEntry;
 import com.joy.tiggle.joy.Activity.MainActivity;
+import com.joy.tiggle.joy.Activity.SigninActivity;
 import com.joy.tiggle.joy.R;
 
 import org.apache.http.HttpResponse;
@@ -135,7 +138,15 @@ public class HomeFragment extends Fragment {
 
         }
 
-        sendObject();
+        // 로그인 여부 확인
+        if(AccessToken.getCurrentAccessToken() == null) {
+            Log.d("로그인여부확인","true");
+        }
+        else {
+            Log.d("로그인여부확인","false");
+            sendObject();
+        }
+
 
         //piechart설정
         mChart = (PieChart)currentView.findViewById(R.id.idPieChart);
