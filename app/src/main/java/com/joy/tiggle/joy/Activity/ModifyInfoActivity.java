@@ -3,7 +3,6 @@ package com.joy.tiggle.joy.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.Color;
 import android.graphics.drawable.ShapeDrawable;
 import android.graphics.drawable.shapes.OvalShape;
 import android.os.Bundle;
@@ -12,17 +11,12 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import com.joy.tiggle.joy.Fragment.HomeFragment;
 import com.joy.tiggle.joy.R;
 
 import org.apache.http.HttpResponse;
@@ -30,7 +24,6 @@ import org.apache.http.NameValuePair;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
-import org.apache.http.client.methods.HttpPut;
 import org.apache.http.client.utils.URLEncodedUtils;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.DefaultHttpClient;
@@ -45,15 +38,13 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 /**
- * Created by CE-L-17 on 2017-11-06.
+ * Created by CE-L-17 on 2017-11-12.
  */
 
-public class AddInfoActivity extends AppCompatActivity implements View.OnClickListener{
-
+public class ModifyInfoActivity extends AppCompatActivity implements View.OnClickListener {
     private ImageView userProfile;
     private EditText editUserName, editUserBirth;
     private Spinner editUserGender;
@@ -66,14 +57,12 @@ public class AddInfoActivity extends AppCompatActivity implements View.OnClickLi
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_info);
+        setContentView(R.layout.activity_modify_info);
+
         setCustomActionBar();   //상단 바 숨기기
         bindView(); //findViewById
         getProfile(); //프로필 사진 받기
         sendObject();
-
-        imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE); //화면 터치시 키보드 내리기
-
     }
 
     //상단 바 숨기기
@@ -143,7 +132,7 @@ public class AddInfoActivity extends AppCompatActivity implements View.OnClickLi
                 }
                 else{
                     sendUserInfoUpdate();
-                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                    Intent intent = new Intent(getApplicationContext(), SettingActivity.class);
                     startActivity(intent);
                     finish();
                     break;
@@ -151,12 +140,13 @@ public class AddInfoActivity extends AppCompatActivity implements View.OnClickLi
         }
     }
 
+
     //처음 정보 받아오기
     private void sendObject(){
         Log.d("sendObject","started.");
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
-        AddInfoActivity.GetUserInfo request = new AddInfoActivity.GetUserInfo();
+        ModifyInfoActivity.GetUserInfo request = new ModifyInfoActivity.GetUserInfo();
         request.run();
     }
 
@@ -267,7 +257,7 @@ public class AddInfoActivity extends AppCompatActivity implements View.OnClickLi
 
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
-        UpdateUserInfo request = new UpdateUserInfo();
+        ModifyInfoActivity.UpdateUserInfo request = new ModifyInfoActivity.UpdateUserInfo();
         request.run();
     }
 
@@ -347,7 +337,9 @@ public class AddInfoActivity extends AppCompatActivity implements View.OnClickLi
     @Override
     public void onBackPressed() {
 
-        Toast.makeText(getApplicationContext(), "정보를 입력해야 해요", Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(getApplicationContext(), SettingActivity.class);
+        startActivity(intent);
+        finish();
 
     }
 }

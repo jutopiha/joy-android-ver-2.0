@@ -1,6 +1,9 @@
 package com.joy.tiggle.joy.Activity;
 
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
@@ -25,6 +28,9 @@ import com.joy.tiggle.joy.Fragment.DailyFragment;
 import com.joy.tiggle.joy.Fragment.MonthlyStatFragment;
 import com.joy.tiggle.joy.Fragment.QuestFragment;
 import com.joy.tiggle.joy.R;
+import com.joy.tiggle.joy.Receiver.BroadcastD;
+
+import java.util.Calendar;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -34,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
     //Back Button 2번 클릭시 앱 종료
     private final long FINISH_INTERVAL_TIME = 2000;
     private long backPressedTime=0;
+    private static int ONE_MINUTE = 5626;
 
 
 
@@ -84,6 +91,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //push 알람
+        new AlarmHATT(getApplicationContext()).Alarm();
 
         // 로그인 여부 확인
         if(AccessToken.getCurrentAccessToken() == null) {
@@ -113,6 +122,29 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    //push 알람
+    public class AlarmHATT{
+        private Context context;
+
+        public AlarmHATT(Context context){
+            this.context = context;
+        }
+
+        public void Alarm(){
+            AlarmManager am = (AlarmManager)getSystemService(Context.ALARM_SERVICE);
+            Intent intent = new Intent(MainActivity.this, BroadcastD.class);
+
+            PendingIntent sender = PendingIntent.getBroadcast(MainActivity.this, 0, intent, 0);
+
+            Calendar calendar = Calendar.getInstance();
+            //알람시간 calendar에 set해주기
+            calendar.set(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), (calendar.DATE),22,32,0);
+
+            //알람예약
+            am.set(AlarmManager.RTC_WAKEUP,calendar.getTimeInMillis(), sender);
+        }
+
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

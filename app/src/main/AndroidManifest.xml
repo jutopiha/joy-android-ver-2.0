@@ -4,6 +4,7 @@
 
     <!--푸쉬알림시 화면 켜짐 현정 추가-->
     <uses-permisson android:name="android.permission.WAKE_LOCK"/>
+    <uses-permission android:name="android.permission.VIBRATE"/>
 
     <!-- To connect with Server. 2017-05-18 by Juha. -->
     <uses-permission android:name="android.permission.INTERNET" />
@@ -43,6 +44,8 @@
         <activity android:name=".Activity.ModifyExpenseActivity" />
         <activity android:name=".Activity.KidsActivity" />
         <activity android:name=".Activity.PCGuideActivity" />
+        <activity android:name=".Activity.ModifyInfoActivity" />
+        <activity android:name=".Activity.TutorialActivity" />
 
         <!-- To use facebook. 2017-05-18 by Juha. -->
         <activity
@@ -94,6 +97,8 @@
                 android:name="android.appwidget.provider"
                 android:resource="@xml/daily_expense_widget_info" />
         </receiver>
+
+        <receiver android:name=".Receiver.BroadcastD"></receiver>
     </application>
 
     <!--서비스 등록. 서비스를 실행시킬 서비스 클래스 호출 현정 추가-->

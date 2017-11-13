@@ -126,6 +126,7 @@ public class SigninActivity extends AppCompatActivity implements View.OnClickLis
                 Log.d("***.getUserId()", String.valueOf(loginResult.getAccessToken().getUserId()));
                 Log.d("***.getPermissions()", String.valueOf(loginResult.getAccessToken().getPermissions()));
                 mFacebookId = loginResult.getAccessToken().getUserId();
+                MainActivity.currentUserId = mFacebookId;
 
 
                 GraphRequest request = GraphRequest.newMeRequest(
@@ -212,19 +213,17 @@ public class SigninActivity extends AppCompatActivity implements View.OnClickLis
         }
 
         if (facebookUser.getGender() != null) {
-            user.setGender(facebookUser.getGender());
+            if(facebookUser.getGender().equals("male"))
+                user.setGender("Male");
+            else
+                user.setGender("Female");
         } else {
             user.setGender("none");
         }
 
         user.setProfilePicture("none");
         user.setMainBank("none");
-        /*
-        Intent intent = new Intent(getApplicationContext(), UserInfoActivity.class);
-        Log.v("****이주하", "hihi");
-        startActivityForResult(intent,0);
-        Log.v("****이주하", "bye");
-        */
+
         user.setOnAutoParse(false);
         user.setOnAutoAlarm(false);
         Log.d("User:::::", user.toString());
@@ -233,9 +232,11 @@ public class SigninActivity extends AppCompatActivity implements View.OnClickLis
         isSignIn = true;
         sendObject();
 
-        //최초 로그인 시 SignActivity->MainActivity
-        goMain();
         //최초 로그인 시 SignActivity ->AddInfoActivity -> MainActivity
+        Intent addInfoIntent = new Intent (SigninActivity.this, AddInfoActivity.class);
+        startActivity(addInfoIntent);
+        finish();
+
 
     }
 

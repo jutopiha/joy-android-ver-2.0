@@ -94,6 +94,11 @@ public class SettingActivity extends AppCompatActivity implements View.OnClickLi
                 startActivity(intent);
                 finish();
                 break;
+            case R.id.btnModifyInfo:
+                intent = new Intent(getApplicationContext(), ModifyInfoActivity.class);
+                startActivity(intent);
+                finish();
+                break;
             case R.id.btnPCMode:
                 intent = new Intent(getApplicationContext(), PCGuideActivity.class);
                 startActivity(intent);
@@ -103,6 +108,10 @@ public class SettingActivity extends AppCompatActivity implements View.OnClickLi
                 customDialog = new CustomDialog(this, "Hongik Univ. CE", mClickCloseListener);
                 customDialog.show();
                 break;
+            case R.id.btnTutorial:
+                intent = new Intent(this, TutorialActivity.class);
+                startActivity(intent);
+                finish();
         }
 
     }

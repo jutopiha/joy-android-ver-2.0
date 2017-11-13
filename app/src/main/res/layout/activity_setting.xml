@@ -186,12 +186,39 @@
         </RelativeLayout>
 
         <RelativeLayout
-            android:id="@+id/btnPCMode"
+            android:id="@+id/btnModifyInfo"
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:layout_marginLeft="15dp"
             android:layout_marginRight="15dp"
             android:layout_below="@id/relativeAboutSetting"
+            android:onClick="onClick">
+            <TextView
+                android:id="@+id/tvModifyInfo"
+                android:text="개인정보 수정"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:textColor="@color/heavy_gray"
+                android:layout_centerVertical="true"/>
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            style="@style/HomeDivider"
+            android:layout_below="@id/btnModifyInfo"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:id="@+id/view4" />
+
+        <RelativeLayout
+            android:id="@+id/btnPCMode"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_below="@id/btnModifyInfo"
             android:onClick="onClick">
             <TextView
                 android:id="@+id/tvPCMode"
@@ -210,7 +237,7 @@
             android:layout_below="@id/btnPCMode"
             android:layout_marginLeft="15dp"
             android:layout_marginRight="15dp"
-            android:id="@+id/view4" />
+            android:id="@+id/view5" />
 
         <RelativeLayout
             android:id="@+id/btnTutorial"
@@ -237,7 +264,7 @@
             android:layout_below="@id/btnTutorial"
             android:layout_marginLeft="15dp"
             android:layout_marginRight="15dp"
-            android:id="@+id/view5" />
+            android:id="@+id/view6" />
 
         <RelativeLayout
             android:id="@+id/btnAbout"

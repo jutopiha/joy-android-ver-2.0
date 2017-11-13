@@ -49,12 +49,12 @@
                 android:id="@+id/imageMainCharacter"
                 android:layout_width="300dp"
                 android:layout_height="250dp"
-                android:src="@drawable/character1"
+                android:src="@drawable/image_coffee"
                 android:layout_centerHorizontal="true"/>
 
             <TextView
                 android:id="@+id/tvCharacterName"
-                android:text="아메리카노"
+                android:text="원두"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="20sp"

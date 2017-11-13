@@ -17,7 +17,7 @@
 
             <TextView
                 android:id="@+id/tvAddInfo"
-                android:text="추가 정보 입력"
+                android:text="개인정보 수정"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="17sp"

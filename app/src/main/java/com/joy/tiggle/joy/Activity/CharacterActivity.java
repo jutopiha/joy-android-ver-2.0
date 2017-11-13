@@ -176,12 +176,6 @@ public class CharacterActivity extends AppCompatActivity implements View.OnClick
         return true;
     }
 
-    /*
-    public void onClickShop(View v){
-        Intent intent = new Intent(getApplicationContext(), ShopActivity.class);
-        startActivity(intent);
-        finish();
-    }*/
 
     private void sendObject(){
         Log.d("sendOjbect","started");
@@ -259,6 +253,10 @@ public class CharacterActivity extends AppCompatActivity implements View.OnClick
 
             //메인캐릭터 넘버에 따라 캐릭터 출력이 달라짐.
             switch(mainCharacterNumber){
+                case 0:
+                    mainCharacter.setImageResource(R.drawable.image_coffee);
+                    mainCharacterName.setText("원두");
+                    break;
                 case 1:
                     //Log.d("test", "case1 income");
                     mainCharacter.setImageResource(R.drawable.character1);
@@ -353,14 +351,34 @@ public class CharacterActivity extends AppCompatActivity implements View.OnClick
 
     private View.OnClickListener unlockListener = new View.OnClickListener(){
         public void onClick(View v){
-            //Toast.makeText(getApplicationContext(), "캐릭터 잠금 해제", Toast.LENGTH_SHORT).show();
             //선택한 캐릭터 정보를 서버에게 보내고
             sendUnlockCharacter();
             Log.d("unlockResult",unlockResult);
-
+            String alarm = "";
             String temp = "\"success\"";
             if(unlockResult.equals("\"success\"")) sendObject();
-            else    Toast.makeText(getApplicationContext(), "캐릭터 잠금 해제 실패", Toast.LENGTH_SHORT).show();
+            else{
+                if(selectCharacterNumber == 1){
+                    alarm = "원두 3개, 물방울 5개, 얼음 2개가 필요해요";
+                }
+                else if(selectCharacterNumber == 2){
+                    alarm = "원두 2개, 우유 4개, 얼음 2개가 필요해요";
+                }
+                else if(selectCharacterNumber == 3){
+                    alarm = "원두 2개, 우유 4개, 얼음 2개, 초코 2개가 필요해요";
+                }
+                else if(selectCharacterNumber == 4){
+                    alarm = "녹차가루 3개, 우유 3개, 얼음 2개가 필요해요";
+                }
+                else if(selectCharacterNumber == 5){
+                    alarm = "자몽청 3개, 탄산수 2개, 시럽 1개, 얼음 2개가 필요해요";
+                }
+                else{
+                    alarm = "파란색소 1개, 레몬 1개, 탄산수 3개, 시럽 1개, 얼음 2개가 필요해요";
+                }
+
+                Toast.makeText(getApplicationContext(), alarm, Toast.LENGTH_LONG).show();
+            }
 
             mCustomDialog.dismiss();
         }
