@@ -36,6 +36,8 @@ public class MainActivity extends AppCompatActivity {
 
     public static final String urlString = "http://18.220.36.184:9000";
     public static String currentUserId;
+    public static boolean parseOn = false;
+    public static boolean pushOn = false;
 
     //Back Button 2번 클릭시 앱 종료
     private final long FINISH_INTERVAL_TIME = 2000;
@@ -138,7 +140,7 @@ public class MainActivity extends AppCompatActivity {
 
             Calendar calendar = Calendar.getInstance();
             //알람시간 calendar에 set해주기
-            calendar.set(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), (calendar.DATE),22,32,0);
+            calendar.set(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), 1,23,47,0);
 
             //알람예약
             am.set(AlarmManager.RTC_WAKEUP,calendar.getTimeInMillis(), sender);

@@ -60,8 +60,14 @@ public class SettingActivity extends AppCompatActivity implements View.OnClickLi
         switchAutoParse.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if(parseInfo == 0) parseInfo = 1;
-                else    parseInfo = 0;
+                if(parseInfo == 0) {
+                    parseInfo = 1;
+                    MainActivity.parseOn = true;
+                }
+                else{
+                    parseInfo = 0;
+                    MainActivity.parseOn = false;
+                }
                 sendParseUpdate();
                 sendObject();
             }
@@ -70,8 +76,14 @@ public class SettingActivity extends AppCompatActivity implements View.OnClickLi
         switchAutoPush.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if(pushInfo == 0) pushInfo = 1;
-                else pushInfo = 0;
+                if(pushInfo == 0) {
+                    pushInfo = 1;
+                    MainActivity.pushOn = true;
+                }
+                else {
+                    pushInfo = 0;
+                    MainActivity.pushOn = false;
+                }
                 sendPushUpdate();
                 sendObject();
             }
@@ -233,13 +245,25 @@ public class SettingActivity extends AppCompatActivity implements View.OnClickLi
             int temp_value;
             temp_value = stringToJson.getJSONObject("DATA").getInt("onAutoParse");
             parseInfo = temp_value;
-            if(temp_value == 0) switchAutoParse.setChecked(false);   //해제되어있음
-            else switchAutoParse.setChecked(true);
+            if(temp_value == 0) {
+                switchAutoParse.setChecked(false);   //해제되어있음
+                MainActivity.parseOn = false;
+            }
+            else {
+                switchAutoParse.setChecked(true);
+                MainActivity.parseOn = true;
+            }
 
             temp_value = stringToJson.getJSONObject("DATA").getInt("onAutoAlarm");
             pushInfo = temp_value;
-            if(temp_value == 0) switchAutoPush.setChecked(false);
-            else    switchAutoPush.setChecked(true);
+            if(temp_value == 0) {
+                switchAutoPush.setChecked(false);
+                MainActivity.pushOn = false;
+            }
+            else    {
+                switchAutoPush.setChecked(true);
+                MainActivity.pushOn = true;
+            }
 
         }
         catch(JSONException e){
