@@ -89,20 +89,7 @@ public class SmsReceiver extends BroadcastReceiver {
                         //Toast.makeText(context, "senderNum: " + senderNo + " :\n message: " + message, Toast.LENGTH_LONG).show();
                         //Log.d("senderNo", senderNo);
 
-                        /*push 알림 만듦*/
-                        NotificationManager notificationManager = (NotificationManager)context.getSystemService(context.NOTIFICATION_SERVICE);
-                        Intent intent1 = new Intent(context.getApplicationContext(), MainActivity.class);
 
-                        Notification.Builder builder = new Notification.Builder(getApplicationContext());
-                        intent1.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP| Intent.FLAG_ACTIVITY_CLEAR_TOP);
-
-                        PendingIntent pendingNotificationIntent = PendingIntent.getActivity( context,0, intent1,PendingIntent.FLAG_UPDATE_CURRENT);
-
-                        builder.setSmallIcon(R.drawable.icon_logo).setTicker("티끌모아태산").setWhen(System.currentTimeMillis())
-                                .setContentTitle("티끌모아태산").setContentText("지출문자가 자동으로 내역에 입력되었습니다.")
-                                .setDefaults(Notification.DEFAULT_SOUND | Notification.DEFAULT_VIBRATE).setContentIntent(pendingNotificationIntent).setAutoCancel(true).setOngoing(true);
-                        //해당 부분은 API 4.1버전부터 작동합니다.
-                        notificationManager.notify(1, builder.build()); // Notification send
 
                         /* Parse money, memo from message */
                         String[] tokens = message.split("\n");
@@ -141,20 +128,42 @@ public class SmsReceiver extends BroadcastReceiver {
                         getSpecialDateFormat();
 
                         /* get card company name from sender */
-                        getCardName(senderNo);
-                        Log.v("문자 내용", "입니다.");
-                        Log.d("message", message);
-                        Log.d("money", money+"");
-                        Log.d("memo", memo);
-                        Log.d("date", date+"");
-                        Log.d("time", time+"");
+                        String cn = getCardName(senderNo);
+                        Log.d("카드이름", cn);
+                        if(cn == "other") {
 
-                        // money와 memo만 뜨고 나머지는 로그가 안 뜬다.
-                        // 안드로이드 실제 기기로 테스팅 필요.
-                        // 서버와 전송도 아직 확인하지 못함.
+
+                        } else {
+                            Log.v("문자 내용", "입니다.");
+                            Log.d("message", message);
+                            Log.d("money", money+"");
+                            Log.d("memo", memo);
+                            Log.d("date", date+"");
+                            Log.d("time", time+"");
+
+                            // money와 memo만 뜨고 나머지는 로그가 안 뜬다.
+                            // 안드로이드 실제 기기로 테스팅 필요.
+                            // 서버와 전송도 아직 확인하지 못함.
 
                         /* server에 전송하는 코드 추가 */
-                        sendObject();
+                            sendObject();
+
+                            /*push 알림 만듦*/
+                            NotificationManager notificationManager = (NotificationManager)context.getSystemService(context.NOTIFICATION_SERVICE);
+                            Intent intent1 = new Intent(context.getApplicationContext(), MainActivity.class);
+
+                            Notification.Builder builder = new Notification.Builder(getApplicationContext());
+                            intent1.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP| Intent.FLAG_ACTIVITY_CLEAR_TOP);
+
+                            PendingIntent pendingNotificationIntent = PendingIntent.getActivity( context,0, intent1,PendingIntent.FLAG_UPDATE_CURRENT);
+
+                            builder.setSmallIcon(R.drawable.icon_logo).setTicker("티끌모아태산").setWhen(System.currentTimeMillis())
+                                    .setContentTitle("티끌모아태산").setContentText("지출문자가 자동으로 내역에 입력되었습니다.")
+                                    .setDefaults(Notification.DEFAULT_SOUND | Notification.DEFAULT_VIBRATE).setContentIntent(pendingNotificationIntent).setAutoCancel(true).setOngoing(true);
+                            //해당 부분은 API 4.1버전부터 작동합니다.
+                            notificationManager.notify(1, builder.build()); // Notification send
+                        }
+
 
                     }
                     this.abortBroadcast();
@@ -178,6 +187,9 @@ public class SmsReceiver extends BroadcastReceiver {
     private String getCardName(String sender) {
         String cardName = "";
         Log.d("***", ""+Arrays.asList(Card.cardAddressList).contains(sender));
+        if(Arrays.asList(Card.cardAddressList).contains(sender) == false) {
+             return "other";
+        }
         int temp = Arrays.asList(Card.cardAddressList).indexOf(sender);
         Log.d("***", ""+Card.cardAddressList[temp+1]);
 
