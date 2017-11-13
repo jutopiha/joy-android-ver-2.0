@@ -416,7 +416,7 @@ public class MonthlyStatFragment extends Fragment {
         set1.setDrawHighlightCircleEnabled(true);
         set1.setDrawHighlightIndicators(false);
 
-        RadarDataSet set2 = new RadarDataSet(entries_whole, "전체 사용자");
+        RadarDataSet set2 = new RadarDataSet(entries_whole, "사용자 비교");
         set2.setColor(Color.rgb(239, 181, 88));
         set2.setFillColor(Color.rgb(239, 181, 88));
         set2.setDrawFilled(true);

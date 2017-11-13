@@ -45,6 +45,7 @@
         <activity android:name=".Activity.KidsActivity" />
         <activity android:name=".Activity.PCGuideActivity" />
         <activity android:name=".Activity.ModifyInfoActivity" />
+        <activity android:name=".Activity.TutorialActivity" />
 
         <!-- To use facebook. 2017-05-18 by Juha. -->
         <activity

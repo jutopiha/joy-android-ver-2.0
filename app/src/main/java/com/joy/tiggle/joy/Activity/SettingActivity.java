@@ -108,6 +108,10 @@ public class SettingActivity extends AppCompatActivity implements View.OnClickLi
                 customDialog = new CustomDialog(this, "Hongik Univ. CE", mClickCloseListener);
                 customDialog.show();
                 break;
+            case R.id.btnTutorial:
+                intent = new Intent(this, TutorialActivity.class);
+                startActivity(intent);
+                finish();
         }
 
     }
