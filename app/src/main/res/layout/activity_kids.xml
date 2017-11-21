@@ -24,7 +24,7 @@
                 android:onClick="onClick" />
             <TextView
                 android:id="@+id/tvKidsZone"
-                android:text="금융키즈존"
+                android:text="금융지식팁"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="17sp"

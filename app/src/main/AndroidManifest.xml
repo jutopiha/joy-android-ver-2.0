@@ -98,7 +98,9 @@
                 android:resource="@xml/daily_expense_widget_info" />
         </receiver>
 
-        <receiver android:name=".Receiver.BroadcastD"></receiver>
+        <receiver android:name=".Receiver.BroadcastD" android:process=":remote">
+        </receiver>
+
     </application>
 
     <!--서비스 등록. 서비스를 실행시킬 서비스 클래스 호출 현정 추가-->

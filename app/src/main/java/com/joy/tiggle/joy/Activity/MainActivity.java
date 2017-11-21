@@ -5,7 +5,6 @@ import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -13,15 +12,13 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
 import com.facebook.AccessToken;
-import com.joy.tiggle.joy.Activity.CharacterActivity;
-import com.joy.tiggle.joy.Activity.SettingActivity;
-import com.joy.tiggle.joy.Activity.SigninActivity;
 import com.joy.tiggle.joy.Fragment.InputFragment;
 import com.joy.tiggle.joy.Fragment.HomeFragment;
 import com.joy.tiggle.joy.Fragment.DailyFragment;
@@ -42,7 +39,6 @@ public class MainActivity extends AppCompatActivity {
     //Back Button 2번 클릭시 앱 종료
     private final long FINISH_INTERVAL_TIME = 2000;
     private long backPressedTime=0;
-    private static int ONE_MINUTE = 5626;
 
 
 
@@ -94,7 +90,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         //push 알람
-        new AlarmHATT(getApplicationContext()).Alarm();
+        registerAlarm();
+
 
         // 로그인 여부 확인
         if(AccessToken.getCurrentAccessToken() == null) {
@@ -121,30 +118,6 @@ public class MainActivity extends AppCompatActivity {
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
         navigation.setSelectedItemId(R.id.navigation_home);    // 홈 화면으로 시작
 
-
-    }
-
-    //push 알람
-    public class AlarmHATT{
-        private Context context;
-
-        public AlarmHATT(Context context){
-            this.context = context;
-        }
-
-        public void Alarm(){
-            AlarmManager am = (AlarmManager)getSystemService(Context.ALARM_SERVICE);
-            Intent intent = new Intent(MainActivity.this, BroadcastD.class);
-
-            PendingIntent sender = PendingIntent.getBroadcast(MainActivity.this, 0, intent, 0);
-
-            Calendar calendar = Calendar.getInstance();
-            //알람시간 calendar에 set해주기
-            calendar.set(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), 1,23,47,0);
-
-            //알람예약
-            am.set(AlarmManager.RTC_WAKEUP,calendar.getTimeInMillis(), sender);
-        }
 
     }
 
@@ -209,6 +182,24 @@ public class MainActivity extends AppCompatActivity {
             backPressedTime = tempTime;
             Toast.makeText(getApplicationContext(), "앱을 종료하려면 한 번 더 누르세요", Toast.LENGTH_SHORT).show();
         }
+
+    }
+
+    public void registerAlarm(){
+        Log.e("###","registerAlarm");
+        Intent intent = new Intent(MainActivity.this, BroadcastD.class);
+        PendingIntent sender = PendingIntent.getBroadcast(MainActivity.this, 0, intent, 0);
+
+        Calendar mCalendar = Calendar.getInstance();
+
+        mCalendar.set(Calendar.HOUR_OF_DAY, 0);
+        mCalendar.set(Calendar.MINUTE, 0);
+        mCalendar.set(Calendar.SECOND,0);
+        mCalendar.add(Calendar.DATE, +1);
+
+        AlarmManager am = (AlarmManager)getSystemService(Context.ALARM_SERVICE);
+        am.setInexactRepeating(AlarmManager.RTC_WAKEUP, mCalendar.getTimeInMillis(),24*60*60*1000, sender);
+
 
     }
 }
