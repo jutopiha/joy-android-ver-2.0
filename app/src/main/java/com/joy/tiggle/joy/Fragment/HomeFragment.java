@@ -131,7 +131,7 @@ public class HomeFragment extends Fragment {
         mThread.start();
         try {
             mThread.join();
-            userProfilePicture.setImageBitmap(bitmap);
+            //userProfilePicture.setImageBitmap(bitmap);
             userProfilePicture.setBackground(new ShapeDrawable(new OvalShape()));
 
 
