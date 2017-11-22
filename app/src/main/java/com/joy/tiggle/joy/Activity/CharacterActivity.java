@@ -268,19 +268,19 @@ public class CharacterActivity extends AppCompatActivity implements View.OnClick
                     break;
                 case 3:
                     mainCharacter.setImageResource(R.drawable.character3);
-                    mainCharacterName.setText("캐릭3");
+                    mainCharacterName.setText("카페모카");
                     break;
                 case 4:
                     mainCharacter.setImageResource(R.drawable.character4);
-                    mainCharacterName.setText("캐릭터4");
+                    mainCharacterName.setText("녹차라떼");
                     break;
                 case 5:
                     mainCharacter.setImageResource(R.drawable.character5);
-                    mainCharacterName.setText("캐릭터5");
+                    mainCharacterName.setText("자몽에이드");
                     break;
                 case 6:
                     mainCharacter.setImageResource(R.drawable.character6);
-                    mainCharacterName.setText("캐릭터6");
+                    mainCharacterName.setText("블루레몬에이드");
                     break;
                 default:
                     mainCharacter.setImageResource(R.drawable.image_waterdrop);
@@ -302,26 +302,26 @@ public class CharacterActivity extends AppCompatActivity implements View.OnClick
             if(stringToJson.getJSONObject("list").getInt("3") == 0)     characterImageView3.setImageResource(R.drawable.question_mark);
             else{
                 characterHas[2]  =1;
-                characterImageView3.setImageResource(R.drawable.character3);
-                characterName3.setText("캐릭터3");
+                characterImageView3.setImageResource(R.drawable.character3_head);
+                characterName3.setText("카페모카");
             }
             if(stringToJson.getJSONObject("list").getInt("4") == 0)     characterImageView4.setImageResource(R.drawable.question_mark);
             else{
                 characterHas[3] = 1;
-                characterImageView4.setImageResource(R.drawable.character4);
-                characterName4.setText("캐릭터4");
+                characterImageView4.setImageResource(R.drawable.character4_head);
+                characterName4.setText("녹차라떼");
             }
             if(stringToJson.getJSONObject("list").getInt("5") == 0)     characterImageView5.setImageResource(R.drawable.question_mark);
             else{
                 characterHas[4] = 1;
-                characterImageView5.setImageResource(R.drawable.character5);
-                characterName5.setText("캐릭터 5");
+                characterImageView5.setImageResource(R.drawable.character5_head);
+                characterName5.setText("자몽에이드");
             }
             if(stringToJson.getJSONObject("list").getInt("6") == 0)     characterImageView6.setImageResource(R.drawable.question_mark);
             else{
                 characterHas[5] = 1;
-                characterImageView6.setImageResource(R.drawable.character6);
-                characterName6.setText("캐릭터 6");
+                characterImageView6.setImageResource(R.drawable.character6_head);
+                characterName6.setText("블루레몬에이드");
             }
 
         }
